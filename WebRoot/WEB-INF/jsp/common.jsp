@@ -146,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     var serverId = res.serverId; // 返回图片的服务器端ID
                     alert('urls: ' + serverId);
                     var img = new Image();
-                    var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=<?php echo $signPackage["accessToken"]?>&media_id=' + serverId;
+                    var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=${config.access_token}&media_id=' + serverId;
                     document.getElementById('log').innerHTML += '<a href="' + url + '">' + url + '</a><br/><br/>';
                     img.src = url;
                     img.style.width = '80%';
@@ -247,7 +247,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     alert('上传语音成功，serverId 为' + res.serverId);
                     voice.serverId = res.serverId;
 
-                    var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=<?php echo $signPackage["accessToken"]?>&media_id=' + res.serverId;
+                    var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=${config.access_token}&media_id=' + res.serverId;
                     document.getElementById('log').innerHTML += '<a href="' + url + '">' + url + '</a><br/><br/>';
 
                     var audio = document.createElement('audio');
