@@ -17,6 +17,11 @@ import net.sf.json.JSONObject;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+/**
+ * 微信配置获取工具类
+ * @author daiying.zhang
+ *
+ */
 public class PastUtil {
 	public static String token = null;
 	public static String time = null;
@@ -55,16 +60,25 @@ public class PastUtil {
 		System.out.println(jsonStr);
 		return jsonStr;
 	}
-
+    
+	/**
+	 * 获取访问url
+	 * @return
+	 */
 	public  static String getUrl() {
-
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		StringBuffer requestUrl = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String url = requestUrl + "?" + queryString;
 		return url;
 	}
-
+    
+	/**
+	 * 获取签名
+	 * @param jsapi_ticket
+	 * @param url
+	 * @return
+	 */
 	public static Map<String, String> sign(String jsapi_ticket, String url) {
 		Map<String, String> ret = new HashMap<String, String>();
 		String nonce_str = create_nonce_str();
@@ -122,14 +136,15 @@ public class PastUtil {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sdf.format(dt);
 	}
+	
+	/**
+	 * 测试类
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		
 		String p = getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
 		Map<String, String>  map = new HashMap<String, String>();
-		
 		map = sign(p, getUrl());
-		
 		System.out.println(map.toString());
 	}
-	
 }
