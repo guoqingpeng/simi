@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   </head>
   <body>
        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -82,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>服务器端图片</h2>
 
     <div id="imgss" class="clear"></div>
-    <a href="javascript:;" id="save" class="btn">上传图片</a>
+    <a href="javascript:;" id="save" class="btn">[上传图片]</a>
 
     <div id="log"></div>
 
