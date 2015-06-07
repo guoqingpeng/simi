@@ -7,15 +7,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>Hello, SiMiXiu</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
     <meta http-equiv="description" content="This is my page">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/simi/styles/lib/swiper.min.css" media="screen" title="no title" charset="utf-8">
+    <style media="screen">
+    .swiper-container {
+        width: 100%;
+        height: 300px;
+    }
+    </style>
   </head>
   <body>
+      <script src="/simi/scripts/lib/jquery-1.9.1.min.js"></script>
+      <script src="/simi/scripts/lib/swiper.jquery.min.js"></script>
        <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
        <script>
          wx.config({
@@ -67,6 +76,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         });
     </script>
     <br/>
+
+
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/1)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/2)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/3)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/4)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/5)"></div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination swiper-pagination-white"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div>
+
+
     <br/>
     <a class="btn" href="javascript:;" id="startRecord">开始录音</a><br/>
     <a class="btn" href="javascript:;" id="stopRecord">停止录音</a><br/>
@@ -90,12 +118,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <h2>图片预览</h2>
     <a href="javascript:;" id="previewImage">图片预览</a>
-
-    <div style="height: 200px; width: 100%; background: orange">
-        <audio controls src="">
-            <source src="http://www.w3schools.com/html/horse.ogg" type="audio/ogg"/>
-        </audio>
-    </div>
     <br/>
     <br/>
     <br/>
@@ -116,6 +138,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <script>
+      var swiper = new Swiper('.swiper-container', {
+          pagination: '.swiper-pagination',
+          paginationClickable: '.swiper-pagination',
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          spaceBetween: 30,
+          effect: 'fade'
+      });
+    </script>
+
+    <script>
+
+
     wx.ready(function(){
         var localID = '';
         // 在这里调用 API
