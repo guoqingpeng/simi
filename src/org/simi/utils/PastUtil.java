@@ -50,7 +50,7 @@ public class PastUtil {
 		}
 
 		String url = getUrl();
-		System.out.println("aaaaa:"+jsapi_ticket);
+		//System.out.println("aaaaa:"+jsapi_ticket);
 		Map<String, String> params = sign(jsapi_ticket, url);
 		params.put("appid", appId);
 		params.put("access_token", token);

@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <style media="screen">
     .swiper-container {
         width: 100%;
+        height: 300px;
     }
     </style>
   </head>
@@ -78,19 +79,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <!-- Swiper -->
-    <div class="swiper-container">
+    <%-- <div class="swiper-container">
         <div class="swiper-wrapper">
-            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/1" alt="" />
-            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/2" alt="" />
-            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/3" alt="" />
-            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/4" alt="" />
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/1)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/2)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/3)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/4)"></div>
+            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/5)"></div>
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination swiper-pagination-white"></div>
         <!-- Add Arrows -->
         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div>
-    </div>
+    </div> --%>
 
 
     <br/>
@@ -136,14 +138,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
     <script>
-      var swiper = new Swiper('.swiper-container', {
-          pagination: '.swiper-pagination',
-          paginationClickable: '.swiper-pagination',
-          nextButton: '.swiper-button-next',
-          prevButton: '.swiper-button-prev',
-          spaceBetween: 30,
-          effect: 'fade'
-      });
+    //   var swiper = new Swiper('.swiper-container', {
+    //       pagination: '.swiper-pagination',
+    //       paginationClickable: '.swiper-pagination',
+    //       nextButton: '.swiper-button-next',
+    //       prevButton: '.swiper-button-prev',
+    //       spaceBetween: 30,
+    //       effect: 'fade'
+    //   });
     </script>
 
     <script>
@@ -161,7 +163,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         alert('localID:   ' + localIds[i])
                         imgs[i] = new Image();
                         imgs[i].src = localIds[i];
-                        imgs[i].style.width = '80%';
+                        imgs[i].style.width = '30%';
                         document.getElementById('imgs').appendChild(imgs[i]);
                         //alert('paths:' + localIds);
                     }
