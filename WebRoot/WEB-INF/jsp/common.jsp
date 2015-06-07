@@ -18,7 +18,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <style media="screen">
     .swiper-container {
         width: 100%;
-        height: 300px;
     }
     </style>
   </head>
@@ -81,11 +80,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- Swiper -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/1)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/2)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/3)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/4)"></div>
-            <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/5)"></div>
+            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/1" alt="" />
+            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/2" alt="" />
+            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/3" alt="" />
+            <img class="swiper-slide" src="http://lorempixel.com/1000/1000/nightlife/4" alt="" />
         </div>
         <!-- Add Pagination -->
         <div class="swiper-pagination swiper-pagination-white"></div>
