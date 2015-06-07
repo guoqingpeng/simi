@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="simi"
+  id="myeclipse.1433600332702"
+  context-root="/simi"
+  j2ee-spec="5.0"
+  archive="simi.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
