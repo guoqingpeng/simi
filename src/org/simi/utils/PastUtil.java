@@ -12,8 +12,6 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
-import net.sf.json.JSONObject;
-
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -37,7 +35,7 @@ public class PastUtil {
 	 *            当前网页的URL，不包含#及其后面部分
 	 * @return
 	 */
-	public static String getParam(String appId, String appSecret) {
+	public static Map<String, String> getParam(String appId, String appSecret) {
 		app_id = appId;
 		if (jsapi_ticket == null) {
 			token = CommonUtil.getAccess_token(appId, appSecret);
@@ -52,13 +50,14 @@ public class PastUtil {
 		}
 
 		String url = getUrl();
+		System.out.println("aaaaa:"+jsapi_ticket);
 		Map<String, String> params = sign(jsapi_ticket, url);
 		params.put("appid", appId);
 		params.put("access_token", token);
-		JSONObject jsonObject = JSONObject.fromObject(params);
-		String jsonStr = jsonObject.toString();
-		System.out.println(jsonStr);
-		return jsonStr;
+//		JSONObject jsonObject = JSONObject.fromObject(params);
+//		String jsonStr = jsonObject.toString();
+//		System.out.println(jsonStr);
+		return params;
 	}
     
 	/**
@@ -70,6 +69,7 @@ public class PastUtil {
 		StringBuffer requestUrl = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String url = requestUrl + "?" + queryString;
+		System.out.println(url);
 		return url;
 	}
     
@@ -85,7 +85,11 @@ public class PastUtil {
 		String timestamp = create_timestamp();
 		String str;
 		String signature = "";
-
+		//没有参数时，去掉null
+		if (url.contains("?null")) {
+			
+			url = url.replace("?null", "");
+		}
 		// 注意这里参数名必须全部小写，且必须有序
 		str = "jsapi_ticket=" + jsapi_ticket + "&noncestr=" + nonce_str
 				+ "&timestamp=" + timestamp + "&url=" + url;
@@ -142,9 +146,9 @@ public class PastUtil {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String p = getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
-		Map<String, String>  map = new HashMap<String, String>();
-		map = sign(p, getUrl());
-		System.out.println(map.toString());
+//		Map<String, String>  map = new HashMap<String, String>();
+//		map = PastUtil.getParam("wx07 = new HashMap<String, String>();
+//		map = sign(p, getUrl());
+//		System.out.println(map.toString());
 	}
 }

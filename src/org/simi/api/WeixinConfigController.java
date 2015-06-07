@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
-@RequestMapping("/simi/config")
+@RequestMapping("/config")
 public class WeixinConfigController {
 
 	/**
@@ -24,9 +24,8 @@ public class WeixinConfigController {
 	 */
 	@RequestMapping(value = "/getConfig", method = RequestMethod.GET)
 	public ModelAndView showIt() {
-		String p = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
 		Map<String, String>  map = new HashMap<String, String>();
-		map = PastUtil.sign(p, PastUtil.getUrl());
+		map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",map);
 		modelAndView.setViewName("/common");

@@ -13,9 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   </head>
    <body>
    		<script>
@@ -26,7 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        nonceStr: '${config.nonceStr}',
 		        signature: '${config.signature}',
 		        access_token: '${config.access_token}',
-		        
+		        url: '${config.url}',
+		        jsapi_ticket: '${config.jsapi_ticket}',
 		        jsApiList : [
 	            // 所有要调用的 API 都要加到这个列表中
 	            'checkJsApi',
