@@ -28,6 +28,14 @@
         background-image: url(../../../bgimg/trapezoid_2x.png);
         background-size: 320px 134px;
     }
+    .m-portrait .fingerprint{
+        background-image: url(../../../bgimg/fingerprint_2x.png);
+        background-size: 320px 134px;
+    }
+    .m-discuss .portrait{
+        background-image: url(../../../bgimg/logo_2x.png);
+        background-size: 37px 37px;
+    }
 }
 /* 大图标 */
 .g-ico-s { width: 15px; height: 15px; }

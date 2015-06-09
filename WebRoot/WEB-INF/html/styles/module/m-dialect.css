@@ -1,0 +1,30 @@
+@charset "utf-8";
+/**
+* @description: 方言大挑战
+* @author: assassin.liu
+* @update: 2015/6/9
+*/
+.m-dialect{
+    overflow: hidden;
+}
+.m-dialect .info{
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 14px 0;
+    text-align: center;
+    border-bottom: 1px #0070dd dotted;
+    line-height: 39px;
+}
+.m-dialect .info img{
+    width: auto;
+}
+.m-dialect .info .title{
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+    width: 70px;
+}
+.m-dialect .info .title-info{
+    margin-left: 10px;
+    float: left;
+}
