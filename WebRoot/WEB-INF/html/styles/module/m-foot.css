@@ -4,6 +4,45 @@
 * @author: assassin.liu
 * @update: 2014/11/20
 */
-.m-foot{ position: fixed; bottom: 0; width: 100%; overflow: hidden; height: 40px; line-height: 40px; background: url(../../bgimg/bg_1x.png) repeat-x 0 -34px; z-index: 10; }
-.m-foot a{ float: left; width: 25%; text-align: center;  font-size: 14px; color: #fff; text-shadow: 0 2px 0 rgba(0,0,0,.2)}
-.m-foot a:before{ display: block; float: left; width: 1px; height: 40px; content: ""; background-color: #0033cc; }
+.m-foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+    /*background: url(../../bgimg/bg_1x.png) repeat-x 0 -34px;*/
+    z-index: 10;
+    background: -webkit-linear-gradient(#0092eb,#007aea,#005ee2);
+    background: linear-gradient(#0092eb,#007aea,#005ee2);
+}
+.m-foot li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(0,0,0,.2)
+}
+.m-foot a{
+    color: #fff;
+}
+.m-foot li:before {
+    display: block;
+    float: left;
+    width: 1px;
+    height: 40px;
+    content: "";
+    background-color: #00bbf4;
+}
+.m-foot li:first-child:before,
+.m-foot li:first-child:after{
+    width: 0;
+}
+.m-foot li:after {
+    display: block;
+    float: left;
+    width: 1px;
+    height: 40px;
+    content: "";
+    background-color: #0033cc;
+}

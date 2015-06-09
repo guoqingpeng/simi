@@ -1,0 +1,42 @@
+@charset "utf-8";
+/**
+* @description: 搜索
+* @author: assassin.liu
+* @update: 2015/6/9
+*/
+.m-search{
+    position: relative;
+    margin: 0 20px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    height: 28px;
+    background-color: #fff;
+    border: solid 1px #c8c8c8;
+}
+.m-search .g-ico{
+    position: absolute;
+    top: 6px;
+    left: 8px;
+}
+.m-ranking .item .cloud{
+    position: absolute;
+    left: -11px;
+    bottom: -17px;
+    display: block;
+    width: 152px;
+    height: 24px;
+    background: url(../../bgimg/cloud_1x.png);
+}
+.m-search .sch-ipt{
+    display: block;
+    padding: 0 5px 0 30px;
+}
+.m-search input{
+    width: 100%;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    border: 0;
+    background-color: transparent;
+    outline: none;
+}

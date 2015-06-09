@@ -4,7 +4,7 @@
 * @author: assassin.liu
 * @update: 2015/6/8
 */
-.m-title{ height: 38px; background-color: #006ddd; line-height: 38px; font-size: 16px; color: #fff; text-align: center; position: relative; font-family: Microsoft YaHei; }
+.m-title{ height: 38px; line-height: 38px; font-size: 16px; color: #fff; text-align: center; position: relative; background : #006ddd url(../../bgimg/rhombus_1x.png); }
 .m-title h2{ font-weight: 400;  }
 .m-title:after{ width: 100%; height: 5px; display: block; position: absolute; bottom: 0; left: 0; right: 0; content: ""; background: url("../../bgimg/bg_1x.png") left top repeat-x;
 }

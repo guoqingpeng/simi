@@ -11,20 +11,25 @@
 }
 .m-ranking li{
     float: left;
-    position: relative;
-    margin-top: 15px;
     width: 40%;
-    margin: 0 4.666%;
-    background-color: #006ddd;
-    border: solid 1px #0d4c8c;
-    text-align: center;
+    margin: 15px 4.666% 15px;
     color: #fff;
+}
+/* 内容 */
+.m-ranking .item{
+    position: relative;
+    width: 126.5px;
+    margin: auto;
+    text-align: center;
+    background-color: #006ddd;
+    border: solid 2px #0d4c8c;
+
 }
 .m-ranking li img{
     width: 120px;
     height: 97px;
 }
-
+/* ico */
 .m-ranking .onePiece{
     display: block;
     width: 100%;
@@ -32,19 +37,37 @@
     padding-top: 3px;
     overflow: hidden;
 }
+/* 个人说明 */
 .m-ranking .info{
-    padding-left: 13px;
+    padding: 5px 3px;
     text-align: left;
 }
-.rank{
+.m-ranking .info .g-ico-musicL{
+    float: left;
+    margin-right: 10px;
+}
+.m-ranking .info .g-ico-musicR{
+    float: right;
+}
+.m-ranking .info p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* ico */
+.m-ranking .rank{
     position: absolute;
     top: -10.5px;
     right: -8px;
-    min-width: 55px;
+    padding-right: 5px;
     height: 21px;
     line-height: 21px;
     background-color: #054687;
     border-radius: 10.5px;
     -webkit-border-radius: 10.5px;
     color: #ffff00;
+}
+.m-ranking .g-ico-heart{
+    float: left;
+    margin: 4px 0 0 5px;
 }
