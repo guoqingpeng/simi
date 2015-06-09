@@ -1,0 +1,26 @@
+/**
+* @description: 表格
+* @author: assassin.liu
+* @update: 2014/11/22
+*/
+/* 模拟table */
+.g-table{ display: table; vertical-align: middle; width: 100%; font-size: 14px; }
+.g-table .g-ico-arrowb{ margin-left: 5px; }
+.g-table .rows{ display: table-row; vertical-align: middle; }
+.g-table .rows .col{ display: table-cell; vertical-align: middle; color: #000; padding: 9px 0; }
+.g-table .rows .col:first-child{ padding-left: 16.6666px; }
+.g-table .rows .col:last-child{ padding-right: 16.6666px; text-align: right; }
+.g-table li:nth-child(2n){background:#f8f8f8;}
+.g-table .thead .col{ color: #afafaf; padding: 5px 0; }
+.g-table .thead .col01{ padding: 5px 0 5px 16.6666px; }
+/* 表格 */
+.g-table2{ width: 100%; font-size: 14px; color: #000; }
+.g-table2 th{ color: #737373; padding: 5px 0; font-size: 12px; }
+.g-table2 th:first-child,
+.g-table2 td:first-child{ padding-left: 16.6666px; }
+.g-table2 th:last-child,
+.g-table2 td:last-child{ padding-right: 16.6666px; text-align: right; }
+.g-table2 td{ line-height: 22px; padding: 9px 0; }
+.g-table2 tbody tr{ background:#f8f8f8; }
+.g-table2 tbody tr:nth-child(2n){ background:#fff; }
+.g-table2 p{ overflow: hidden;  white-space: nowrap; text-overflow: ellipsis; }

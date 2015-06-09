@@ -1,0 +1,14 @@
+@charset "utf-8";
+/**
+* @description: 
+* @author: assassin.liu
+* @update: 2015/6/8
+*/
+.m-title{ height: 38px; background-color: #006ddd; line-height: 38px; font-size: 16px; color: #fff; text-align: center; position: relative; font-family: Microsoft YaHei; }
+.m-title h2{ font-weight: 400;  }
+.m-title:after{ width: 100%; height: 5px; display: block; position: absolute; bottom: 0; left: 0; right: 0; content: ""; background: url("../../bgimg/bg_1x.png") left top repeat-x;
+}
+.m-title .portal{ float: right; margin: 5px 10px 0 0; }
+.m-title .portal .info{ display: inline-block; height: 22px; border: 1px solid #093f7f; background-color: #052448; border-radius: 12px; -webkit-border-radius: 12px; text-align: center; font-size: 12px; line-height: 22px; overflow: hidden; }
+.m-title .portal .info a{ display: block; float: left; min-width: 65px;  color: #fff; }
+.m-title .portal .info a:hover,.active{ background-color: #093f7f; border-radius: 11px; -webkit-border-radius: 11px; }

@@ -1,0 +1,25 @@
+@charset "utf-8";
+/**
+* @description: 
+* @author: assassin.liu
+* @update: 2015/6/8
+*/
+@import "../lib/core/reset.css";
+@import "../lib/element/g-ico.css";
+@import "../module/m-head.css";
+@import "../module/m-foot.css";
+@import "../module/m-title.css";
+
+/* 预设清除浮动 */
+.g-clear, .g-mod { *zoom: 1; }
+.g-clear:after, .g-mod:after { display: block; overflow: hidden; clear: both; height: 0; content: '\0020'; }
+.doc{ min-width: 320px; }
+.doc .doc-bd { padding-top: 44px; padding-bottom: 55px; }
+.hide{ display: none; }
+.red{ color: #ff0000; }
+.m-search{ margin: 0 20px; border-radius: 5px; -webkit-border-radius: 5px; height: 28px; border: solid 1px #c8c8c8; }
+.m-search input{ width: 100%; line-height: 28px;
+    font-size: 16px; }
+/* 首页 */
+.index{ background-color: #a0cff4; }
+

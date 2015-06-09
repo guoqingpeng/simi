@@ -1,0 +1,12 @@
+@charset "utf-8";
+/**
+* @description: 轮播图
+* @author: assassin.liu
+* @update: 2015/6/8
+*/
+.m-pic{ height: 325px; height: 162.6px; overflow: hidden; position: relative; }
+.m-pic ul{ width: 100000px; }
+.m-pic li{ float: left; }
+.m-pic .state{ position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; display: block; }
+.m-pic .state i{ display: inline-block; width: 15px; height: 15px; margin: 0 5px; line-height: 15px; font-size: 0; background-color: #fff; border-radius: 50%; -webkit-border-radius: 50%; cursor: pointer; }
+.m-pic .state i:hover{ background-color: #00deff; }

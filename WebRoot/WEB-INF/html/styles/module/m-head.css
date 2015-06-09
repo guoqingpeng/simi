@@ -1,0 +1,7 @@
+/**
+* @description: head
+* @author: assassin.liu
+* @update: 2014/11/18
+*/
+.m-head{ height: 44px; line-height: 44px; position: fixed; z-index: 10; top: 0; right: 0; left: 0; bottom: 0; background-color: #000; }
+.m-head h1{ font-size: 18px; font-weight: 400; text-align: center; font-family: "黑体"; color: #fff; }

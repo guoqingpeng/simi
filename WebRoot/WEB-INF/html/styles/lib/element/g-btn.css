@@ -1,0 +1,11 @@
+/**
+* @description: 通用按钮
+* @author: assassin.liu
+* @update: 2014/11/22
+*/
+.g-btn{ border: 0; cursor: pointer; display: inline-block; vertical-align: middle; text-align: center; }
+.g-btn-l{width: 130px; height: 35px; border-radius: 18px;color: #fff; text-align: center; font-size: 16px;   line-height: 35px; }
+.g-btn-s{ height: 31.3333px; line-height: 31.3333px; min-width: 68.666px; font-size: 12px; }
+/* 蓝色 */
+.g-btn-commit,
+.g-btn-commit:hover{ background-color: #56bdd7; color: #fff; }
