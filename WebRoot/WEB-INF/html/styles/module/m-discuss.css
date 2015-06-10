@@ -59,3 +59,15 @@
 .m-discuss .userName{
     line-height: 37px;
 }
+.btn-discuss{
+    width: 85px;
+    height: 27px;
+    line-height: 27px;
+    cursor: pointer;
+    color: #fff;
+    outline: none;
+    border-radius: 3px;
+    border: 0;
+    -webkit-border-radius: 3px;
+    background-color: #0070dd;
+}

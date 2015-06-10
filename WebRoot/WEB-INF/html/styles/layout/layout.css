@@ -12,12 +12,30 @@
 @import "../module/m-search.css";
 
 /* 预设清除浮动 */
-.g-clear, .g-mod { *zoom: 1; }
-.g-clear:after, .g-mod:after { display: block; overflow: hidden; clear: both; height: 0; content: '\0020'; }
-.doc{ min-width: 320px; }
-.doc .doc-bd { padding-bottom: 55px; }
-.hide{ display: none; }
-.red{ color: #ff0000; }
+.g-clear, .g-mod {
+    *zoom: 1;
+}
+.g-clear:after, .g-mod:after {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    content: '\0020';
+}
+.doc{
+    min-width: 320px;
+}
+.doc .doc-bd {
+    padding-bottom: 55px;
+}
+.hide{
+    display: none;
+}
+.red{
+    color: #ff0000;
+}
 /* 首页 */
-.index{ background-color: #a0cff4; }
+.index{
+    background-color: #a0cff4;
+}
 

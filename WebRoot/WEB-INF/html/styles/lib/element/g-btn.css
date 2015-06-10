@@ -3,10 +3,72 @@
 * @author: assassin.liu
 * @update: 2014/11/22
 */
-.g-btn{ border: 0; cursor: pointer; display: inline-block; vertical-align: middle; text-align: center; }
+.g-btn,
+.g-btn:hover,
+.g-btns,
+.g-btns:hover{
+    position: relative;
+    overflow: hidden;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    color: #fff;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+    border: 0;
+}
+.g-btn:before{
+    position: absolute;
+    display: block;
+    z-index: 1;
+    content: "";
+    width: 100%;
+    height: 18px;
+    border-radius: 4px 4px 30px 30px;
+    background: linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.2),rgba(255,255,255,0) );
+}
+.g-btn:after{
+    position: absolute;
+    bottom: 0;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-radial-gradient(circle at center, rgba(255, 255, 255, .4),rgba(255, 255, 255, 0));
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, .4),rgba(255, 255, 255, 0));
+}
 
-.g-btn-s{ height: 31.3333px; line-height: 31.3333px; min-width: 68.666px; font-size: 12px; }
+.g-btn-s span{
+    display: block;
+    height: 35.5px;
+    padding: 0 10px;
+    line-height: 35.5px;
+    min-width: 85px;
+    font-size: 18px;
+}
 /* 蓝色 */
 .g-btn-warn,
 .g-btn-warn:hover
-.g-btn-warn:active{ background-color: #ef7500; color: #fff; }
+.g-btn-warn:active{
+    background-color: #ff5a00;
+}
+.g-btn-commit{
+    border: solid 1px rgba(0, 93, 221, 1);
+}
+.g-btn-commit span{
+    display: block;
+    background: -webkit-linear-gradient(#009bef,#0076e0,#0062e3);
+    background: linear-gradient(#009bef,#0076e0,#0062e3);
+}
+.g-btn-commit:active,
+.g-btn-commit:hover{
+    border: solid 1px rgba(243, 95, 0, 1);
+}
+.g-btn-commit:active span,
+.g-btn-commit:hover span{
+    background: -webkit-linear-gradient(#f9a300,#f38600,#f25e00);
+    background: linear-gradient(#f9a300,#f38600,#f25e00);
+}

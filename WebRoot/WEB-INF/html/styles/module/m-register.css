@@ -1,0 +1,52 @@
+@charset "utf-8";
+/**
+* @description: 
+* @author: assassin.liu
+* @update: 2015/6/10
+*/
+.m-register{
+    padding: 20px 0;
+    overflow: hidden;
+}
+.m-register .rows{
+    *zoom: 1;
+    margin-bottom: 10px;
+}
+.m-register .rows:after{
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    content: '\0020';
+}
+.m-register .label{
+    float: left;
+    width: 80px;
+    padding-right: 5px;
+    text-align: right;
+    line-height: 30px;
+}
+.m-register .label-info{
+    float: left;
+    line-height: 20px;
+}
+.m-register .ipt-box,
+.m-register .select,
+.m-register .textarea{
+    padding: 0 5px;
+    width: 200px;
+    border: solid 1px #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    line-height: 28px;
+}
+.m-register .select{
+    width: 212px;
+    padding: 5px;
+}
+.m-register .textarea{
+    height: 60px;
+}
+.m-register .tips{
+   color: #ff5a00;
+}

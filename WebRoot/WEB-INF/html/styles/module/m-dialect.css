@@ -9,22 +9,79 @@
 }
 .m-dialect .info{
     overflow: hidden;
-    margin-bottom: 20px;
-    padding: 14px 0;
+    margin-bottom: 14px;
+    padding: 14px 15px;
     text-align: center;
     border-bottom: 1px #0070dd dotted;
     line-height: 39px;
 }
-.m-dialect .info img{
-    width: auto;
-}
-.m-dialect .info .title{
+.m-dialect .title{
     float: left;
-    margin-left: 20px;
     font-size: 14px;
     width: 70px;
+    padding-right: 10px;
 }
-.m-dialect .info .title-info{
+.m-dialect .title-info{
+    width: 208px;
+    height: 40.5px;
     margin-left: 10px;
-    float: left;
+    overflow: hidden;
+    background: url(../../bgimg/voice_2x.png) no-repeat;
+    background-size: 208px 40.5px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;text-align: right;
+}
+.m-dialect .title-info time{
+    padding-right: 20px;
+}
+/* 文案 */
+.m-dialect .tips{
+    text-align: right;
+    color: #ff8d66;
+    font-weight: 700;
+}
+.m-dialect .text{
+    line-height: 24px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+/* 录音 */
+.m-dialect .record{
+    margin-bottom: 14px;
+    padding: 14px 15px;
+}
+.m-dialect .btn-box{
+    margin: 10px 0;
+    text-align: center;
+}
+.m-dialect .btn-box .g-btn{
+    margin: 0 10px;
+}
+.m-dialect .recordStar{
+    border: 0;
+    outline: none;
+    display: inline-block;
+    width: 112.5px;
+    height: 112.5px;
+    background-color: #ff5a00;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+}
+.m-dialect .recording{
+    margin-top: -18.9px;
+    margin-left: -18.9px;
+    width: 155px;
+    height: 155px;
+    background-color: rgba(0, 0, 0, .8);
+}
+.m-dialect .recording .g-ico-suona{
+    width: 42.5px;
+    height: 65.5px;
+    background: url( ../../bgimg/mike_2x.png) no-repeat;
+    background-size: 42.5px 65.5px;
 }

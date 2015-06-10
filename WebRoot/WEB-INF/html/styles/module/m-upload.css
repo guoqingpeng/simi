@@ -1,0 +1,27 @@
+@charset "utf-8";
+/**
+* @description: 
+* @author: assassin.liu
+* @update: 2015/6/10
+*/
+.m-upload .up-btn{
+    display: block;
+    border: solid 1px #ff5a00;
+    padding: 1px;
+    margin: 10px;
+}
+.m-upload .up-btn i{
+    font-size: 24px;
+}
+.m-upload .up-btn span,
+.m-upload .up-btn button{
+    display: block;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    outline: none;
+    background-color: #ff5a00;
+}
