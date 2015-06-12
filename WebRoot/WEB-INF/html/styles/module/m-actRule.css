@@ -1,0 +1,30 @@
+@charset "utf-8";
+/**
+* @description: 活动说明
+* @author: assassin.liu
+* @update: 2015/6/12
+*/
+.m-actRule{
+    padding: 20px;
+}
+.m-actRule .title{
+    font-size: 16px;
+    color: #000;
+}
+.m-actRule .info{
+    margin-bottom: 15px;
+    padding-left: 15px;
+    font-size: 14px;
+}
+.m-actRule .info p{
+    line-height: 27px;
+    color: #4c5861;
+}
+.m-actRule .qrCode{
+    text-align: center;
+}
+.m-actRule .qrCode img {
+    border: solid 1px #93a8b7;
+    height: 139px;
+    width: 139px;
+}

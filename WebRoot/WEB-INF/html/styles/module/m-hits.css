@@ -4,9 +4,41 @@
 * @author: assassin.liu
 * @update: 2015/6/8
 */
-.m-hits{ overflow: hidden; background: #71dafd url(../../bgimg/trapezoid_1x.png); padding: 29px 0 20px 0; }
-.m-hits a{ display: block;  color: #000; font-size: 12px; }
-.m-hits .item{ float: left; width: 25%; margin: 0 4.1666%; text-align: center; }
-.m-hits .item p{ position: relative; border-radius: 50%; -webkit-border-radius: 50%; border: solid #e39203 3px; width: 75px; height: 75px; }
-.m-hits .item img{ border-radius: 59%; width: 75px; height: 75px;}
-.m-hits .g-ico-crown{ width: 45px; height: 25px; display: block; position: absolute; left: 50%; margin-left: -22.5px; top: -25px; }
+.m-hits {
+    overflow: hidden;
+    background: #71dafd url(../../bgimg/trapezoid_1x.png);
+    padding: 29px 0 20px 0;
+}
+.m-hits a {
+    display: block;
+    color: #000;
+    font-size: 12px;
+}
+.m-hits .item {
+    float: left;
+    width: 25%;
+    margin: 0 4.1666%;
+    text-align: center;
+}
+.m-hits .item p {
+    position: relative;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border: solid #e39203 3px;
+    width: 75px;
+    height: 75px;
+    margin: auto }
+.m-hits .item img {
+    border-radius: 59%;
+    width: 75px;
+    height: 75px;
+}
+.m-hits .g-ico-crown {
+    width: 45px;
+    height: 25px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -22.5px;
+    top: -25px;
+}

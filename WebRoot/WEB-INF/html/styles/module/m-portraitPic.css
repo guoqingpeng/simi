@@ -12,7 +12,7 @@
     position: relative;
     display: block;
     margin-bottom: 10px;
-    border: solid 3px #0070dd;
+    border: solid 2px #0070dd;
 }
 .m-portraitPic .imgbox img{
     max-height: 185px;

@@ -29,6 +29,10 @@
     width: 120px;
     height: 97px;
 }
+.m-ranking a{
+    display: block;
+    color: #fff;
+}
 /* ico */
 .m-ranking .onePiece{
     display: block;
@@ -39,15 +43,29 @@
 }
 /* 个人说明 */
 .m-ranking .info{
-    padding: 5px 3px;
+    margin-top: 3px;
+    position: relative;
+    padding: 5px 6px 5px 15px;
     text-align: left;
 }
-.m-ranking .info .g-ico-musicL{
-    float: left;
-    margin-right: 10px;
+.m-ranking .info:after,
+.m-ranking .info:before{
+    display: block;
+    content: "";
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: url(../../bgimg/music_2x.png) left top;
+    background-size: 12px 34.5px;
 }
-.m-ranking .info .g-ico-musicR{
-    float: right;
+.m-ranking .info:before{
+    left: 5px;
+}
+.m-ranking .info:after{
+    right: 5px;
+    background-position: right top;
 }
 .m-ranking .info p{
     overflow: hidden;

@@ -28,9 +28,10 @@
     position: relative;
 }
 .m-portrait .fingerprint .text{
+    top: -20px;
+    position: relative;
     color: #fff;
     text-align: center;
-    margin-top: -20px;
 }
 .m-portrait .fingerprint .line{
     width:85px;

@@ -34,8 +34,14 @@
 .red{
     color: #ff0000;
 }
+.pl0{
+    padding-left: 0!important;
+}
 /* 首页 */
-.index{
+.index,.crewList{
     background-color: #a0cff4;
 }
-
+/* 活动说明 */
+.actRule{
+    background-color: #cde9ff;
+}
