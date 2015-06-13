@@ -1,10 +1,11 @@
 $('#j-save').on('click', function(eve){
     eve.preventDefault();
-    var param = $('form').serialize();
+    var param = $('form').serializeObject();
+    debugger
     var xhr = $.ajax({
-        url: '/user/reg',
-        data: param,
-        contentType: 'application/json;charset=utf-8'
+        url: '/simi/user/reg.do',
+        data: JSON.stringify(param, null, 4),
+        contentType: 'application/json;charset=utf-8',
         type: 'POST'
     });
 
