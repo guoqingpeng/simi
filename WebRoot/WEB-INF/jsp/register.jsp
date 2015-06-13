@@ -41,19 +41,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">姓名：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.name" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">年龄：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.age" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">性别：</span>
                 <div class="label-info">
-                    <select name="sex" class="select">
+                    <select name="userInfo.sex" class="select">
                         <option value="1">男</option>
                         <option value="2" selected>女</option>
                     </select>
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">所属公司：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.company" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
@@ -70,13 +70,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">职业：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.job" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.nicName" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
@@ -84,19 +84,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">身高：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.height" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">三维：</span>
                 <div class="label-info">
-                    <select name="exterior" class="select">
+                    <select name="userInfo.sanwei" class="select">
                         <option value="1">骨感</option>
                         <option value="2">匀称</option>
                         <option value="3">性感</option>
                         <option value="4">丰满代替</option>
                     </select>
-                    <select name="exterior" style="display:none" class="select">
+                    <select name="userInfo.sanwei" style="display:none" class="select">
                         <option value="1">条顺</option>
                         <option value="2">匀称</option>
                         <option value="3">健壮</option>
@@ -113,25 +113,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">微博：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.weibo" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">微信：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.weixin" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">爱好：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input name="userInfo.hobby" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">拉票宣言：</span>
                 <div class="label-info">
-                   <textarea class="textarea" placeholder="拉票宣言"></textarea>
+                   <textarea name="userInfo.anouncement" class="textarea" placeholder="拉票宣言"></textarea>
                 </div>
             </div>
             <div class="rows">
@@ -156,13 +156,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             eve.preventDefault();
             var param = $('form').serialize();
             var xhr = $.ajax({
-                url: '/abc',
+                url: '/user/reg',
                 data: param,
                 type: 'POST'
             });
 
             xhr.done(function(json){
-                alert('ok');
+                alert('ok' + JSON.stringify(json, null, 4));
             }).fail(function(){
                 alert('error');
             });

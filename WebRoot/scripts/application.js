@@ -50,22 +50,31 @@
 
 $(function(){
     // 上传图片
-    var imgIDS = [];
+    var images = {
+        serverId: [],
+        localId:[]
+    };
+    var voice = {
+        localId: ''
+    };
     $('.m-portraitPic').empty();
     $('#j-add').on('click', function(eve){
         eve.preventDefault();
         wx.chooseImage({
             success: function(res){
                 var localIds = res.localIds;
+                var localId = images.localId;
                 
-                imgIDS = imgIDS.concat(localIds);
-                imgIDS = imgIDS.slice(0, 4);
+                localId = localId.concat(localIds);
+                localId = localId.slice(0, 4);
+
                 $('.m-portraitPic').empty();
-                for(var i = 0, len = imgIDS.length; i < len; i++) {
+                for(var i = 0, len = localId.length; i < len; i++) {
                     $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="' 
-                        + imgIDS[i] + '" alt=""/></span>');
+                        + localId[i] + '" alt=""/></span>');
                 }
-                alert(imgIDS);
+
+                images.localId = localId
             }
         });
     });
@@ -80,17 +89,11 @@ $(function(){
     });
 
     // 录音
-    var voice = {
-        localId: ''
-    };
     var voiceTimer = 0;
     var isRecording = false;
     var startRecordTime = 0;
     var recordTime = 0;
-    //TODO 删除
-    $('.btn-box').find('div').show()
-    // 把url后面的#后面的去掉
-    //////
+
     $('.recordStar').on('touchstart', function(eve){
         eve.preventDefault();
         var $btn = $(this);
@@ -140,12 +143,13 @@ $(function(){
     var params = {
         userID: 'dddd'
     }
+    
     $('#j-save').click(function(eve){
         eve.preventDefault();
 
         // 保存录音
         if(voice.localId !== '') {
-            alert('请先使用 startRecord 接口录制一段声音');
+            //alert('请先使用 startRecord 接口录制一段声音');
             wx.uploadVoice({
                 localId: voice.localId,
                 success: function(res){
@@ -153,18 +157,51 @@ $(function(){
                     voice.serverId = res.serverId;
 
                     var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + config.access_token + '&media_id=' + res.serverId;
-                    document.getElementById('log').innerHTML += '<a href="' + url + '">' + url + '</a><br/><br/>';
+                    
                     params.recordID = voice.serverId;
                     params.url = url;
-                    uploadImage();
+                    uploadImage(images.localId);
                 }
             });
         }else{
-            uploadImage();
+            uploadImage(images.localId);
         }
+    });
 
+    function uploadImage(all){
+        alert('uploadd' + all);
+        var a = all.slice(0);
+        if(a.length){
+            wx.uploadImage({
+                localId: all[0],
+                success: function (res) {
+                    alert('图片成功，图片成功');
+                    images.serverId.push(res.serverId);
+                    a.shift();
+                    if(a.length){
+                        uploadImage(a)
+                    }else{
+                        save(images.serverId)
+                    }
+                },
+                fail: function (res) {
+                    alert(JSON.stringify(res));
+                }
+            });     
+        }
+    }
+
+    function save(urls){
+        alert('保存上传：'+ urls);
+
+        params.images = getUrls(images.serverId);
+        params.voiceId = voice.serverId;
+        params.voiceURL = getURL(voice.serverId);
+        alert('images::::' + params.images);
         $.ajax({
             url: '/record',
+            //data: JSON.stringify(params, null, 4),
+            //contentType:'application/json;charset=UTF-8',
             data: params,
             success: function(json){
                 alert('ok')
@@ -173,10 +210,15 @@ $(function(){
                 alert('error')
             }
         })
-    });
+    }
 
+    function getUrls(serverId){
+        return serverId.map(function(ele, idx){
+            return 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + config.access_token + '&media_id=' + ele;
+        })
+    }
 
-    function uploadImage(){
-                
+    function getURL(id){
+        return 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + config.access_token + '&media_id=' + id;
     }
 })
