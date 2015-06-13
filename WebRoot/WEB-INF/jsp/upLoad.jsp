@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </p>
                 <p class="tips">(请按方言朗读以上文字)</p>
                 <div class="title-info">
-                    <time id="j-r-time">18"</time>
+                    <time id="j-r-time">0"</time>
                 </div>
             </div>
             <div class="btn-box">
@@ -74,6 +74,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>重新录音</span></button>
+                </div>
+                <div class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>确定上传</span></button>
                 </div>
             </div>
@@ -115,7 +117,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
        <script>
-         wx.config({
+         var config = {};
+         wx.config(config = {
             debug: true,
             appId: '${config.appid}',
             timestamp: ${config.timestamp},
