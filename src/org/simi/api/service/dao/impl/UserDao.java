@@ -4,6 +4,7 @@ import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.object.SqlCall;
 import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
@@ -20,21 +21,25 @@ public class UserDao {
 		int userId = 0;
 		insertSqlBuffer.append(" INSERT INTO t_user(");
 		insertSqlBuffer.append("name");
-		insertSqlBuffer.append(",age");
-		insertSqlBuffer.append(",job");
-		insertSqlBuffer.append(",height");
-		insertSqlBuffer.append(",sanwei");
-		insertSqlBuffer.append(",company_belong");
-		insertSqlBuffer.append(",xinzuo");
-		insertSqlBuffer.append(",weibo");
-		insertSqlBuffer.append(",weixin");
+//		insertSqlBuffer.append(",age");
+//		insertSqlBuffer.append(",job");
+//		insertSqlBuffer.append(",height");
+//		insertSqlBuffer.append(",sanwei");
+//		insertSqlBuffer.append(",company_belong");
+//		insertSqlBuffer.append(",xinzuo");
+//		insertSqlBuffer.append(",weibo");
+//		insertSqlBuffer.append(",weixin");
 		insertSqlBuffer.append(",hobby");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?)");
 		
-//		jdbcTemplate.update(n, generatedKeyHolder);
 		
-		return 0;
+		
+		jdbcTemplate.update(insertSqlBuffer.toString(), new Object[]{"guoqingpeng"," 游泳"});
+		
+		
+		
+		return 11;
 		
 	} 
 

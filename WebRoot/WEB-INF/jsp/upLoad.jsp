@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="../styles/release/upload.css" />
 </head>
 <body>
-<include action='http://localhost:8080/simi/config/getConfig.do'/>
 <div class="doc">
     <!-- 头部 -->
     <header class="doc-hd">
@@ -35,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form action="">
         <!-- 上传图片 -->
         <div class="m-upload">
-            <span class="up-btn"><button><i>+</i>图片上传</button></span>
+            <span class="up-btn"><button id="j-add"><i>+</i>图片上传</button></span>
         </div>
         <div class="m-portraitPic">
             <div class="info">
@@ -114,6 +113,58 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </footer>
 </div>
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+       <script>
+         wx.config({
+            debug: true,
+            appId: '${config.appid}',
+            timestamp: ${config.timestamp},
+            nonceStr: '${config.nonceStr}',
+            signature: '${config.signature}',
+            access_token: '${config.access_token}',
+            url: '${config.url}',
+            jsapi_ticket: '${config.jsapi_ticket}',
+            jsApiList : [
+                // 所有要调用的 API 都要加到这个列表中
+                'checkJsApi',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
+                'onMenuShareQQ',
+                'onMenuShareWeibo',
+                'hideMenuItems',
+                'showMenuItems',
+                'hideAllNonBaseMenuItem',
+                'showAllNonBaseMenuItem',
+                'translateVoice',
+                'startRecord',
+                'stopRecord',
+                'onRecordEnd',
+                'playVoice',
+                'pauseVoice',
+                'stopVoice',
+                'uploadVoice',
+                'downloadVoice',
+                'chooseImage',
+                'previewImage',
+                'uploadImage',
+                'downloadImage',
+                'getNetworkType',
+                'openLocation',
+                'getLocation',
+                'hideOptionMenu',
+                'showOptionMenu',
+                'closeWindow',
+                'scanQRCode',
+                'chooseWXPay',
+                'openProductSpecificView',
+                'addCard',
+                'chooseCard',
+                'openCard'
+            ]
+        });
+    </script>
+
 <script src="/simi/scripts/application.js" charset="utf-8"></script>
+
 </body>
 </html>
