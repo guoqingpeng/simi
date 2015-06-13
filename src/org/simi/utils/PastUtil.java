@@ -50,13 +50,9 @@ public class PastUtil {
 		}
 
 		String url = getUrl();
-		//System.out.println("aaaaa:"+jsapi_ticket);
 		Map<String, String> params = sign(jsapi_ticket, url);
 		params.put("appid", appId);
 		params.put("access_token", token);
-//		JSONObject jsonObject = JSONObject.fromObject(params);
-//		String jsonStr = jsonObject.toString();
-//		System.out.println(jsonStr);
 		return params;
 	}
     
@@ -90,6 +86,12 @@ public class PastUtil {
 			
 			url = url.replace("?null", "");
 		}
+		
+		//截取url#之前的部分
+		if (url.contains("#")) {
+			
+			url = url.split("#")[0];
+		}
 		// 注意这里参数名必须全部小写，且必须有序
 		str = "jsapi_ticket=" + jsapi_ticket + "&noncestr=" + nonce_str
 				+ "&timestamp=" + timestamp + "&url=" + url;
@@ -110,7 +112,6 @@ public class PastUtil {
 		ret.put("nonceStr", nonce_str);
 		ret.put("timestamp", timestamp);
 		ret.put("signature", signature);
-		System.out.println(signature);
 		ret.put("appid", app_id);
 		ret.put("access_token", token);
 		return ret;
@@ -141,22 +142,9 @@ public class PastUtil {
 		return sdf.format(dt);
 	}
 	
-	/**
-	 * 测试类
-	 * @param args
-	 */
-	public static void main(String[] args) {
-//		Map<String, String>  map = new HashMap<String, String>();
-//		map = PastUtil.getParam("wx07 = new HashMap<String, String>();
-//		map = sign(p, getUrl());
-//		System.out.println(map.toString());
-	}
-	
 	public static Map<String, String>  getWxConfig(){
 		Map<String, String>  map = new HashMap<String, String>();
 		map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
 		return map;
-		
 	}
-	
 }

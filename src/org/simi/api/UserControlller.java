@@ -1,5 +1,8 @@
 package org.simi.api;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import net.sf.json.JSONObject;
 
 import org.simi.api.service.UserService;
@@ -9,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,8 +28,8 @@ public class UserControlller {
 	 */
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
-		JSONObject user =null;
-		userService.userRegister(user);
+		JSONObject user =new JSONObject();
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
@@ -35,13 +39,42 @@ public class UserControlller {
 	/**
 	 * 用户注册
 	 * @param userInfo
-	 * @return
+	 * @return 返回注册信息
 	 */
-   public JSONObject userRegister(@RequestParam("userInfo")String userInfo){
+   @RequestMapping(value = "/reg", method = RequestMethod.POST)
+   public ModelAndView userRegister(@RequestParam("userInfo")String userInfo){
 	   JSONObject user = JSONObject.fromObject(userInfo);
-	   userService.userRegister(user);
-	   return null;
-}
+	   /**
+		 * 测试一个用户注册数据
+		 */
+		user.put("name","zhangsan");
+		user.put("age","12");
+		user.put("job","it");
+		user.put("height","17");
+		user.put("sanwei", "gh");
+		user.put("company","baidu");
+		user.put("xinzuo","shuipin");
+		user.put("weibo","wwww.c.com");
+		user.put("weixin","aaa");
+		user.put("hobby","aaass");
+		user.put("nickName","asas");
+		user.put("anouncement", "ad");
+		
+		userService.userRegister(user);
+		JSONObject ret = new JSONObject();
+		ret.put("ret", true);
+		ret.put("errmsg", "");
+		Map<String, String> dataMap = new HashMap<String, String>();
+		dataMap.put("id", "122");
+		ret.put("data", dataMap);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/personal");
+		return modelAndView;
+		
+	 //   return ret;
+   }
 	
 	/**
 	 * 个人主页初始化页面

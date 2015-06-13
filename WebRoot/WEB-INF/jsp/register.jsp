@@ -156,7 +156,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             eve.preventDefault();
             var param = $('form').serialize();
             var xhr = $.ajax({
-                url: '/user/reg',
+                url: '/simi/user/reg.do',
                 data: param,
                 type: 'POST'
             });
