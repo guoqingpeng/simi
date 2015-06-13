@@ -41,19 +41,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">姓名：</span>
                 <div class="label-info">
-                    <input name="userInfo[name]" value="张三" type="text" class="ipt-box"/>
+                    <input name="name" value="张三" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">年龄：</span>
                 <div class="label-info">
-                    <input name="userInfo[age]" value="23" type="text" class="ipt-box"/>
+                    <input name="age" value="23" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">性别：</span>
                 <div class="label-info">
-                    <select name="userInfo[sex]" class="select">
+                    <select name="sex" class="select">
                         <option value="1">男</option>
                         <option value="2" selected>女</option>
                     </select>
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">所属公司：</span>
                 <div class="label-info">
-                    <input name="userInfo[company]" value="Qunar" type="text" class="ipt-box"/>
+                    <input name="company" value="Qunar" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
@@ -70,13 +70,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">职业：</span>
                 <div class="label-info">
-                    <input name="userInfo[job]" value="jisuanji" type="text" class="ipt-box"/>
+                    <input name="job" value="jisuanji" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <input name="userInfo[nicName]" value="nickname" type="text" class="ipt-box"/>
+                    <input name="nicName" value="nickname" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
@@ -84,19 +84,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">身高：</span>
                 <div class="label-info">
-                    <input name="userInfo[height]" value="189" type="text" class="ipt-box"/>
+                    <input name="height" value="189" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">三维：</span>
                 <div class="label-info">
-                    <select name="userInfo[sanwei]" class="select">
+                    <select name="sanwei" class="select">
                         <option value="1">骨感</option>
                         <option value="2">匀称</option>
                         <option value="3" selected="">性感</option>
                         <option value="4">丰满代替</option>
                     </select>
-                    <select name="userInfo[sanwei]" style="display:none" class="select">
+                    <select name="sanwei" style="display:none" class="select">
                         <option value="1">条顺</option>
                         <option value="2">匀称</option>
                         <option value="3">健壮</option>
@@ -113,25 +113,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">微博：</span>
                 <div class="label-info">
-                    <input name="userInfo[weibo]" value="weibo.com" type="text" class="ipt-box"/>
+                    <input name="weibo" value="weibo.com" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">微信：</span>
                 <div class="label-info">
-                    <input name="userInfo[weixin]" type="text" class="ipt-box"/>
+                    <input name="weixin" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">爱好：</span>
                 <div class="label-info">
-                    <input name="userInfo[hobby]" type="text" class="ipt-box"/>
+                    <input name="hobby" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">拉票宣言：</span>
                 <div class="label-info">
-                   <textarea name="userInfo[anouncement]" class="textarea" placeholder="拉票宣言">啦啦啦，我是卖报的小行家...</textarea>
+                   <textarea name="anouncement" class="textarea" placeholder="拉票宣言">啦啦啦，我是卖报的小行家...</textarea>
                 </div>
             </div>
             <div class="rows">
