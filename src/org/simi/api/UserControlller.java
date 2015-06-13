@@ -48,32 +48,9 @@ public class UserControlller {
    @ResponseBody
    public JSONObject userRegister(@RequestBody JSONObject userInfo){
 	   
-	   System.out.println(userInfo.get("userInfo"));
-	   
-	   /**
-		 * 测试一个用户注册数据
-		
-	    userInfo.put("name","zhangsan");
-		userInfo.put("age","12");
-		userInfo.put("job","it");
-		userInfo.put("height","17");
-		userInfo.put("sanwei", "gh");
-		userInfo.put("company","baidu");
-		userInfo.put("xinzuo","shuipin");
-		userInfo.put("weibo","wwww.c.com");
-		userInfo.put("weixin","aaa");
-		userInfo.put("hobby","aaass");
-		userInfo.put("nickName","asas");
-		userInfo.put("anouncement", "ad");
-		 */
-	    //userService.userRegister(userInfo);
-		JSONObject ret = new JSONObject();
-		ret.put("ret", true);
-		ret.put("errmsg", "");
-		Map<String, String> dataMap = new HashMap<String, String>();
-		dataMap.put("id", "122");
-		ret.put("data", dataMap);
-		
+	    JSONObject ret = new JSONObject();
+	    ret=  userService.userRegister(userInfo);
+	    System.out.println(userInfo.toString());
 		return ret;
 		
    }
