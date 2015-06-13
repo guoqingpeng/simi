@@ -37,8 +37,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <img src="../img/img5.jpg" alt="苍井空"/>
                 <!-- 点赞 -->
                 <div class="fingerprint">
-                    <div class="info">
-                        <div class="line" style="display: block;"></div>
+                    <div class="info" id="j-scan">
+                        <div class="" id="j-line" style="display: block;"></div>
                         <!-- 扫描成功 -->
                         <div class="text">扫描成功</div>
                     </div>
@@ -174,6 +174,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
+
+    <script src="/simi/scripts/lib/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+        $('#j-scan').on('touchstart', function(eve){
+            eve.preventDefault();
+
+            var target = eve.target,
+                time = 0;
+
+            timer = setInterval(function(){
+                console.log('timer');
+                //target.innerHTML = '录音时间: ' + time++ + '\'';
+                if(time === 3){
+                    console.info('点赞...');
+                }
+            }, 1000);
+
+            $('#j-line').addClass('line');
+        }, false);
+
+        $('#j-test').addEventListener('touchend', function(eve){
+            clearInterval(timer);
+            timer = null;
+        }, false);
+    </script>
 </div>
 </body>
 </html>
