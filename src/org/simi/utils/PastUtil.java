@@ -151,4 +151,12 @@ public class PastUtil {
 //		map = sign(p, getUrl());
 //		System.out.println(map.toString());
 	}
+	
+	public static Map<String, String>  getWxConfig(){
+		Map<String, String>  map = new HashMap<String, String>();
+		map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
+		return map;
+		
+	}
+	
 }
