@@ -25,8 +25,16 @@ public class UserControlller {
     @RequestMapping(value = "/personal", method = RequestMethod.GET)
     public ModelAndView personalInit(){
         ModelAndView modelAndView = new ModelAndView();
-        
+        modelAndView.addObject("config",PastUtil.getWxConfig());
         modelAndView.setViewName("/personal");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public ModelAndView personalInit(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/upload");
         return modelAndView;
     }
     
