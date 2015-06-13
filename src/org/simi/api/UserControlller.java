@@ -1,9 +1,6 @@
 package org.simi.api;
 
-import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import net.sf.json.JSONObject;
 
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,8 +27,6 @@ public class UserControlller {
 	 */
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
-		JSONObject user =new JSONObject();
-		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
@@ -50,7 +44,6 @@ public class UserControlller {
 	   
 	    JSONObject ret = new JSONObject();
 	    ret=  userService.userRegister(userInfo);
-	    System.out.println(userInfo.toString());
 		return ret;
 		
    }
@@ -59,21 +52,70 @@ public class UserControlller {
 	 * 个人主页初始化页面
 	 * @return
 	 */
-    @RequestMapping(value = "/personal", method = RequestMethod.GET)
+    @RequestMapping(value = "/personalInit", method = RequestMethod.GET)
     public ModelAndView personalInit(){
+    	
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
         modelAndView.setViewName("/personal");
         return modelAndView;
+        
     }
-
-    @RequestMapping(value = "/uploadfile", method = RequestMethod.GET)
+    
+    /**
+     * 初始化文档上传的页面
+     * @return
+     */
+    @RequestMapping(value = "/uploadInit", method = RequestMethod.GET)
     public ModelAndView uploadInit(){
+    	
         ModelAndView modelAndView = new ModelAndView();
-        System.out.println(PastUtil.getWxConfig().toString());
         modelAndView.addObject("config",PastUtil.getWxConfig());
         modelAndView.setViewName("/upLoad");
         return modelAndView;
+        
     }
     
+	/**
+	 * 图片，文档上传
+	 * @param userInfo
+	 * @return 返回注册信息
+	 */
+   @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject uploadFile(@RequestBody JSONObject files){
+	   
+	    JSONObject ret = new JSONObject();
+	    ret = userService.saveFiles(files);
+	    return ret;
+		
+   }
+   
+   /**
+    * 个人首页数据检索，根据用户id检索一下信息
+    * 基本信息
+    * 图片列表
+    * 音频信息
+    */
+   @RequestMapping(value = "/userInfo", method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject searchUserAllInfo(@RequestBody JSONObject userid){
+	   
+	    JSONObject ret = new JSONObject();
+	    
+	    String userId = userid.getString("id");
+	    //基本信息
+	    Map<String, String> baseInfo = userService.getUserBaseInfo(userId);
+	    ret.put("baseInfo", baseInfo);
+	    
+	    //图片列表
+	    
+	    //音频信息
+	    
+	    //ret = userService.saveFiles(files);
+	    return ret;
+	   
+	   
+   }
+   
 }

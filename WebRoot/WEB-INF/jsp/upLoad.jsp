@@ -166,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             ]
         });
     </script>
-    <script src="/simi/scripts/application.js" charset="utf-8"></script>
-
+	<script src="/simi/scripts/utils.js" charset="utf-8"></script>
+	<script src="/simi/scripts/upload.js" charset="utf-8"></script>
 </body>
 </html>

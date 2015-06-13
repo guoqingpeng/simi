@@ -175,8 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
-<script src="/simi/scripts/jquery.js"></script>
-
+<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
        <script>
          wx.config({
@@ -184,7 +183,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             appId: '${config.appid}',
             timestamp: ${config.timestamp},
             nonceStr: '${config.nonceStr}',
-            signature: '${cosnfig.signature}',
+            signature: '${config.signature}',
             access_token: '${config.access_token}',
             url: '${config.url}',
             jsapi_ticket: '${config.jsapi_ticket}',
@@ -227,8 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             ]
         });
     </script>
-<script src="/simi/scripts/utils.js" charset="utf-8"></script>
-<script src="/simi/scripts/application.js" charset="utf-8"></script>
-
+	<script src="/simi/scripts/utils.js" charset="utf-8"></script>
+	<script src="/simi/scripts/personal.js" charset="utf-8"></script>
 </body>
 </html>
