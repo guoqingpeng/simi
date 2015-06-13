@@ -151,24 +151,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
-    <script type="text/javascript">
-        $('#j-save').on('click', function(eve){
-            eve.preventDefault();
-            var param = $('form').serialize();
-            var xhr = $.ajax({
-                url: '/simi/user/reg.do',
-                data: param,
-                type: 'POST'
-            });
-
-            xhr.done(function(json){
-                alert('ok' + JSON.stringify(json, null, 4));
-            }).fail(function(){
-                alert('error');
-            });
-        })
-    </script>
- 
 </div>
 <script src="/simi/scripts/register.js" charset="utf-8"></script>
 </body>
