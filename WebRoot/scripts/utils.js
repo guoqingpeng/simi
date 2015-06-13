@@ -119,7 +119,7 @@ window.utils = {
             }),
             _fnFail = function (msg) {
                 msg = typeof msg === 'string' ? msg : '网络繁忙，请稍后再试';
-                fnFail ? fnFail(msg) : $.alert(msg);
+                fnFail ? fnFail(msg) : alert(msg);
             };
 
         xhr.done(function(json){

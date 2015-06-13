@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- 头像 -->
         <div class="m-portrait">
             <div class="portrait">
-                <img src="../img/img5.jpg" alt="苍井空"/>
+                <img id="j-portrait" src="../img/img5.jpg" alt=""/>
                 <!-- 点赞 -->
                 <div class="fingerprint">
                     <div class="info" id="j-scan">
@@ -49,30 +49,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="bgbox">
                     <div class="rows">
                         <span class="title">拉票宣言: </span>
-                        <div class="info w2">
-                            该剧以刘集支部保存的我国现存最早中文译
+                        <div class="info w2" data-holder="anouncement">
+                            --
                         </div>
                     </div>
                     <div class="rows">
                         <span class="title">身价: </span>
                         <div class="info w1">
-                            <i>$</i>6666888
+                            <i>$</i><span data-holder="price">0</span>
                         </div>
                         <span class="title">年龄: </span>
                         <div class="info w1">
-                            23 岁
+                            <span data-holder="age">--</span> 岁
                         </div>
                     </div>
                     <div class="rows">
                         <span class="title">星座: </span>
-                        <div class="info w1">
-                            白羊座
+                        <div class="info w1" data-holder="xinzuo">
+                            
                         </div>
                     </div>
                     <div class="rows">
                         <span class="title">喜好: </span>
-                        <div class="info w2">
-                            唱歌、听音乐、上网、看书、打球、打人
+                        <div class="info w2" data-holder="hobby">
+                            --
                         </div>
                     </div>
                 </div>
@@ -85,15 +85,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>照片展示</h2>
         </div>
         <div class="m-portraitPic">
-            <div class="info">
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
+            <div class="info" id="j-imgs">
+                <!-- <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
                 <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
+                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span> -->
             </div>
         </div>
         <!-- /照片展示 -->
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>方言大挑战</h2>
         </div>
         <div class="m-dialect">
-            <div class="info">
+            <div class="info" id="j-voice">
                 <span class="title">方言大挑战</span>
                 <div class="title-info">
                     <time>18"</time>

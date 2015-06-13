@@ -11,7 +11,7 @@ $('#j-save').on('click', function(eve){
     xhr.done(function(json){
         alert('ok' + JSON.stringify(json, null, 4));
         if(json.ret === true){
-            location.href = '/simi/user/uploadfile.do?userid=' + json.data.id
+            location.href = '/simi/user/uploadInit.do?userid=' + json.data.id
         }else{
             alert(json.errmsg)
         }
