@@ -8,11 +8,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/user")
 public class UserControlller {
-	
-	@RequestMapping(value = "/reg", method = RequestMethod.GET)
-	public ModelAndView loginInit(){
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/register");
-		return modelAndView;
-	}
+
+    @RequestMapping(value = "/reg", method = RequestMethod.GET)
+    public ModelAndView loginInit(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/register");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/personal", method = RequestMethod.GET)
+    public ModelAndView personalInit(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/personal");
+        return modelAndView;
+    }
 }
