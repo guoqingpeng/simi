@@ -47,19 +47,19 @@ $(function(){
     		function(json){
     			rendInfo(json.data);
     			rendImages(json.data);
+    			rendVoice(json.data);
     		}
     	)
     }
 
     function rendInfo(data){
-    	console.log(data);
     	var baseInfo = data.baseInfo;
     	var $holds = $('[data-holder]');
 
     	$holds.each(function(){
     		var name = $(this).data('holder');
     		if(baseInfo[name]){
-    			$(this).text(data[name])
+    			$(this).text(baseInfo[name])
     		}
     	})
     }
@@ -77,17 +77,32 @@ $(function(){
     }
 
     function rendVoice(data){
-    	var id = data.voice.id;
+    	var id = data.voice.voiceId;
+    	var voiceId = '';
     	$('#j-voice')
     		//.data('id', id)
-    		.find('time').text(data.voice.time + '"')
+    		.find('time').text(data.voice.time || 0 + '"')
+    		.end()
     		.on('click', function(eve){
     			eve.preventDefault();
-
-    			wx.playVoice({
-	                localId: id
+    			if(voiceId){
+    				playVoice(voiceId);
+    				return;
+    			}
+    			wx.downloadVoice({
+	                serverId: id,
+	                success: function(res){
+	                    playVoice(res.localId);
+	                    voiceId = res.localId;
+	                }
 	            });
-    		})
+    		});
+
+    	function playVoice(id){
+    		wx.playVoice({
+                localId: id
+            });
+    	}
     }
 
     function zan(){
