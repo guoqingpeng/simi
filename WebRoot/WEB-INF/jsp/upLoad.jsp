@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </p>
                 <p class="tips">(请按方言朗读以上文字)</p>
                 <div class="title-info">
-                    <time id="j-r-time">18"</time>
+                    <time id="j-r-time">0"</time>
                 </div>
             </div>
             <div class="btn-box">
@@ -117,7 +117,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
        <script>
-         wx.config({
+         var config = {};
+         wx.config(config = {
             debug: true,
             appId: '${config.appid}',
             timestamp: ${config.timestamp},

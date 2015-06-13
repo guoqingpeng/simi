@@ -91,9 +91,8 @@ $(function(){
                 alert('用户拒绝授权录音');
             }
         });
-        timer = setInterval(function(){
-            console.log('timer' + time);
-            $('.m-dialect').find('.record time').text(time++ + '"');
+        voiceTimer = setInterval(function(){
+            $('#j-r-time').text(time++ + '"');
             //target.innerHTML = '录音时间: ' + time++ + '\'';
         }, 1000);
 
@@ -103,10 +102,39 @@ $(function(){
         wx.stopRecord({
             success: function(res){
                 voice.localId = res.localId;
+                clearInterval(voiceTimer);
+                voiceTimer ＝ 0;
             },
             fail: function(res){
                 alert(JSON.stringify(res));
             }
         });
-    })
+    });
+
+    // 保存
+    $('#j-save').click(function(eve){
+        eve.preventDefault();
+
+        // 保存录音
+        if(voice.localId !== '') {
+            alert('请先使用 startRecord 接口录制一段声音');
+            wx.uploadVoice({
+                localId: voice.localId,
+                success: function(res){
+                    alert('上传语音成功，serverId 为' + res.serverId);
+                    voice.serverId = res.serverId;
+
+                    var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + config.access_token + '&media_id=' + res.serverId;
+                    document.getElementById('log').innerHTML += '<a href="' + url + '">' + url + '</a><br/><br/>';
+                    uploadImage();
+                }
+            });
+        }else{
+            uploadImage();
+        }
+    });
+
+    function uploadImage(){
+                
+    }
 })
