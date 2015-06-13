@@ -25,7 +25,7 @@ public class UserControlller {
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
 		JSONObject user =null;
-		   userService.userRegister(user);
+		userService.userRegister(user);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
@@ -41,8 +41,6 @@ public class UserControlller {
 	   JSONObject user = JSONObject.fromObject(userInfo);
 	   userService.userRegister(user);
 	   return null;
-	
-	   
 }
 	
 	/**
@@ -62,8 +60,7 @@ public class UserControlller {
         ModelAndView modelAndView = new ModelAndView();
         System.out.println(PastUtil.getWxConfig().toString());
         modelAndView.addObject("config",PastUtil.getWxConfig());
-       
-        modelAndView.setViewName("/upload");
+        modelAndView.setViewName("/upLoad");
         return modelAndView;
     }
     

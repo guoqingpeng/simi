@@ -4,7 +4,6 @@ import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.object.SqlCall;
 import org.springframework.stereotype.Repository;
 
 @Repository("userDao")
@@ -33,12 +32,7 @@ public class UserDao {
 		insertSqlBuffer.append(")VALUES");
 		insertSqlBuffer.append("(?,?)");
 		
-		
-		
 		jdbcTemplate.update(insertSqlBuffer.toString(), new Object[]{"guoqingpeng"," 游泳"});
-		
-		
-		
 		return 11;
 		
 	} 
