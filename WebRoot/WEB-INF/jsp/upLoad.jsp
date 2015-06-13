@@ -72,10 +72,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <p>正在录音...</p>
                     </button>
                 </div>
-                <div class="hide">
+                <div id="j-re-record" class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>重新录音</span></button>
                 </div>
-                <div class="hide">
+                <div id="j-save" class="">
                     <button class="g-btns g-btn-s g-btn-warn"><span>确定上传</span></button>
                 </div>
             </div>
@@ -165,8 +165,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 'openCard'
             ]
         });
-
-        alert(config.signature)
     </script>
     <script src="/simi/scripts/application.js" charset="utf-8"></script>
 

@@ -84,20 +84,45 @@ $(function(){
         localId: ''
     };
     var voiceTimer = 0;
+    var isRecording = false;
+    var startRecordTime = 0;
+    var recordTime = 0;
+    //TODO 删除
+    $('.btn-box').find('div').show()
+    // 把url后面的#后面的去掉
+    //////
     $('.recordStar').on('touchstart', function(eve){
         eve.preventDefault();
-        wx.startRecord({
-            cancel: function(){
-                alert('用户拒绝授权录音');
-            }
-        });
-        voiceTimer = setInterval(function(){
-            $('#j-r-time').text(time++ + '"');
-            //target.innerHTML = '录音时间: ' + time++ + '\'';
-        }, 1000);
+        var $btn = $(this);
+        if(!isRecording){
+            wx.startRecord({
+                success: function(){
+                    voiceTimer = setInterval(function(){
+                        $('#j-r-time').text(recordTime++ + '"');
+                    }, 1000)
+                    // startRecordTime = +new Date();
+                },
+                cancel: function(){
+                    alert('用户拒绝授权录音');
+                }
+            });
 
-        $(this).addClass('recording');
-    }).on('touchend', function(eve){
+            $btn.addClass('recording').find('p').show();
+        }else{
+            wx.stopRecord({
+                success: function(res){
+                    voice.localId = res.localId;
+                    clearInterval(voiceTimer);
+                    $btn.removeClass('recording').find('p').hide();
+                    //$('#j-r-time').text(((+new Date() - startRecordTime) / 1000).toFixed(1) + '"')
+                },
+                fail: function(res){
+                    alert(JSON.stringify(res));
+                }
+            });
+        }
+        isRecording = !isRecording;
+    }).on('touchend-', function(eve){
         eve.preventDefault();
         wx.stopRecord({
             success: function(res){
@@ -149,6 +174,7 @@ $(function(){
             }
         })
     });
+
 
     function uploadImage(){
                 
