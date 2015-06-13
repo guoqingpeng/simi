@@ -75,6 +75,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>重新录音</span></button>
+                </div>
+                <div class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>确定上传</span></button>
                 </div>
             </div>
