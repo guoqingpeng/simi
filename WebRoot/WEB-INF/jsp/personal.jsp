@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="info" id="j-scan">
                         <div class="" id="j-line" style="display: block;"></div>
                         <!-- 扫描成功 -->
-                        <div class="text">扫描成功</div>
+                        <div class="text" id="j-zan-tips"></div>
                     </div>
                 </div>
             </div>
