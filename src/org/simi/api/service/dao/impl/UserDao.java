@@ -23,13 +23,14 @@ public class UserDao {
 	
 	public int userRegister(final JSONObject user){
 		
-		final Map<String, Object> userMap  = (Map<String, Object>)user;
+		//final Map<String, Object> userMap  = (Map<String, Object>)user;
 		
 		//用户注册sql文
 		final StringBuffer insertSqlBuffer = new StringBuffer();
 		insertSqlBuffer.append(" INSERT INTO t_user(");
 		insertSqlBuffer.append("name");
 		insertSqlBuffer.append(",age");
+		insertSqlBuffer.append(",nickName");
 		insertSqlBuffer.append(",job");
 		insertSqlBuffer.append(",height");
 		insertSqlBuffer.append(",sanwei");
@@ -40,7 +41,7 @@ public class UserDao {
 		insertSqlBuffer.append(",hobby");
 		insertSqlBuffer.append(",anouncement");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		//返回的用户的数据的id
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -53,10 +54,10 @@ public class UserDao {
 				Object[] params = new Object[]{};
 				int i = 0;
 				//设置参数
-				for (Object key : userMap.keySet()) {
+				for (Object key : user.keySet()) {
 					System.out.println(key);
 					//Object vObject = (String)user.get((String)key);
-					//pStatement.setString(++i,"t");
+				    pStatement.setString(++i,(String)user.get((String)key));
 				}
 				return pStatement;
 			}},keyHolder);

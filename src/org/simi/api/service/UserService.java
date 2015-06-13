@@ -1,5 +1,6 @@
 package org.simi.api.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
@@ -13,11 +14,15 @@ public class UserService {
 	
 	@Autowired
 	private UserDao userDao;
-	 public  Map<String, String> userRegister(JSONObject user){
+	 public  JSONObject userRegister(JSONObject user){
 		 
-		 Boolean resultBoolean = false;
-		 userDao.userRegister(user);
-		 return null;
-		
+		int id = userDao.userRegister(user);
+		JSONObject ret = new JSONObject();
+		ret.put("ret", true);
+		ret.put("errmsg", "");
+		Map<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("id", id);
+		ret.put("data", dataMap);
+		return ret;
 	}
 }

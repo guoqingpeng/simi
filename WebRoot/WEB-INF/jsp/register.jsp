@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <input name="nicName" value="nickname" type="text" class="ipt-box"/>
+                    <input name="nickName" value="nickName" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
