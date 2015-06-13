@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="../styles/release/upload.css" />
 </head>
 <body>
+<include action='http://localhost:8080/simi/config/getConfig.do'/>
 <div class="doc">
     <!-- 头部 -->
     <header class="doc-hd">
