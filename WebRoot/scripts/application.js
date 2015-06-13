@@ -1,52 +1,52 @@
 // 个人首页
-$(function(){
-    var timer = 0;
-    $('#j-scan').on('touchstart', function(eve){
-        eve.preventDefault();
+// $(function(){
+//     var timer = 0;
+//     $('#j-scan').on('touchstart', function(eve){
+//         eve.preventDefault();
 
-        var target = eve.target,
-            time = 0;
+//         var target = eve.target,
+//             time = 0;
 
-        timer = setInterval(function(){
-            console.log('timer' + time);
-            //target.innerHTML = '录音时间: ' + time++ + '\'';
-            if(++time === 3){
-                console.info('点赞...');
-                zan();
-            }
-        }, 1000);
+//         timer = setInterval(function(){
+//             console.log('timer' + time);
+//             //target.innerHTML = '录音时间: ' + time++ + '\'';
+//             if(++time === 3){
+//                 console.info('点赞...');
+//                 zan();
+//             }
+//         }, 1000);
 
-        startAni();
-    }).on('touchend', function(eve){
-        clearInterval(timer);
-        timer = null;
-        stopAni();
-    });
+//         startAni();
+//     }).on('touchend', function(eve){
+//         clearInterval(timer);
+//         timer = null;
+//         stopAni();
+//     });
 
-    function zan(){
-        stopAni();
-        var xhr = $.ajax({
-            url: '/zan',
-            data: {
-                userID: userID
-            },
-            success: function(json){
-                alert('ok')
-            },
-            error: function(){
-                alert('error')
-            }
-        })
-    }
+//     function zan(){
+//         stopAni();
+//         var xhr = $.ajax({
+//             url: '/zan',
+//             data: {
+//                 userID: userID
+//             },
+//             success: function(json){
+//                 alert('ok')
+//             },
+//             error: function(){
+//                 alert('error')
+//             }
+//         })
+//     }
 
-    function startAni(){
-        $('#j-line').addClass('line');
-    }
+//     function startAni(){
+//         $('#j-line').addClass('line');
+//     }
 
-    function stopAni(){
-        $('#j-line').removeClass('line');
-    }
-});
+//     function stopAni(){
+//         $('#j-line').removeClass('line');
+//     }
+// });
 
 $(function(){
     // 上传图片
@@ -103,7 +103,7 @@ $(function(){
             success: function(res){
                 voice.localId = res.localId;
                 clearInterval(voiceTimer);
-                voiceTimer ＝ 0;
+                voiceTimer = 0;
             },
             fail: function(res){
                 alert(JSON.stringify(res));
@@ -112,6 +112,9 @@ $(function(){
     });
 
     // 保存
+    var params = {
+        userID: 'dddd'
+    }
     $('#j-save').click(function(eve){
         eve.preventDefault();
 
@@ -126,12 +129,25 @@ $(function(){
 
                     var url = 'http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' + config.access_token + '&media_id=' + res.serverId;
                     document.getElementById('log').innerHTML += '<a href="' + url + '">' + url + '</a><br/><br/>';
+                    params.recordID = voice.serverId;
+                    params.url = url;
                     uploadImage();
                 }
             });
         }else{
             uploadImage();
         }
+
+        $.ajax({
+            url: '/record',
+            data: params,
+            success: function(json){
+                alert('ok')
+            },
+            error: function(){
+                alert('error')
+            }
+        })
     });
 
     function uploadImage(){

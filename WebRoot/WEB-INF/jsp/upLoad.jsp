@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             appId: '${config.appid}',
             timestamp: ${config.timestamp},
             nonceStr: '${config.nonceStr}',
-            signature: '${cosnfig.signature}',
+            signature: '${config.signature}',
             access_token: '${config.access_token}',
             url: '${config.url}',
             jsapi_ticket: '${config.jsapi_ticket}',
@@ -167,6 +167,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 'openCard'
             ]
         });
+
+        alert(config.signature)
     </script>
 
 <script src="/simi/scripts/application.js" charset="utf-8"></script>
