@@ -1,6 +1,6 @@
 $('#j-save').on('click', function(eve){
     eve.preventDefault();
-    var param = $('form').serializeObject();
+    var param = $('form').serializeJSON();
     debugger
     var xhr = $.ajax({
         url: '/simi/user/reg.do',
