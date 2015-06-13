@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/config")
+@RequestMapping("/user")
 public class UserControlller {
 	
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
