@@ -5,6 +5,7 @@ $(function(){
     initEvent();
 
     function initEvent(){
+    	// 点赞
     	$('#j-scan').on('touchstart', function(eve){
 	        eve.preventDefault();
 
@@ -26,11 +27,20 @@ $(function(){
 	        timer = null;
 	        stopAni();
 	    });
+
+	    // 预览图片
+	    $('#j-imgs').on('click', 'img', function(eve){
+	    	// eve.preventDefault();
+	    	wx.previewImage({
+                current: $(this).attr('src'),
+                urls: $('#j-imgs').data('images')
+            });
+	    })
     }
 
     function loadData(){
-    	var xhr = utils.ajaxSend(
-    		'/simi/user/info.do',
+    	var xhr = utils.ajaxSendJSON(
+    		'/simi/user/userInfo.do',
     		{
     			id: utils.getQueryString('userid')
     		},
@@ -43,11 +53,12 @@ $(function(){
 
     function rendInfo(data){
     	console.log(data);
+    	var baseInfo = data.baseInfo;
     	var $holds = $('[data-holder]');
 
     	$holds.each(function(){
     		var name = $(this).data('holder');
-    		if(data[name]){
+    		if(baseInfo[name]){
     			$(this).text(data[name])
     		}
     	})
@@ -62,7 +73,7 @@ $(function(){
     		html.push('<span class="imgbox"><img src="' + ele + '" alt=""/></span>')
     	});
 
-    	$('#j-imgs').html(html.join(''));
+    	$('#j-imgs').data('images', images).html(html.join(''));
     }
 
     function rendVoice(data){
@@ -81,18 +92,19 @@ $(function(){
 
     function zan(){
         stopAni();
-        var xhr = $.ajax({
-            url: '/zan',
-            data: {
-                userID: userID
+        utils.ajaxSend(
+        	'/simi/user/zan.do',
+        	{
+        		id: utils.getQueryString('userid')
+        	},
+        	function(json){
+                $('#j-zan-tips').text('点赞成功');
+                $('#j-scan').off('touchstart touchend');
             },
-            success: function(json){
-                alert('ok')
-            },
-            error: function(){
-                alert('error')
+            function(){
+                $('#j-zan-tips').text('点赞失败')
             }
-        })
+        )
     }
 
     function startAni(){
