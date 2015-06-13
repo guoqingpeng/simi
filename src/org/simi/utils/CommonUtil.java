@@ -86,7 +86,6 @@ public class CommonUtil {
 			// 创建SSLContext对象，并使用我们指定的信任管理器初始化
 			SSLContext sslContext = SSLContext.getInstance("SSL", "SunJSSE");
 			sslContext.init(null, null, new java.security.SecureRandom());
-			// 从上述SSLContext对象中得到SSLSocketFactory对象
 			SSLSocketFactory ssf = sslContext.getSocketFactory();
 			URL url = new URL(requestUrl);
 			HttpsURLConnection httpUrlConn = (HttpsURLConnection) url.openConnection();
