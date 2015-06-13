@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div class="doc">
-<include action=''/>
     <!-- 头部 -->
     <header class="doc-hd">
         <section class="m-head">
