@@ -9,6 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/user")
 public class UserControlller {
 	
+	/**
+	 * 注册页面初始化
+	 * @return
+	 */
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
 		ModelAndView modelAndView = new ModelAndView();
