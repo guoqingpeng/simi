@@ -174,31 +174,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
-
-    <script src="/simi/scripts/lib/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript">
-        $('#j-scan').on('touchstart', function(eve){
-            eve.preventDefault();
-
-            var target = eve.target,
-                time = 0;
-
-            timer = setInterval(function(){
-                console.log('timer');
-                //target.innerHTML = '录音时间: ' + time++ + '\'';
-                if(time === 3){
-                    console.info('点赞...');
-                }
-            }, 1000);
-
-            $('#j-line').addClass('line');
-        }, false);
-
-        $('#j-test').addEventListener('touchend', function(eve){
-            clearInterval(timer);
-            timer = null;
-        }, false);
-    </script>
 </div>
+<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+<script src="/simi/scripts/application.js" charset="utf-8"></script>
+<script type="text/javascript">
+</script>
 </body>
 </html>

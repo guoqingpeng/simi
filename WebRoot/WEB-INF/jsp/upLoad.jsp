@@ -112,7 +112,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
-    <script src="/simi/scripts/lib/jquery-1.9.1.min.js"></script>
 </div>
+<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+<script src="/simi/scripts/application.js" charset="utf-8"></script>
 </body>
 </html>
