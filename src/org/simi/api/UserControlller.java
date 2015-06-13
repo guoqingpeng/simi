@@ -19,4 +19,11 @@ public class UserControlller {
 		modelAndView.setViewName("/register");
 		return modelAndView;
 	}
+
+    @RequestMapping(value = "/personal", method = RequestMethod.GET)
+    public ModelAndView personalInit(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/personal");
+        return modelAndView;
+    }
 }

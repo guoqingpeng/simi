@@ -1,3 +1,8 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +20,7 @@
     <meta name="x5-page-mode" content="app"/>
     <title>注册</title>
     <link rel="stylesheet" href="../styles/release/register.css" />
+    <script src="/simi/scripts/lib/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <div class="doc">
@@ -30,7 +36,7 @@
         <div class="m-title">
             <h2>注册</h2>
         </div>
-        <div class="m-register">
+        <form class="m-register">
             <div class="rows">
                 <span class="label">姓名：</span>
                 <div class="label-info">
@@ -130,10 +136,10 @@
             <div class="rows">
                 <span class="label">&nbsp;</span>
                 <div class="label-info">
-                    <button class="g-btn g-btn-s g-btn-warn"><span>保存并下一步</span></button>
+                    <button id="j-save" class="g-btn g-btn-s g-btn-warn"><span>保存并下一步</span></button>
                 </div>
             </div>
-        </div>
+        </form>
         <!-- /注册 -->
     </div>
     <footer class="m-foot">
@@ -144,6 +150,23 @@
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
+    <script type="text/javascript">
+        $('#j-save').on('click', function(eve){
+            eve.preventDefault();
+            var param = $('form').serialize();
+            var xhr = $.ajax({
+                url: '/abc',
+                data: param,
+                type: 'POST'
+            });
+
+            xhr.done(function(json){
+                alert('ok');
+            }).fail(function(){
+                alert('error');
+            });
+        })
+    </script>
 </div>
 </body>
 </html>
