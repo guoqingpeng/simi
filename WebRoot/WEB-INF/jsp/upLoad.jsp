@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
-<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+<script src="/simi/scripts/jquery.js"></script>
 <script src="/simi/scripts/application.js" charset="utf-8"></script>
 </body>
 </html>
