@@ -41,13 +41,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">姓名：</span>
                 <div class="label-info">
-                    <input name="userInfo[name]" type="text" class="ipt-box"/>
+                    <input name="userInfo[name]" value="张三" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">年龄：</span>
                 <div class="label-info">
-                    <input name="userInfo[age]" type="text" class="ipt-box"/>
+                    <input name="userInfo[age]" value="23" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
@@ -62,7 +62,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">所属公司：</span>
                 <div class="label-info">
-                    <input name="userInfo[company]" type="text" class="ipt-box"/>
+                    <input name="userInfo[company]" value="Qunar" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
@@ -70,13 +70,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">职业：</span>
                 <div class="label-info">
-                    <input name="userInfo[job]" type="text" class="ipt-box"/>
+                    <input name="userInfo[job]" value="jisuanji" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <input name="userInfo[nicName]" type="text" class="ipt-box"/>
+                    <input name="userInfo[nicName]" value="nickname" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">身高：</span>
                 <div class="label-info">
-                    <input name="userInfo[height]" type="text" class="ipt-box"/>
+                    <input name="userInfo[height]" value="189" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <select name="userInfo[sanwei]" class="select">
                         <option value="1">骨感</option>
                         <option value="2">匀称</option>
-                        <option value="3">性感</option>
+                        <option value="3" selected="">性感</option>
                         <option value="4">丰满代替</option>
                     </select>
                     <select name="userInfo[sanwei]" style="display:none" class="select">
@@ -107,13 +107,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">星座：</span>
                 <div class="label-info">
-                    <input type="text" class="ipt-box"/>
+                    <input type="text" value="天平座" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">微博：</span>
                 <div class="label-info">
-                    <input name="userInfo[weibo]" type="text" class="ipt-box"/>
+                    <input name="userInfo[weibo]" value="weibo.com" type="text" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">
@@ -131,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">拉票宣言：</span>
                 <div class="label-info">
-                   <textarea name="userInfo[anouncement]" class="textarea" placeholder="拉票宣言"></textarea>
+                   <textarea name="userInfo[anouncement]" class="textarea" placeholder="拉票宣言">啦啦啦，我是卖报的小行家...</textarea>
                 </div>
             </div>
             <div class="rows">
