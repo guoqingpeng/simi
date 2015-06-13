@@ -3,12 +3,15 @@ package org.simi.api;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import net.sf.json.JSONObject;
 
 import org.simi.api.service.UserService;
 import org.simi.utils.PastUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,27 +45,26 @@ public class UserControlller {
 	 * @return 返回注册信息
 	 */
    @RequestMapping(value = "/reg", method = RequestMethod.POST)
-   public ModelAndView userRegister(@RequestParam("userInfo")String userInfo){
-	   
-	   System.out.println(userInfo);
-	   JSONObject user = JSONObject.fromObject(userInfo);
+   @ResponseBody
+   public JSONObject userRegister(@RequestBody JSONObject userInfo){
 	   
 	   /**
 		 * 测试一个用户注册数据
+		
+	    userInfo.put("name","zhangsan");
+		userInfo.put("age","12");
+		userInfo.put("job","it");
+		userInfo.put("height","17");
+		userInfo.put("sanwei", "gh");
+		userInfo.put("company","baidu");
+		userInfo.put("xinzuo","shuipin");
+		userInfo.put("weibo","wwww.c.com");
+		userInfo.put("weixin","aaa");
+		userInfo.put("hobby","aaass");
+		userInfo.put("nickName","asas");
+		userInfo.put("anouncement", "ad");
 		 */
-		user.put("name","zhangsan");
-		user.put("age","12");
-		user.put("job","it");
-		user.put("height","17");
-		user.put("sanwei", "gh");
-		user.put("company","baidu");
-		user.put("xinzuo","shuipin");
-		user.put("weibo","wwww.c.com");
-		user.put("weixin","aaa");
-		user.put("hobby","aaass");
-		user.put("nickName","asas");
-		user.put("anouncement", "ad");
-		userService.userRegister(user);
+	    userService.userRegister(userInfo);
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
 		ret.put("errmsg", "");
@@ -70,10 +72,7 @@ public class UserControlller {
 		dataMap.put("id", "122");
 		ret.put("data", dataMap);
 		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/personal");
-		return modelAndView;
+		return ret;
 		
    }
 	

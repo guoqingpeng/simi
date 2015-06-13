@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 <div class="doc">
-<include action=''/>
     <!-- 头部 -->
     <header class="doc-hd">
         <section class="m-head">
@@ -76,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <input name="userInfo[nicName]" type="text" class="ipt-box"/>
+                    <input name="userInfo[nickName]" type="text" class="ipt-box"/>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
@@ -152,6 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
+<script src="/simi/scripts/jquery.serialize-object.js" charset="utf-8"></script>
 <script src="/simi/scripts/register.js" charset="utf-8"></script>
 </body>
 </html>
