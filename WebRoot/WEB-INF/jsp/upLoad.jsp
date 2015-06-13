@@ -62,17 +62,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </p>
                 <p class="tips">(请按方言朗读以上文字)</p>
                 <div class="title-info">
-                    <time>18"</time>
+                    <time id="j-r-time">18"</time>
                 </div>
             </div>
             <div class="btn-box">
                 <div class="">
-                    <button class="recordStar recording">
+                    <button class="recordStar">
                         <i class="g-ico g-ico-l g-ico-suona"></i>
                         <p>正在录音...</p>
                     </button>
                 </div>
-                <div class="hide" style="display: block">
+                <div class="hide">
                     <button class="g-btns g-btn-s g-btn-warn"><span>重新录音</span></button>
                     <button class="g-btns g-btn-s g-btn-warn"><span>确定上传</span></button>
                 </div>

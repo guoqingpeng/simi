@@ -1,3 +1,4 @@
+// 个人首页
 $(function(){
     var timer = 0;
     $('#j-scan').on('touchstart', function(eve){
@@ -46,3 +47,66 @@ $(function(){
         $('#j-line').removeClass('line');
     }
 });
+
+$(function(){
+    // 上传图片
+    var imgIDS = [];
+    $('.m-portraitPic').empty();
+    $('#j-add').on('click', function(eve){
+        eve.preventDefault();
+        wx.chooseImage({
+            success: function(res){
+                var localIds = res.localIds;
+                
+                imgIDS = imgIDS.concat(localIds);
+                imgIDS = imgIDS.slice(0, 4);
+                $('.m-portraitPic').empty();
+                for(var i = 0, len = imgIDS.length; i < len; i++) {
+                    $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="' 
+                        + imgIDS[i] + '" alt=""/></span>');
+                }
+                alert(imgIDS);
+            }
+        });
+    });
+
+    $('.m-portraitPic').on('click', '.close', function(eve){
+        eve.preventDefault();
+        var $parent = $(this).parent();
+        var index = $parent.data('index');
+        $parent.remove();
+        imgIDS.splice(index, 1);
+        alert(imgIDS)
+    });
+
+    // 录音
+    var voice = {
+        localId: ''
+    };
+    var voiceTimer = 0;
+    $('.recordStar').on('touchstart', function(eve){
+        eve.preventDefault();
+        wx.startRecord({
+            cancel: function(){
+                alert('用户拒绝授权录音');
+            }
+        });
+        timer = setInterval(function(){
+            console.log('timer' + time);
+            $('.m-dialect').find('.record time').text(time++ + '"');
+            //target.innerHTML = '录音时间: ' + time++ + '\'';
+        }, 1000);
+
+        $(this).addClass('recording');
+    }).on('touchend', function(eve){
+        eve.preventDefault();
+        wx.stopRecord({
+            success: function(res){
+                voice.localId = res.localId;
+            },
+            fail: function(res){
+                alert(JSON.stringify(res));
+            }
+        });
+    })
+})
