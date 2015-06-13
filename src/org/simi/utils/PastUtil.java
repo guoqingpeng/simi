@@ -110,9 +110,9 @@ public class PastUtil {
 		ret.put("nonceStr", nonce_str);
 		ret.put("timestamp", timestamp);
 		ret.put("signature", signature);
+		System.out.println(signature);
 		ret.put("appid", app_id);
 		ret.put("access_token", token);
-
 		return ret;
 	}
 

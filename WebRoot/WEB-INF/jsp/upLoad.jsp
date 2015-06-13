@@ -22,7 +22,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="../styles/release/upload.css" />
 </head>
 <body>
-<include action='http://localhost:8080/simi/config/getConfig.do'/>
 <div class="doc">
     <!-- 头部 -->
     <header class="doc-hd">
@@ -35,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <form action="">
         <!-- 上传图片 -->
         <div class="m-upload">
-            <span class="up-btn"><button><i>+</i>图片上传</button></span>
+            <span class="up-btn"><button id="j-add"><i>+</i>图片上传</button></span>
         </div>
         <div class="m-portraitPic">
             <div class="info">
@@ -115,8 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
-<script src="/simi/scripts/jquery.js"></script>
-
+<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
        <script>
          var config = {};
@@ -170,8 +168,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         alert(config.signature)
     </script>
-
-<script src="/simi/scripts/application.js" charset="utf-8"></script>
+    <script src="/simi/scripts/application.js" charset="utf-8"></script>
 
 </body>
 </html>
