@@ -152,7 +152,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
-<script src="/simi/scripts/jquery.serialize-object.js" charset="utf-8"></script>
 <script src="/simi/scripts/register.js" charset="utf-8"></script>
 </body>
 </html>

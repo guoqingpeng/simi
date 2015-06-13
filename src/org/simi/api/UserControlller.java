@@ -43,7 +43,10 @@ public class UserControlller {
 	 */
    @RequestMapping(value = "/reg", method = RequestMethod.POST)
    public ModelAndView userRegister(@RequestParam("userInfo")String userInfo){
+	   
+	   System.out.println(userInfo);
 	   JSONObject user = JSONObject.fromObject(userInfo);
+	   
 	   /**
 		 * 测试一个用户注册数据
 		 */
@@ -59,7 +62,6 @@ public class UserControlller {
 		user.put("hobby","aaass");
 		user.put("nickName","asas");
 		user.put("anouncement", "ad");
-		
 		userService.userRegister(user);
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
@@ -73,7 +75,6 @@ public class UserControlller {
 		modelAndView.setViewName("/personal");
 		return modelAndView;
 		
-	 //   return ret;
    }
 	
 	/**
