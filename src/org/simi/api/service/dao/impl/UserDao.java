@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Map;
 
 import net.sf.json.JSONObject;
 
@@ -21,6 +22,8 @@ public class UserDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	public int userRegister(final JSONObject user){
+		
+		final Map<String, Object> userMap  = (Map<String, Object>)user;
 		
 		//用户注册sql文
 		final StringBuffer insertSqlBuffer = new StringBuffer();
@@ -50,8 +53,10 @@ public class UserDao {
 				Object[] params = new Object[]{};
 				int i = 0;
 				//设置参数
-				for (Object key : user.keySet()) {
-					pStatement.setString(++i, (String)user.get(key));
+				for (Object key : userMap.keySet()) {
+					System.out.println(key);
+					//Object vObject = (String)user.get((String)key);
+					//pStatement.setString(++i,"t");
 				}
 				return pStatement;
 			}},keyHolder);

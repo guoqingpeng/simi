@@ -48,6 +48,8 @@ public class UserControlller {
    @ResponseBody
    public JSONObject userRegister(@RequestBody JSONObject userInfo){
 	   
+	   System.out.println(userInfo.get("userInfo"));
+	   
 	   /**
 		 * 测试一个用户注册数据
 		
@@ -64,7 +66,7 @@ public class UserControlller {
 		userInfo.put("nickName","asas");
 		userInfo.put("anouncement", "ad");
 		 */
-	    userService.userRegister(userInfo);
+	    //userService.userRegister(userInfo);
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
 		ret.put("errmsg", "");
