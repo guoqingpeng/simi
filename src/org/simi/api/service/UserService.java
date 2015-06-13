@@ -1,6 +1,8 @@
 package org.simi.api.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONArray;
@@ -61,10 +63,28 @@ public class UserService {
 		return ret;
 	  }
 	 
+	 /**
+	  * 获取用户的基本信息
+	  * @param userId
+	  * @return
+	  */
 	   public Map<String, String> getUserBaseInfo(String userId){
 		   
 		   Map< String, String> userInfoMap = new HashMap<String, String>();
 		   userInfoMap = userDao.getUserInfoById(userId);
 		   return userInfoMap;
 	   }
+	   
+	   /**
+	    * 获取用户关联的所有的图片
+	    * @param userId
+	    * @return
+	    */
+	   public List<Object> getUserImgs(String userId){
+		   
+		   List<Object> imgList = new ArrayList<Object>();
+		   imgList = userDao.getUserImgs(userId);
+		   return imgList;
+	   }
+	   
 }

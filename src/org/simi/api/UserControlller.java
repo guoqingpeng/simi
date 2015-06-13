@@ -1,5 +1,8 @@
 package org.simi.api;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
@@ -104,18 +107,23 @@ public class UserControlller {
 	    JSONObject ret = new JSONObject();
 	    
 	    String userId = userid.getString("id");
+        Map<String, Object> allinfoMap = new HashMap<String, Object>();
+        
 	    //基本信息
 	    Map<String, String> baseInfo = userService.getUserBaseInfo(userId);
-	    ret.put("baseInfo", baseInfo);
+	    allinfoMap.put("baseInfo", baseInfo);
 	    
 	    //图片列表
+	    //测试6张图片
+	    List<Object> imgList = new ArrayList<Object>();
+	    imgList = userService.getUserImgs(userId);
+	    allinfoMap.put("images", imgList);
 	    
 	    //音频信息
-	    
-	    //ret = userService.saveFiles(files);
+	    ret.put("ret", true);
+	    ret.put("errmsg", "");
+	    ret.put("data", allinfoMap);
 	    return ret;
-	   
-	   
    }
    
 }

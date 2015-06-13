@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">星座：</span>
                 <div class="label-info">
-                    <input type="text" value="天平座" class="ipt-box"/>
+                    <input type="text" name="xinzuo" value="天平座" class="ipt-box"/>
                 </div>
             </div>
             <div class="rows">

@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import net.sf.json.JSONObject;
@@ -132,5 +134,25 @@ public class UserDao {
 			   
 		   });
 		return userInfoMap;
+	}
+	
+	
+	public List<Object> getUserImgs(String userId){
+		final List<Object> imgList = new ArrayList<Object>();
+     	StringBuffer imgSql =new StringBuffer();
+    	imgSql.append("SELECT local_path from t_file where pk_user = ?");
+    	
+    	jdbcTemplate.queryForList(imgList.toString(), new Object[]{userId},new RowMapper(){
+
+			@Override
+			public Object mapRow(ResultSet rs, int i) throws SQLException {
+				Object vaObject = rs.getString("local_path");
+				imgList.add(vaObject);
+				return vaObject;
+			}
+    		
+    	});
+    	
+    	return imgList;
 	}
 }
