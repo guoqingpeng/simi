@@ -171,7 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="index.html" title="首页">首页</a></li>
             <li><a href="actRule.html" title="活动规则">活动规则</a></li>
             <li><a href="onlineAct.html" title="线上活动">线上活动</a></li>
-            <li><a href="register.html" title="首页">我要报名</a></li>
+            <li><a href="/simi/user/regInit.do" title="首页">我要报名</a></li>
         </ul>
     </footer>
 </div>
