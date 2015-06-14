@@ -1,6 +1,15 @@
 $('#j-save').on('click', function(eve){
     eve.preventDefault();
     var param = $('form').serializeJSON();
+    var deviceID = localStorage.getItem('deviceID');
+
+    if(!deviceID){
+        deviceID = String(Manth.random()).replace('.', '');
+        localStorage.setItem('deviceID', deviceID);
+    }
+
+    //param.deviceID = deviceID;
+
     var xhr = $.ajax({
         url: '/simi/user/reg.do',
         data: JSON.stringify(param, null, 4),

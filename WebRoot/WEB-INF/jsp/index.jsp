@@ -1,3 +1,9 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +19,11 @@
     <meta name="x5-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="x5-page-mode" content="app"/>
-    <title>乘务组列表</title>
-    <link rel="stylesheet" href="../styles/release/list.css" />
+    <title>首页</title>
+    <link rel="stylesheet" href="../styles/release/index.css" />
 </head>
 <body>
-<div class="doc crewList">
+<div class="doc">
     <!-- 头部 -->
     <header class="doc-hd">
         <section class="m-head">
@@ -25,10 +31,66 @@
         </section>
     </header>
     <!-- /头部 -->
-    <div class="doc-bd">
-        <!-- 列表 -->
+    <div class="doc-bd index">
+        <!-- 轮播图 -->
+        <div class="m-pic">
+            <ul>
+                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
+                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
+            </ul>
+            <div class="state">
+                <i></i>
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+        </div>
+        <!-- /轮播图 -->
+        <!-- 人气排名 -->
         <div class="m-title">
-            <h2>乘务组</h2>
+            <h2>人气之星</h2>
+        </div>
+        <div class="m-hits">
+            <div class="item">
+                <a href="personal.html">
+                    <p>
+                        <i class="g-ico g-ico-crown"></i>
+                        <img src="../img/img2.png" alt=""/>
+                    </p>
+                    <span class="name">用户昵称</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="personal.html">
+                    <p>
+                        <i class="g-ico g-ico-crown"></i>
+                        <img src="../img/img3.jpg" alt=""/>
+                    </p>
+                    <span class="name">用户昵称</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="personal.html">
+                    <p>
+                        <i class="g-ico g-ico-crown"></i>
+                        <img src="../img/img2.png" alt=""/>
+                    </p>
+                    <span class="name">用户昵称</span>
+                </a>
+            </div>
+        </div>
+        <!-- /人气排名 -->
+        <!-- top20 -->
+        <div class="m-title">
+            <div class="portal">
+                <span class="info">
+                    <a href="crewList.html" class="active">乘务组</a>
+                    <a href="notCrewList.html">非乘务组</a>
+                </span>
+            </div>
+            <h2>参赛选手 TOP20</h2>
         </div>
         <div class="m-ranking">
             <ul class="g-clear">
@@ -36,6 +98,7 @@
                     <div class="item">
                         <a href="personal.html">
                             <span class="onePiece ">WANTED</span>
+                            <!-- 排行 -->
                             <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
                             <!-- 照片 -->
                             <img src="../img/img4.jpg" alt=""/>
@@ -43,8 +106,6 @@
                             <div class="info">
                                 <p>姓名：fuck</p>
                                 <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
                             </div>
                             <!-- 云彩 -->
                             <span class="cloud"></span>
@@ -55,15 +116,14 @@
                     <div class="item">
                         <a href="personal.html">
                             <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
+                            <!-- 排行 -->
+                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>02</span>
                             <!-- 照片 -->
                             <img src="../img/img4.jpg" alt=""/>
                             <!-- 详情 -->
                             <div class="info">
                                 <p>姓名：fuck</p>
                                 <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
                             </div>
                             <!-- 云彩 -->
                             <span class="cloud"></span>
@@ -74,34 +134,32 @@
                     <div class="item">
                         <a href="personal.html">
                             <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
+                            <!-- 排行 -->
+                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>03</span>
                             <!-- 照片 -->
                             <img src="../img/img4.jpg" alt=""/>
                             <!-- 详情 -->
                             <div class="info">
                                 <p>姓名：fuck</p>
                                 <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
                             </div>
                             <!-- 云彩 -->
                             <span class="cloud"></span>
-                        </a>
+                        </a>>
                     </div>
                 </li>
                 <li>
                     <div class="item">
                         <a href="personal.html">
                             <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
+                            <!-- 排行 -->
+                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>04</span>
                             <!-- 照片 -->
                             <img src="../img/img4.jpg" alt=""/>
                             <!-- 详情 -->
                             <div class="info">
                                 <p>姓名：fuck</p>
                                 <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
                             </div>
                             <!-- 云彩 -->
                             <span class="cloud"></span>
@@ -110,7 +168,7 @@
                 </li>
             </ul>
         </div>
-        <!-- /列表 -->
+        <!-- /top20 -->
         <div class="m-search">
             <i class="g-ico g-ico-s g-ico-search"></i>
             <span class="sch-ipt"><input type="text" value="" placeholder="搜索昵称或手机号"/></span>
