@@ -52,13 +52,14 @@ $(function(){
             var text = $('#j-text').val();
             if(text){
                 utils.ajaxSendJSON(
-                    '/simi/user/discuss.do',
+                    '/simi/user/commnet.do',
                     {
-                        id: utils.getQueryString('userid'),
+                        beCommentedUser: utils.getQueryString('userid'),
                         content: text,
-                        deviceID: localStorage.getItem('deviceID') || ""
+                        commentUser: localStorage.getItem('userid') || ""
                     },
                     function(json){
+                        alert('评论成功!');
                         loadDiscuss();
                     },
                     function(msg){
@@ -87,7 +88,7 @@ $(function(){
 
     function loadDiscuss(){
         var xhr = utils.ajaxSendJSON(
-            '/simi/user/discuss.do',
+            '/simi/user/comList.do',
             {
                 id: utils.getQueryString('userid')
             },
@@ -153,17 +154,17 @@ $(function(){
     function rendDiscuss(data){
         var $list = $('#j-dis-list');
         var html = [];
-        var data = data || [];
+        var data = data.comments || [];
         var length = data.length;
-        $.each((data || []).reverse(), function(index, element){
+        $.each(data, function(index, element){
             html.push('<li>' +
                         '<span class="portrait"></span>' + 
                         '<div class="info">' +
                             '<div class="userName">' +
                                 '<i class="storey">' + (length - index) + '楼</i>' +
-                                '<h2>游客</h2>' +
+                                '<h2>' + (element.name || '游客') + '</h2>' +
                             '</div>' +
-                            '<p>' + element + '</p>' +
+                            '<p>' + element.comment + '</p>' +
                         '</div>' +
                     '</li>')
         });

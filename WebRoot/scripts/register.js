@@ -1,12 +1,12 @@
 $('#j-save').on('click', function(eve){
     eve.preventDefault();
     var param = $('form').serializeJSON();
-    var deviceID = localStorage.getItem('deviceID');
+    //var deviceID = localStorage.getItem('deviceID');
 
-    if(!deviceID){
-        deviceID = String(Manth.random()).replace('.', '');
-        localStorage.setItem('deviceID', deviceID);
-    }
+    // if(!deviceID){
+    //     deviceID = String(Manth.random()).replace('.', '');
+    //     localStorage.setItem('deviceID', deviceID);
+    // }
 
     //param.deviceID = deviceID;
 
@@ -18,8 +18,9 @@ $('#j-save').on('click', function(eve){
     });
 
     xhr.done(function(json){
-        alert('ok' + JSON.stringify(json, null, 4));
+        //alert('ok' + JSON.stringify(json, null, 4));
         if(json.ret === true){
+            localStorage.setItem('userid', json.data.id);
             location.href = '/simi/user/uploadInit.do?userid=' + json.data.id
         }else{
             alert(json.errmsg)
