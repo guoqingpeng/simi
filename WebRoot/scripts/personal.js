@@ -3,6 +3,7 @@ $(function(){
 
     loadData();
     initEvent();
+    loadDiscuss();
 
     function initEvent(){
     	// 点赞
@@ -13,8 +14,6 @@ $(function(){
 	            time = 0;
 
 	        timer = setInterval(function(){
-	            console.log('timer' + time);
-	            //target.innerHTML = '录音时间: ' + time++ + '\'';
 	            if(++time === 3){
 	                console.info('点赞...');
 	                zan();
@@ -28,14 +27,48 @@ $(function(){
 	        stopAni();
 	    });
 
+        function getURL(url){
+            return location.protocol + "//" + location.hostname + url
+        }
+
 	    // 预览图片
 	    $('#j-imgs').on('click', 'img', function(eve){
 	    	// eve.preventDefault();
+            var imgs = $('#j-imgs').data('images');
+            var urls = [];
+            $.each(imgs, function(index, element){
+                urls.push(getURL(element))
+            })
 	    	wx.previewImage({
-                current: $(this).attr('src'),
-                urls: $('#j-imgs').data('images')
+                current: getURL($(this).attr('src')),
+                urls: urls
             });
-	    })
+	    });
+
+        // 评论
+        $('#j-discuss').on('click', function(eve){
+            eve.preventDefault();
+
+            var text = $('#j-text').val();
+            if(text){
+                utils.ajaxSendJSON(
+                    '/simi/user/discuss.do',
+                    {
+                        id: utils.getQueryString('userid'),
+                        content: text,
+                        deviceID: localStorage.getItem('deviceID') || ""
+                    },
+                    function(json){
+                        loadDiscuss();
+                    },
+                    function(msg){
+                        alert('评论失败，请联系管理员！');
+                    }
+                )
+            }else{
+                alert('请先输入评论内容');
+            }
+        });
     }
 
     function loadData(){
@@ -47,19 +80,31 @@ $(function(){
     		function(json){
     			rendInfo(json.data);
     			rendImages(json.data);
+    			rendVoice(json.data);
     		}
     	)
     }
 
+    function loadDiscuss(){
+        var xhr = utils.ajaxSendJSON(
+            '/simi/user/discuss.do',
+            {
+                id: utils.getQueryString('userid')
+            },
+            function(json){
+                rendDiscuss(json.data);
+            }
+        )
+    }
+
     function rendInfo(data){
-    	console.log(data);
     	var baseInfo = data.baseInfo;
     	var $holds = $('[data-holder]');
 
     	$holds.each(function(){
     		var name = $(this).data('holder');
     		if(baseInfo[name]){
-    			$(this).text(data[name])
+    			$(this).text(baseInfo[name])
     		}
     	})
     }
@@ -77,17 +122,53 @@ $(function(){
     }
 
     function rendVoice(data){
-    	var id = data.voice.id;
+    	var id = data.voice.voiceId;
+    	var voiceId = '';
     	$('#j-voice')
     		//.data('id', id)
-    		.find('time').text(data.voice.time + '"')
+    		.find('time').text(data.voice.time || 0 + '"')
+    		.end()
     		.on('click', function(eve){
     			eve.preventDefault();
-
-    			wx.playVoice({
-	                localId: id
+    			if(voiceId){
+    				playVoice(voiceId);
+    				return;
+    			}
+    			wx.downloadVoice({
+	                serverId: id,
+	                success: function(res){
+	                    playVoice(res.localId);
+	                    voiceId = res.localId;
+	                }
 	            });
-    		})
+    		});
+
+    	function playVoice(id){
+    		wx.playVoice({
+                localId: id
+            });
+    	}
+    }
+
+    function rendDiscuss(data){
+        var $list = $('#j-dis-list');
+        var html = [];
+        var data = data || [];
+        var length = data.length;
+        $.each((data || []).reverse(), function(index, element){
+            html.push('<li>' +
+                        '<span class="portrait"></span>' + 
+                        '<div class="info">' +
+                            '<div class="userName">' +
+                                '<i class="storey">' + (length - index) + '楼</i>' +
+                                '<h2>游客</h2>' +
+                            '</div>' +
+                            '<p>' + element + '</p>' +
+                        '</div>' +
+                    '</li>')
+        });
+
+        $list.html(html.join(''))
     }
 
     function zan(){
