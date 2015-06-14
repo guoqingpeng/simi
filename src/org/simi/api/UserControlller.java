@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import sun.rmi.runtime.NewThreadAction;
 
 @Controller
-@RequestMapping("/simi/user")
+@RequestMapping("/user")
 public class UserControlller {
 	
 	@Autowired
