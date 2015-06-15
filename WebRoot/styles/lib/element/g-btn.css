@@ -30,7 +30,7 @@
     border-radius: 4px 4px 30px 30px;
     background: linear-gradient(rgba(255,255,255,.4),rgba(255,255,255,.2),rgba(255,255,255,0) );
 }
-.g-btn:after{
+/*.g-btn:after{
     position: absolute;
     bottom: 0;
     display: block;
@@ -39,7 +39,7 @@
     height: 100%;
     background-image: -webkit-radial-gradient(circle at center, rgba(255, 255, 255, .4),rgba(255, 255, 255, 0));
     background-image: radial-gradient(circle at center, rgba(255, 255, 255, .4),rgba(255, 255, 255, 0));
-}
+}*/
 
 .g-btn-s span{
     display: block;
@@ -50,10 +50,9 @@
     font-size: 18px;
 }
 /* 蓝色 */
-.g-btn-warn,
-.g-btn-warn:hover
-.g-btn-warn:active{
-    background-color: #ff5a00;
+.g-btn-warn{
+    border: solid 1px rgba(243, 95, 0, 1);
+    color: #fff;
 }
 .g-btn-commit{
     border: solid 1px rgba(0, 93, 221, 1);
@@ -64,11 +63,17 @@
     background: linear-gradient(#009bef,#0076e0,#0062e3);
 }
 .g-btn-commit:active,
-.g-btn-commit:hover{
+.g-btn-commit:hover,
+.g-btn-warn:hover,
+.g-btn-warn:active{
     border: solid 1px rgba(243, 95, 0, 1);
 }
 .g-btn-commit:active span,
-.g-btn-commit:hover span{
+.g-btn-commit:hover span,
+.g-btn-warn span,
+.g-btn-warn:hover span,
+.g-btn-warn:active span{
     background: -webkit-linear-gradient(#f9a300,#f38600,#f25e00);
     background: linear-gradient(#f9a300,#f38600,#f25e00);
+    color: #fff;
 }

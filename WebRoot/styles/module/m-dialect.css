@@ -33,6 +33,7 @@
     font-size: 22px;text-align: right;
 }
 .m-dialect .title-info time{
+    line-height: 41px;
     padding-right: 20px;
 }
 /* 文案 */

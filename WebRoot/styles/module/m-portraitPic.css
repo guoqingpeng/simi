@@ -31,9 +31,9 @@
 }
 .close:after{
     position: relative;
-    top: -2px;
+    /*top: -2px;*/
     font-family: Tahoma;
     color: #fff;
-    font-size: 30px;
+    font-size: 36px;
     content: "×";
 }

@@ -25,7 +25,10 @@
     left: 0;
     right: 0;
     content: "";
-    background: url("../../bgimg/bg_1x.png") left top repeat-x;
+    background: url("../../bgimg/bg_1x.png");
+    background-position:  left 1px;
+    background-repeat:  repeat-x;
+
 }
 .m-title .portal {
     float: right;

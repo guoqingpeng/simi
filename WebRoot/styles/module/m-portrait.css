@@ -5,26 +5,30 @@
 * @update: 2015/6/9
 */
 .m-portrait{
+    position: relative;
 }
 /* 头像 */
 .m-portrait .portrait{
-    position: relative;
-    min-height: 134px;
+    overflow: hidden;
+    max-height: 134px;
+}
+.m-portrait .portrait img{
+    vertical-align: top;
 }
 /* 指纹 */
 .m-portrait .fingerprint{
     position: absolute;
     left: 50%;
     z-index: 2;
-    bottom: -38.5px;
-    margin-left: -32.5px;
-    width: 65px;
-    height: 77px;
+    top: 83px;
+    margin-left: -41px;
+    width: 82px;
+    height: 96px;
     background: url(../../bgimg/fingerprint_1x.png);
 }
 .m-portrait .fingerprint .info{
-    width: 65px;
-    height: 77px;
+    width: 82px;
+    height: 96px;
     position: relative;
 }
 .m-portrait .fingerprint .text{
@@ -53,6 +57,7 @@
     height: 147px;
     font-size: 14px;
     background: #012154 url(../../bgimg/explain_1x.jpg) no-repeat;
+    background-size: 100% 197px;
     color: #fff;
     line-height: 24px;
 }
@@ -74,7 +79,7 @@
 }
 .m-portrait .explain .w2{
     width: 210px;
-    min-height: 48px;
+    max-height: 48px;
     overflow: hidden;
 }
 @keyframes line{
@@ -83,6 +88,18 @@
     100% {transform: translateY(-38.5px);}
 }
 @-webkit-keyframes line{
+    0% {transform: translateY(-38.5px);}
+    50% {transform: translateY(38.5px);}
+    100% {transform: translateY(-38.5px);}
+}
+@-moz-keyframes mymove /* Firefox */
+{
+    0% {transform: translateY(-38.5px);}
+    50% {transform: translateY(38.5px);}
+    100% {transform: translateY(-38.5px);}
+}
+@-o-keyframes mymove /* Opera */
+{
     0% {transform: translateY(-38.5px);}
     50% {transform: translateY(38.5px);}
     100% {transform: translateY(-38.5px);}

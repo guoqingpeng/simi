@@ -1,8 +1,3 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +43,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">年龄：</span>
                 <div class="label-info">
+                    
                     <span class="ipt-box">
-                        <input name="age" value="23" type="text"/>
+                    <input name="age" value="23" type="text"/>
                     </span>
                 </div>
             </div>
@@ -57,17 +53,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">性别：</span>
                 <div class="label-info">
                     <span class="select">
-                        <select name="sex" >
-                            <option value="1">男</option>
-                            <option value="2" selected>女</option>
-                        </select>
+                    <select name="sex">
+                        <option value="1">男</option>
+                        <option value="2" selected>女</option>
+                    </select>
                     </span>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">所属公司：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
+                    <span class="ipt-box">
                     <input name="company" value="Qunar" type="text"/>
                     </span>
                     <br/>
@@ -76,8 +72,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="rows">
                 <span class="label">职业：</span>
-                <div class="label-info">
-                    <span  class="ipt-box">
+                <div class="label-info"> 
+                    <span class="ipt-box">
                     <input name="job" value="jisuanji" type="text"/>
                     </span>
                 </div>
@@ -85,8 +81,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">昵称：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
-                        <input name="nickName" value="nickName" type="text"/>
+                    <span class="ipt-box">
+                    <input name="nickName" value="nickName" type="text"/>
                     </span>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
@@ -95,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">身高：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
+                    <span class="ipt-box">
                         <input name="height" value="189" type="text"/>
                     </span>
                 </div>
@@ -104,35 +100,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">三维：</span>
                 <div class="label-info">
                     <span  class="select">
-                        <select name="sanwei">
-                            <option value="1">骨感</option>
-                            <option value="2">匀称</option>
-                            <option value="3" selected="">性感</option>
-                            <option value="4">丰满代替</option>
-                        </select>
+                    <select name="sanwei">
+                        <option value="1">骨感</option>
+                        <option value="2">匀称</option>
+                        <option value="3" selected="">性感</option>
+                        <option value="4">丰满代替</option>
+                    </select>
                     </span>
-                    <span  class="select" style="display:none" class="select" >
-                        <select name="sanwei">
-                            <option value="1">条顺</option>
-                            <option value="2">匀称</option>
-                            <option value="3">健壮</option>
-                            <option value="4">健硕</option>
-                        </select>
+                    <span  class="select"  style="display:none">
+                    <select name="sanwei">
+                        <option value="1">条顺</option>
+                        <option value="2">匀称</option>
+                        <option value="3">健壮</option>
+                        <option value="4">健硕</option>
+                    </select>
                     </span>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">星座：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
-                        <input type="text" name="xinzuo" value="天平座"/>
+                    <span class="ipt-box">
+                    <input type="text" name="xinzuo" value="天平座"/>
                     </span>
                 </div>
             </div>
             <div class="rows">
                 <span class="label">微博：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
+                    <span class="ipt-box">
                     <input name="weibo" value="weibo.com" type="text"/>
                     </span>
                 </div>
@@ -140,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">微信：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
+                    <span class="ipt-box">
                     <input name="weixin" type="text"/>
                     </span>
                 </div>
@@ -148,7 +144,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">爱好：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
+                    
+                    <span class="ipt-box">
                     <input name="hobby" type="text"/>
                     </span>
                 </div>
@@ -156,9 +153,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">拉票宣言：</span>
                 <div class="label-info">
-                   <span  class="textarea">
+                    <span  class="textarea" >
                    <textarea name="anouncement" placeholder="拉票宣言">啦啦啦，我是卖报的小行家...</textarea>
-                   </span>
+                    </span>
                 </div>
             </div>
             <div class="rows">
@@ -178,8 +175,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
-</div>
-<script src="/simi/scripts/jquery.serialize-object.js" charset="utf-8"></script>
-<script src="/simi/scripts/register.js" charset="utf-8"></script>
+</div>>
 </body>
 </html>
