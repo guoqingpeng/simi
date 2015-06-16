@@ -19,33 +19,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="x5-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="x5-page-mode" content="app"/>
-    <title>首页</title>
+    <title>真.空秀-首页</title>
     <link rel="stylesheet" href="../styles/release/index.css" />
 </head>
 <body>
 <div class="doc">
-    <!-- 头部 -->
-    <header class="doc-hd">
-        <section class="m-head">
-            <h1>真.空秀</h1>
-        </section>
-    </header>
-    <!-- /头部 -->
     <div class="doc-bd index">
         <!-- 轮播图 -->
         <div class="m-pic">
-            <ul>
-                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
-                <li><a href=""><img src="../img/img1.jpg" alt=""/></a></li>
-            </ul>
-            <div class="state">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
+            <div id="J_slide">
+                <div class="imgbox"><a href="#"><img src="../img/img1.jpg" alt=""/></a></div>
+                <div class="imgbox"><a href="#"><img src="../img/img9.jpg" alt=""/></a></div>
+                <div class="imgbox"><a href="#"><img src="../img/img6.jpg" alt=""/></a></div>
+                <div class="imgbox"><a href="#"><img src="../img/img5.jpg" alt=""/></a></div>
             </div>
+            <div class="state" id="J_page"></div>
         </div>
         <!-- /轮播图 -->
         <!-- 人气排名 -->
@@ -183,5 +171,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
+    <script type="text/javascript" src="../scripts/slider/scroll.js"></script>
+    <script type="text/javascript">
+    if(document.getElementById("J_slide")){
+    var J_slide = new ScrollPic();
+    var num = document.body.clientWidth;
+
+    J_slide.scrollContId   = "J_slide"; //内容容器ID
+    J_slide.dotListId      = "J_page";//点列表ID
+    J_slide.dotOnClassName = "selected";
+    J_slide.frameWidth     = 320;
+    J_slide.pageWidth      = 320;
+    J_slide.upright        = false;
+    J_slide.speed          = 10;
+    J_slide.space          = 30;
+    J_slide.initialize(); //初始化
+    }
+    </script>
 </body>
 </html>

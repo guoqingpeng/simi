@@ -1,0 +1,33 @@
+@charset "utf-8";
+/**
+* @description: 无节操问答
+* @author: assassin.liu
+* @update: 2015/6/16
+*/
+.m-question{
+    overflow: hidden;
+    padding: 20px 0;
+}
+.m-question li{
+    padding: 0 20px;
+    line-height: 32px;
+    font-size: 14px;
+    border-bottom: dashed 1px #989898;
+}
+.m-question li a{
+    color: #000;
+}
+.m-question .title{
+    padding: 0 14px;
+    color: #0859ac;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.m-question .imgbox{
+    margin: 0 14px;
+    display: inline-block;
+    overflow: hidden;
+    border: solid 1px #0070dd;
+    max-height: 150px;
+}
