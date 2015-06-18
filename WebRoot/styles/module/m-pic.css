@@ -5,32 +5,36 @@
 * @update: 2015/6/8
 */
 .m-pic {
-    height:163px;
+    max-width:560px;/* 设置焦点图最大宽度 */
+    max-height:163px;
     position:relative;
     overflow:hidden;
 }
-.m-pic .imgbox {
-    float:left;
-    width:320px;
+/* 轮播 */
+.m-pic .picbox{
+    position:relative;
+    z-index:0;
 }
-.m-pic .imgbox img {
-    display:block;
-    width:320px;
-    height:163px;
+.m-pic .picbox li{
+    position:relative;
+    text-align:center;
 }
+.m-pic .picbox li img{
+    background:url(../../bgimg/loading.gif) center center no-repeat;
+    vertical-align:top;
+    width:100%;/* 图片宽度100%，达到自适应效果 */
+}
+/* 状态 */
 .m-pic .state {
     position: absolute;
+    margin:3px 0 0 0;
     left: 0;
     right: 0;
     bottom: 10px;
     text-align: center;
     display: block;
 }
-.m-pic .state {
-    text-align:center;
-    margin:3px 0 0 0;
-}
-.m-pic .state span {
+.m-pic .state li {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -43,20 +47,23 @@
     cursor: pointer;
     border: solid 2px #00deff;
 }
-.m-pic .state .selected {
+.m-pic .state .on {
     position: relative;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     border: solid 2px #00deff;
     background-color: transparent;
+    text-indent: -9999px;
 }
-.m-pic .state .selected:after{
+.m-pic .state .on:after{
+    position: absolute;
+    top: 5px;
+    left: 5px;
     -webkit-border-radius: 50%;
     border-radius: 50%;
     display: block;
     content: "";
     width: 10px;
     height: 10px;
-    margin: 5px 0 0 5px;
     background: #00deff;
 }

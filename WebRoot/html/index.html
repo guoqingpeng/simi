@@ -20,14 +20,16 @@
 <div class="doc">
     <div class="doc-bd index">
         <!-- 轮播图 -->
-        <div class="m-pic">
-            <div id="J_slide">
-                <div class="imgbox"><a href="#"><img src="../img/img1.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img9.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img6.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img5.jpg" alt=""/></a></div>
+        <div id="slideBox" class="m-pic">
+            <div class="picbox">
+                <ul>
+                    <li><a href="ask.html"><img src="../img/img1.jpg" alt=""/></a></li>
+                    <li><a href="#"><img src="../img/img5.jpg" alt=""/></a></li>
+                </ul>
             </div>
-            <div class="state" id="J_page"></div>
+            <div class="state">
+                <ul></ul>
+            </div>
         </div>
         <!-- /轮播图 -->
         <!-- 人气排名 -->
@@ -157,30 +159,30 @@
         </div>
     </div>
     <footer class="m-foot">
-        <ul>
+        <ul class="first">
             <li><a href="javascript:;" title="首页">首页</a></li>
             <li><a href="actRule.html" title="活动规则">活动规则</a></li>
-            <li><a href="onlineAct.html" title="线上活动">线上活动</a></li>
+            <li>
+                <a href="javascript:;" title="线上活动">线上活动</a>
+                <ul class="next">
+                    <li><a href="decisiveBattle.html">一战到底</a></li>
+                    <li><a href="ask.html">无节操问答</a></li>
+                </ul>
+            </li>
             <li><a href="register.html" title="首页">我要报名</a></li>
         </ul>
     </footer>
 </div>
-<script type="text/javascript" src="../scripts/slider/scroll.js"></script>
+<script type="text/javascript" src="../scripts/slider/TouchSlide.1.1.js"></script>
 <script type="text/javascript">
-    if(document.getElementById("J_slide")){
-        var J_slide = new ScrollPic();
-        var num = document.body.clientWidth;
-
-        J_slide.scrollContId   = "J_slide"; //内容容器ID
-        J_slide.dotListId      = "J_page";//点列表ID
-        J_slide.dotOnClassName = "selected";
-        J_slide.frameWidth     = 320;
-        J_slide.pageWidth      = 320;
-        J_slide.upright        = false;
-        J_slide.speed          = 10;
-        J_slide.space          = 30;
-        J_slide.initialize(); //初始化
-    }
+TouchSlide({
+    slideCell:"#slideBox",
+    titCell:".state ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+    mainCell:".picbox ul",
+    effect:"leftLoop",
+    autoPage:true,//自动分页
+    autoPlay:true //自动播放
+});
 </script>
 </body>
 </html>
