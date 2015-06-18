@@ -1,0 +1,172 @@
+@charset "utf-8";
+/**
+* @description: 一战到底
+* @author: assassin.liu
+* @update: 2015/6/17
+*/
+.m-decisive{
+    padding-top: 20px;
+   overflow: hidden;
+}
+.m-decisive-hd{
+    font-size: 0;
+    border-bottom: solid 2px #006adb;
+}
+.m-decisive-hd span{
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    width: 40%;
+    margin: 0 5%;
+    text-align: center;
+    font-size: 14px;
+    background-color: #83b8ef;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+.m-decisive-hd span:hover,
+.m-decisive-hd span:active,
+.m-decisive-hd span.active{
+    background-color: #006adb;
+}
+.m-decisive-hd span a{
+    display: block;
+    color: #fff;
+}
+.m-decisive-bd label{
+    display: block;
+}
+.m-decisive-bd > ul{
+    overflow: hidden;
+}
+.m-decisive-bd > ul > li{
+    line-height: 32px;
+    font-size: 14px;
+    color: #000;
+    border-bottom: dashed 1px #b1b1b1;
+}
+.m-decisive-bd .next >li:active,
+.m-decisive-bd .next >li.active{
+    background-color: #dae6f2;
+}
+.m-decisive-bd h4{
+    padding: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.m-decisive-bd .next{
+    overflow: hidden;
+}
+.m-decisive-bd .next > li{
+    color: #717171;
+    padding: 0 15px 0 30px;
+    margin-bottom: -1px;
+    border-bottom: dotted 1px #e6e6e6;
+    position: relative;
+}
+.m-decisive-bd .next input[type='checkbox'],
+.m-decisive-bd .next input[type='radio']{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    margin: auto 0;
+}
+.m-decisive-ft{
+    margin-top: 10px;
+    text-align: center;
+}
+/* 提交引导 */
+.mark{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.6);
+}
+.dialog {
+    position: absolute;
+    padding-top: 20px;
+    z-index: 101;
+    top: 50%;
+    left: 50%;
+    margin-top: -87px;
+    margin-left: -120px;
+    height: 140px;
+    width: 240px;
+    border: solid 2px #195797;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px; /* 控制条纹的大小 */
+
+    -moz-box-shadow: 1px 1px 8px gray;
+    -webkit-box-shadow: 1px 1px 8px gray;
+    box-shadow: 1px 1px 8px gray;
+}
+.angled-135 {
+    background-color: #1a7ce0;
+    background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+    color-stop(.25, rgba(255, 255, 255, .2)), color-stop(.25, transparent),
+    color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .2)),
+    color-stop(.75, rgba(255, 255, 255, .2)), color-stop(.75, transparent),
+    to(transparent));
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%,
+    transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%,
+    transparent 75%, transparent);
+}
+.dialog .num{
+    display: block;
+    width: 70%;
+    height: 34px;
+    margin: 0 auto;
+    line-height: 34px;
+    background: #072d53;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    color: #f9e53b;
+}
+.dialog .close{
+    cursor: pointer;
+    position: absolute;
+    right: -14px;
+    top: -16px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-align: center;
+    background: #000;
+}
+.dialog .close:after{
+    position: relative;
+    top: -1px;
+    font-family: Tahoma;
+    color: #fff;
+    font-size: 24px;
+    content: "×";
+}
+.dialog .guide{
+    background: url(../../bgimg/guide.png) no-repeat right top;
+    padding-top: 97px;
+    position: absolute;
+    top: -157px;
+}
+.dialog .btn{
+    margin: 10x auto;
+    width: 60px;
+    height: 30px;
+    color: #fff;
+    font-size: 12px;
+    border: 0;
+    background-color: #072d53;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
