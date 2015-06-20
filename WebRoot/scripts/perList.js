@@ -1,81 +1,22 @@
 $(function(){
-    var timer = 0;
+    var page = 1;
 
     loadData();
     initEvent();
 
     function initEvent(){
-        // 点赞
-        $('#j-scan').on('touchstart', function(eve){
-            eve.preventDefault();
-
-            var target = eve.target,
-                time = 0;
-
-            timer = setInterval(function(){
-                if(++time === 3){
-                    console.info('点赞...');
-                    zan();
-                }
-            }, 1000);
-
-            startAni();
-        }).on('touchend', function(eve){
-            clearInterval(timer);
-            timer = null;
-            stopAni();
-        });
-
-        function getURL(url){
-            return location.protocol + "//" + location.hostname + url
-        }
-
-        // 预览图片
-        $('#j-imgs').on('click', 'img', function(eve){
-            // eve.preventDefault();
-            var imgs = $('#j-imgs').data('images');
-            var urls = [];
-            $.each(imgs, function(index, element){
-                urls.push(getURL(element))
-            })
-            wx.previewImage({
-                current: getURL($(this).attr('src')),
-                urls: urls
-            });
-        });
-
-        // 评论
-        $('#j-discuss').on('click', function(eve){
-            eve.preventDefault();
-
-            var text = $('#j-text').val();
-            if(text){
-                utils.ajaxSendJSON(
-                    '/simi/user/commnet.do',
-                    {
-                        beCommentedUser: utils.getQueryString('userid'),
-                        content: text,
-                        commentUser: localStorage.getItem('userid') || ""
-                    },
-                    function(json){
-                        alert('评论成功!');
-                        loadDiscuss();
-                    },
-                    function(msg){
-                        alert('评论失败，请联系管理员！');
-                    }
-                )
-            }else{
-                alert('请先输入评论内容');
-            }
-        });
+        $('#j-load-more').on('click', function(eve){
+            page++;
+            loadData();
+        })
     }
 
     function loadData(){
         var xhr = utils.ajaxSendJSON(
-            '/simi/user/perList.do',
+            '/simi/user/userList.do',
             {
-                type: utils.getQueryString('type')
+                type: utils.getQueryString('type'),
+                page: page
             },
             function(json){
                 rendInfo(json.data);
@@ -110,6 +51,6 @@ $(function(){
             )
         });
 
-        $('#j-per-list').html(html.join(''))
+        $('#j-per-list').append(html.join(''))
     }
 });
