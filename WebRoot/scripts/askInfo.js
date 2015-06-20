@@ -37,8 +37,7 @@ $(function(){
         var xhr = utils.ajaxSendJSON(
             '/simi/user/askList.do',
             {
-                //type: utils.getQueryString('type'),
-                //page: page
+                type: utils.getQueryString('id')
             },
             function(json){
                 rendDiscuss(json.data);

@@ -90,7 +90,6 @@ $(function(){
             'def': '#j-per-list',
             'rq': '#j-rq-list'
         }[type]
-        debugger
 
         $.each(data.uList, function(index, ele){
             html.push(
