@@ -3,19 +3,20 @@ $(function(){
 
     loadData();
     initEvent();
+    utils.initSearch();
 
     function initEvent(){
         $('#j-load-more').on('click', function(eve){
-            page++;
+            // page++;
             loadData();
         })
     }
 
     function loadData(){
         var xhr = utils.ajaxSendJSON(
-            '/simi/user/search.do',
+            '/simi/user/searchUsers.do',
             {
-                type: utils.getQueryString('type'),
+                searchKey: utils.getQueryString('q'),
                 page: page
             },
             function(json){
@@ -55,6 +56,10 @@ $(function(){
                     .replace(/\{\{index\}\}/g, (((page - 1) * 2) + index + 101 + '').slice(1))
             )
         });
+
+        if(data.uList.length){
+            page++
+        }
 
         $('#j-per-list').append(html.join(''))
     }

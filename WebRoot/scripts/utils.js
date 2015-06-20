@@ -158,7 +158,7 @@ window.utils = {
     "initSearch": function(){
         $('.sch-ipt').on('keydown', function(eve){
             if(eve.keyCode === 13){
-                alert('搜索')
+                location.href = '/simi/user/searchInit.do?q=' + $(eve.target).val()
             }
         })
     }

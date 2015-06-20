@@ -5,6 +5,7 @@ $(function(){
     loadData();
     loadRenQiStar();
     initEvent();
+    utils.initSearch();
 
     TouchSlide({
         slideCell:"#slideBox",

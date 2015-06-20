@@ -3,6 +3,7 @@ $(function(){
 
     loadData();
     initEvent();
+    utils.initSearch();
 
     if(utils.getQueryString('type') == 2){
         $('h2').text('非乘务组')
@@ -10,7 +11,7 @@ $(function(){
 
     function initEvent(){
         $('#j-load-more').on('click', function(eve){
-            page++;
+            // page++;
             loadData();
         })
     }
@@ -59,6 +60,10 @@ $(function(){
                     .replace(/\{\{index\}\}/g, (((page - 1) * 2) + index + 101 + '').slice(1))
             )
         });
+
+        if(data.uList.length){
+            page++
+        }
 
         $('#j-per-list').append(html.join(''))
     }

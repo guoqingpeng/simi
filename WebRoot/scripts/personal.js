@@ -6,6 +6,7 @@ $(function(){
     loadDiscuss();
 
     utils.initNav();
+    utils.initSearch();
 
     function initEvent(){
         // 点赞
