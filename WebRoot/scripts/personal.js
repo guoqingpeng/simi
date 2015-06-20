@@ -6,44 +6,44 @@ $(function(){
     loadDiscuss();
 
     function initEvent(){
-    	// 点赞
-    	$('#j-scan').on('touchstart', function(eve){
-	        eve.preventDefault();
+        // 点赞
+        $('#j-scan').on('touchstart', function(eve){
+            eve.preventDefault();
 
-	        var target = eve.target,
-	            time = 0;
+            var target = eve.target,
+                time = 0;
 
-	        timer = setInterval(function(){
-	            if(++time === 3){
-	                console.info('点赞...');
-	                zan();
-	            }
-	        }, 1000);
+            timer = setInterval(function(){
+                if(++time === 3){
+                    console.info('点赞...');
+                    zan();
+                }
+            }, 1000);
 
-	        startAni();
-	    }).on('touchend', function(eve){
-	        clearInterval(timer);
-	        timer = null;
-	        stopAni();
-	    });
+            startAni();
+        }).on('touchend', function(eve){
+            clearInterval(timer);
+            timer = null;
+            stopAni();
+        });
 
         function getURL(url){
             return location.protocol + "//" + location.hostname + url
         }
 
-	    // 预览图片
-	    $('#j-imgs').on('click', 'img', function(eve){
-	    	// eve.preventDefault();
+        // 预览图片
+        $('#j-imgs').on('click', 'img', function(eve){
+            // eve.preventDefault();
             var imgs = $('#j-imgs').data('images');
             var urls = [];
             $.each(imgs, function(index, element){
                 urls.push(getURL(element))
             })
-	    	wx.previewImage({
+            wx.previewImage({
                 current: getURL($(this).attr('src')),
                 urls: urls
             });
-	    });
+        });
 
         // 评论
         $('#j-discuss').on('click', function(eve){
@@ -59,6 +59,7 @@ $(function(){
                         commentUser: localStorage.getItem('userid') || ""
                     },
                     function(json){
+                        $('#j-text').val('');
                         alert('评论成功!');
                         loadDiscuss();
                     },
@@ -73,17 +74,17 @@ $(function(){
     }
 
     function loadData(){
-    	var xhr = utils.ajaxSendJSON(
-    		'/simi/user/userInfo.do',
-    		{
-    			id: utils.getQueryString('userid')
-    		},
-    		function(json){
-    			rendInfo(json.data);
-    			rendImages(json.data);
-    			rendVoice(json.data);
-    		}
-    	)
+        var xhr = utils.ajaxSendJSON(
+            '/simi/user/userInfo.do',
+            {
+                id: utils.getQueryString('userid')
+            },
+            function(json){
+                rendInfo(json.data);
+                rendImages(json.data);
+                rendVoice(json.data);
+            }
+        )
     }
 
     function loadDiscuss(){
@@ -99,56 +100,56 @@ $(function(){
     }
 
     function rendInfo(data){
-    	var baseInfo = data.baseInfo;
-    	var $holds = $('[data-holder]');
+        var baseInfo = data.baseInfo;
+        var $holds = $('[data-holder]');
 
-    	$holds.each(function(){
-    		var name = $(this).data('holder');
-    		if(baseInfo[name]){
-    			$(this).text(baseInfo[name])
-    		}
-    	})
+        $holds.each(function(){
+            var name = $(this).data('holder');
+            if(baseInfo[name]){
+                $(this).text(baseInfo[name])
+            }
+        })
     }
 
     function rendImages(data){
-    	var images = data.images;
-    	var html = [];
-    	$('#j-portrait').attr('src', images[0]);
+        var images = data.images;
+        var html = [];
+        $('#j-portrait').attr('src', images[0]);
 
-    	$.each(images, function(idx, ele){
-    		html.push('<span class="imgbox"><img src="' + ele + '" alt=""/></span>')
-    	});
+        $.each(images, function(idx, ele){
+            html.push('<span class="imgbox"><img src="' + ele + '" alt=""/></span>')
+        });
 
-    	$('#j-imgs').data('images', images).html(html.join(''));
+        $('#j-imgs').data('images', images).html(html.join(''));
     }
 
     function rendVoice(data){
-    	var id = data.voice.voiceId;
-    	var voiceId = '';
-    	$('#j-voice')
-    		//.data('id', id)
-    		.find('time').text(data.voice.time || 0 + '"')
-    		.end()
-    		.on('click', function(eve){
-    			eve.preventDefault();
-    			if(voiceId){
-    				playVoice(voiceId);
-    				return;
-    			}
-    			wx.downloadVoice({
-	                serverId: id,
-	                success: function(res){
-	                    playVoice(res.localId);
-	                    voiceId = res.localId;
-	                }
-	            });
-    		});
+        var id = data.voice.voiceId;
+        var voiceId = '';
+        $('#j-voice')
+            //.data('id', id)
+            .find('time').text(data.voice.time || 0 + '"')
+            .end()
+            .on('click', function(eve){
+                eve.preventDefault();
+                if(voiceId){
+                    playVoice(voiceId);
+                    return;
+                }
+                wx.downloadVoice({
+                    serverId: id,
+                    success: function(res){
+                        playVoice(res.localId);
+                        voiceId = res.localId;
+                    }
+                });
+            });
 
-    	function playVoice(id){
-    		wx.playVoice({
+        function playVoice(id){
+            wx.playVoice({
                 localId: id
             });
-    	}
+        }
     }
 
     function rendDiscuss(data){
@@ -158,7 +159,7 @@ $(function(){
         var length = data.length;
         $.each(data, function(index, element){
             html.push('<li>' +
-                        '<span class="portrait"></span>' + 
+                        '<span class="portrait"></span>' +
                         '<div class="info">' +
                             '<div class="userName">' +
                                 '<i class="storey">' + (length - index) + '楼</i>' +
@@ -174,19 +175,27 @@ $(function(){
 
     function zan(){
         stopAni();
-        utils.ajaxSend(
-        	'/simi/user/zan.do',
-        	{
-        		id: utils.getQueryString('userid')
-        	},
-        	function(json){
+        utils.ajaxSendJSON(
+            '/simi/user/praise.do',
+            {
+                beZanUserId: utils.getQueryString('userid'),
+                zanUserId: localStorage.getItem('userid')
+            },
+            function(json){
+                //TODO 点赞成功后处理
                 $('#j-zan-tips').text('点赞成功');
                 $('#j-scan').off('touchstart touchend');
+                updatePrice(json.data.price);
             },
-            function(){
-                $('#j-zan-tips').text('点赞失败')
+            function(msg){
+                alert(msg);
+                //$('#j-zan-tips').text('点赞失败')
             }
         )
+    }
+
+    function updatePrice(price) {
+        $('[data-holder="price"]').text(price)
     }
 
     function startAni(){

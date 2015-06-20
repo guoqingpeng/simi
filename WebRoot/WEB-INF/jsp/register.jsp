@@ -68,6 +68,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="rows">
+                <span class="label">类型：</span>
+                <div class="label-info">
+                    <span  class="ipt-box">
+                    <label>
+                        <input type="radio" name="userType" value="1">
+                        乘务
+                    </label>
+                    <label>
+                        <input type="radio" name="userType" value="2">
+                        非乘务
+                    </label>
+                    </span>
+                    <br/>
+                    <span class="tips">乘务员必填公司简称，例：东航</span>
+                </div>
+            </div>
+            <div class="rows">
                 <span class="label">职业：</span>
                 <div class="label-info">
                     <span  class="ipt-box">

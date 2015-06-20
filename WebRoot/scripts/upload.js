@@ -18,14 +18,14 @@ $(function(){
             success: function(res){
                 var localIds = res.localIds;
                 var localId = images.localId;
-                alert('lcaID::::::' + localId)
+                //alert('lcaID::::::' + localId)
                 localId = localId.concat(localIds);
 
                 localId = localId.slice(0, 8);
-                alert(res.localIds.length + '/' + localId.length)
+                //alert(res.localIds.length + '/' + localId.length)
                 $('.m-portraitPic').empty();
                 for(var i = 0, len = localId.length; i < len; i++) {
-                    $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="' 
+                    $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="'
                         + localId[i] + '" alt=""/></span>');
                 }
 
@@ -78,7 +78,7 @@ $(function(){
             });
         }
         isRecording = !isRecording;
-    }).on('touchend-', function(eve){
+    })/*.on('touchend-', function(eve){
         eve.preventDefault();
         wx.stopRecord({
             success: function(res){
@@ -90,13 +90,13 @@ $(function(){
                 alert(JSON.stringify(res));
             }
         });
-    });
+    });*/
 
     // 保存
     var params = {
         id: utils.getQueryString('userid')
     }
-    
+
     $('#j-save').click(function(eve){
         eve.preventDefault();
 
@@ -137,7 +137,7 @@ $(function(){
                 fail: function (res) {
                     alert(JSON.stringify(res));
                 }
-            });     
+            });
         }
     }
 
