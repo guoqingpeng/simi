@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-title">
             <div class="portal">
                 <span class="info">
-                    <a href="###" class="cw-item active" data-type="0">乘务组</a>
+                    <a href="###" class="cw-item" data-type="0">乘务组</a>
                     <a href="###" class="cw-item" data-type="1">非乘务组</a>
                 </span>
             </div>
@@ -108,7 +108,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
     <script src="/simi/scripts/utils.js" charset="utf-8"></script>
     <script src="/simi/scripts/index.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../scripts/slider/scroll.js"></script>
+    <script type="text/javascript" src="/simi/scripts/slider/TouchSlide.1.1.js"></script>
     <script type="text/javascript">
     if(document.getElementById("J_slide")){
     var J_slide = new ScrollPic();

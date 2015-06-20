@@ -62,6 +62,6 @@ $(function(){
             )
         });
 
-        $('#j-per-list').append(html.join(''))
+        $('#j-per-list').html(html.join(''))
     }
 });
