@@ -256,19 +256,14 @@ public class UserControlller {
 	   //获取用户的列表
 	   JSONObject ret = new JSONObject();
 	   String type = obj.getString("type");
-	   Map<String, Object> o1= new HashMap<String, Object>();
-	   o1.put("name", "zhangsan");
-	   o1.put("age", 10);
+	   int page = obj.getInt("page");
 	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
-	   users = userService.getUserList(type, 1);
-	   
-	   Map<String, Object> o2= new HashMap<String, Object>();
-	   o2.put("uList",users);
-	   
+	   users = userService.getUserList(type, page);
+	   Map<String, Object> datas= new HashMap<String, Object>();
+	   datas.put("uList",users);
 	   ret.put("ret", true);
-	   ret.put("data", o2);
+	   ret.put("data", datas);
 	   System.out.println(ret);
 	   return ret;
    }
-   
 }

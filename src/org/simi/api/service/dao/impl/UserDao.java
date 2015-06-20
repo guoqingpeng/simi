@@ -337,11 +337,18 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
-		sqlBuffer.append("  WHERE u.userType = ? GROUP by u.id limit ?,?");
 		
+		
+		if (!"0".equals(type)) {
+			//按照类型返回数据
+			sqlBuffer.append("  WHERE u.userType = ? GROUP by u.id limit ?,?");
+			comList = jdbcTemplate.queryForList(sqlBuffer.toString(), type,beginIndex,CommonUtil.PER_PAGE);
+		}else {
+			//0代表返回所有类型的数据
+			sqlBuffer.append("  GROUP by u.id limit ?,?");
+			comList = jdbcTemplate.queryForList(sqlBuffer.toString(), beginIndex,CommonUtil.PER_PAGE);
+		}
 		System.out.println(sqlBuffer.toString());
-		comList = jdbcTemplate.queryForList(sqlBuffer.toString(), type,beginIndex,CommonUtil.PER_PAGE);
-		
 		if (comList !=null && comList.size() > 0) {
 			return comList;
 		}else {
