@@ -55,9 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </ul>
                     </li>
                 </ul>
-                <ul id="j-quiz">
+                <div id="j-quiz">
 
-                </ul>
+                </div>
             </div>
             <div class="m-decisive-ft">
                   <button class="g-btn g-btn-s g-btn-commit"><span>提 交</span></button>

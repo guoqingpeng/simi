@@ -30,9 +30,9 @@
         answersIteratorIndex;
         superContainer.addClass('main-quiz-holder');
         for (questionsIteratorIndex = 0; questionsIteratorIndex < config.questions.length; questionsIteratorIndex++) {
-            contentFob += '<div class="slide-container"><div class="question-number">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div><div class="question">' + config.questions[questionsIteratorIndex].question + '</div><ul class="answers">';
+            contentFob += '<div class="slide-container"><div class="question-number">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div><h4 class="question">' + config.questions[questionsIteratorIndex].question + '</h4><ul class="answers next">';
             for (answersIteratorIndex = 0; answersIteratorIndex < config.questions[questionsIteratorIndex].answers.length; answersIteratorIndex++) {
-                contentFob += '<li>' + config.questions[questionsIteratorIndex].answers[answersIteratorIndex] + '</li>';
+                contentFob += '<li><label><input type="radio">' + config.questions[questionsIteratorIndex].answers[answersIteratorIndex] + '</label></li>';
             }
             contentFob += '</ul><div class="nav-container">';
             if (questionsIteratorIndex !== 0) {
@@ -183,7 +183,7 @@
                 resultSet += '</ul></div></div>';
             }
             score = roundReloaded(trueCount / questionLength * 100, 2);
-            
+
             resultSet = '<h2 class="qTitle">' + judgeSkills(score) + '<br/> 您的分数： ' + score + '</h2>' + shareButton + '<div class="jquizzy-clear"></div>' + resultSet + '<div class="jquizzy-clear"></div>';
             superContainer.find('.result-keeper').html(resultSet).show(500);
             superContainer.find('.resultsview-qhover').hide();
