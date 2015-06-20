@@ -317,10 +317,8 @@ public class UserDao {
 	public List<Map<String, Object>> getUsersByType(String type,int page){
 		
 		List<Map<String, Object>> comList = null;
-		//第一条数据
-		int beginIndex = (page-1)*CommonUtil.PER_PAGE;
-		String sql = "SELECT name,age FROM t_user   where userType = ? limit ?,?";
-		
+		//该页下第一条数据
+		int beginIndex = (page-1)*CommonUtil.PER_PAGE;		
 		StringBuffer sqlBuffer = new StringBuffer();
 		sqlBuffer.append(" select f.local_path filePath ");
 		sqlBuffer.append(", IFNULL(u.id,'') id");
@@ -341,11 +339,11 @@ public class UserDao {
 		
 		if (!"0".equals(type)) {
 			//按照类型返回数据
-			sqlBuffer.append("  WHERE u.userType = ? GROUP by u.id limit ?,?");
+			sqlBuffer.append("  WHERE u.userType = ? GROUP by u.id ORDER BY u.price  DESC limit ?,?");
 			comList = jdbcTemplate.queryForList(sqlBuffer.toString(), type,beginIndex,CommonUtil.PER_PAGE);
 		}else {
 			//0代表返回所有类型的数据
-			sqlBuffer.append("  GROUP by u.id limit ?,?");
+			sqlBuffer.append("  GROUP by u.id ORDER BY u.price  DESC limit ?,?");
 			comList = jdbcTemplate.queryForList(sqlBuffer.toString(), beginIndex,CommonUtil.PER_PAGE);
 		}
 		System.out.println(sqlBuffer.toString());
