@@ -109,21 +109,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="/simi/scripts/utils.js" charset="utf-8"></script>
     <script src="/simi/scripts/index.js" charset="utf-8"></script>
     <script type="text/javascript" src="/simi/scripts/slider/TouchSlide.1.1.js"></script>
-    <script type="text/javascript">
-    if(document.getElementById("J_slide")){
-    var J_slide = new ScrollPic();
-    var num = document.body.clientWidth;
-
-    J_slide.scrollContId   = "J_slide"; //内容容器ID
-    J_slide.dotListId      = "J_page";//点列表ID
-    J_slide.dotOnClassName = "selected";
-    J_slide.frameWidth     = 320;
-    J_slide.pageWidth      = 320;
-    J_slide.upright        = false;
-    J_slide.speed          = 10;
-    J_slide.space          = 30;
-    J_slide.initialize(); //初始化
-    }
-    </script>
 </body>
 </html>
