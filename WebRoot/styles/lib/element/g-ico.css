@@ -5,35 +5,35 @@
 * @update: 2014/11/18
 */
 
-.g-ico { display: inline-block; vertical-align: middle; background-image: url(../../../bgimg/bg_1x.png); text-indent: -9999px; background-repeat: no-repeat; }
+.g-ico { display: inline-block; vertical-align: middle; background: url(../../../bgimg/bg_1x.png); text-indent: -9999px; background-repeat: no-repeat; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
     .g-ico {
-        background-image: url(../../../bgimg/bg_2x.png);
+        background: url(../../../bgimg/bg_2x.png);
         background-size: 100px 100px;
     }
     .m-ranking .item .cloud{
         background-image: url(../../../bgimg/cloud_2x.png);
-        background-size: 152px 240px;
+        background-size: 152px 24px;
     }
     .m-title{
-        background-image: url(../../../bgimg/rhombus_2x.png);
+        background:#006ddd url(../../../bgimg/rhombus_2x.png);
         background-size: 320px 38px;
     }
-    .m-title:after{
-        background-image: url(../../../bgimg/bg_2x.png);
+    /*.m-title:after{
+        background: url(../../../bgimg/bg_2x.png);
         background-size: 100% 5px;
-    }
+    }*/
     .m-hits{
-        background-image: url(../../../bgimg/trapezoid_2x.png);
+        background: url(../../../bgimg/trapezoid_2x.png);
         background-size: 320px 134px;
     }
     .m-portrait .fingerprint{
-        background-image: url(../../../bgimg/fingerprint_2x.png);
-        background-size: 320px 134px;
+        background: url(../../../bgimg/fingerprint_2x.png);
+        background-size: 82px 96px;
     }
     .m-discuss .portrait{
-        background-image: url(../../../bgimg/logo_2x.png);
+        background: url(../../../bgimg/logo_2x.png);
         background-size: 37px 37px;
     }
 }
@@ -56,5 +56,5 @@
 .g-ico-suona{
     width: 46px;
     height: 29px;
-    background-position: -15px -37px;
+    background-position: 0 -37px;
 }

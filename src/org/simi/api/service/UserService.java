@@ -168,7 +168,7 @@ public class UserService {
 		    JSONObject ret = new JSONObject();
 		    
 		    //校验是否重复点赞
-		    if (!"".equals(zanUserId)&&!userDao.isUserPraised(zanUserId, beZandUser)) {
+		    if (!"".equals(zanUserId)&&userDao.isUserPraised(zanUserId, beZandUser)) {
 				
 		    	ret.put("ret", false);
 				ret.put("errmsg", "你已经点赞了哦");
@@ -176,14 +176,21 @@ public class UserService {
 			}
 		    
 		    //保存点赞
-		    userDao.saveCommnet(zanUserId, beZandUser, "");
+		    userDao.saveDianZan(zanUserId, beZandUser, "");
 		    //返回点赞总数
 		    int zanCount = 0;
 		    zanCount = getUserZanCount(beZandUser);
+		    
+		    Map<String, Object> datas = new HashMap<String, Object>();
+		    
+		    //点赞成功之后，给用户的身价添加10分TODO
+		    datas.put("zanCount", zanCount);
+		    datas.put("price", "100");
 			ret.put("ret", true);
 			ret.put("errmsg", "");
-			ret.put("data", zanCount);
+			ret.put("data", datas);
 			return ret;
+			
 		}
 	   
 	   

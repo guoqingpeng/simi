@@ -25,7 +25,10 @@
     left: 0;
     right: 0;
     content: "";
-    background: url("../../bgimg/bg_1x.png") left top repeat-x;
+    background: url("../../bgimg/bg_1x.png");
+    background-position:  left 1px;
+    background-repeat:  repeat-x;
+
 }
 .m-title .portal {
     float: right;
@@ -49,7 +52,7 @@
     min-width: 65px;
     color: #fff;
 }
-.m-title .portal .info a:hover,.active {
+.m-title .portal .info a:hover,.m-title .active {
     background-color: #093f7f;
     border-radius: 11px;
     -webkit-border-radius: 11px;

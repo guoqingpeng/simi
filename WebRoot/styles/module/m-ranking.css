@@ -15,6 +15,16 @@
     margin: 15px 4.666% 15px;
     color: #fff;
 }
+
+.m-ranking .item .cloud{
+    position: absolute;
+    left: -11px;
+    bottom: -17px;
+    display: block;
+    width: 152px;
+    height: 24px;
+    background-image: url(../../bgimg/cloud_1x.png);
+}
 /* 内容 */
 .m-ranking .item{
     position: relative;

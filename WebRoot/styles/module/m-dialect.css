@@ -33,6 +33,7 @@
     font-size: 22px;text-align: right;
 }
 .m-dialect .title-info time{
+    line-height: 41px;
     padding-right: 20px;
 }
 /* 文案 */
@@ -73,8 +74,8 @@
     color: #fff;
 }
 .m-dialect .recording{
-    margin-top: -18.9px;
-    margin-left: -18.9px;
+    /*margin-top: -18.9px;
+    margin-left: -18.9px;*/
     width: 155px;
     height: 155px;
     background-color: rgba(0, 0, 0, .8);
@@ -84,4 +85,7 @@
     height: 65.5px;
     background: url( ../../bgimg/mike_2x.png) no-repeat;
     background-size: 42.5px 65.5px;
+}
+.m-dialect .mt10{
+    margin-top: 10px;
 }

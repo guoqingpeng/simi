@@ -45,8 +45,9 @@ public class UserDao {
 		insertSqlBuffer.append(",hobby");
 		insertSqlBuffer.append(",sex");
 		insertSqlBuffer.append(",anouncement");
+		insertSqlBuffer.append(",userType");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		//返回的用户的数据的id
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -70,6 +71,7 @@ public class UserDao {
 				pStatement.setString(11,(String)user.get("hobby"));
 				pStatement.setString(12,(String)user.get("sex"));
 				pStatement.setString(13,(String)user.get("anouncement"));
+				pStatement.setString(14, (String)user.get("userType"));
 				return pStatement;
 			}},keyHolder);
 		System.out.println("返回来的注册的id"+keyHolder.getKey().intValue());
@@ -265,8 +267,8 @@ public class UserDao {
 		//文件sql文
 		final StringBuffer insertSqlBuffer = new StringBuffer();
 		insertSqlBuffer.append(" INSERT INTO t_dianzan(");
-		insertSqlBuffer.append("  comment_user");
-		insertSqlBuffer.append(", be_commented_user");
+		insertSqlBuffer.append("  pk_praise_user");
+		insertSqlBuffer.append(", pk_be_prised_user");
 		insertSqlBuffer.append(", device_id)VALUES(");
 		insertSqlBuffer.append("?,?,?)");
 		System.out.println(insertSqlBuffer.toString());
@@ -283,8 +285,9 @@ public class UserDao {
 		
 		StringBuffer zanSql =new StringBuffer();
      	zanSql.append("SELECT count(*) from t_dianzan WHERE  pk_praise_user = ? and pk_be_prised_user = ?");
+     	System.out.println(zanSql.toString());
      	int zanCount = 0;
-     	zanCount = jdbcTemplate.queryForInt(zanSql.toString(),zanCount,beZanUser );
+     	zanCount = jdbcTemplate.queryForInt(zanSql.toString(),zanUserId,beZanUser );
 		return zanCount >0 ? true:false;
 	}
 	
