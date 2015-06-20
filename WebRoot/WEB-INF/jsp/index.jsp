@@ -26,14 +26,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="doc">
     <div class="doc-bd index">
         <!-- 轮播图 -->
-        <div class="m-pic">
-            <div id="J_slide">
-                <div class="imgbox"><a href="#"><img src="../img/img1.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img9.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img6.jpg" alt=""/></a></div>
-                <div class="imgbox"><a href="#"><img src="../img/img5.jpg" alt=""/></a></div>
+        <div id="slideBox" class="m-pic">
+            <div class="picbox">
+                <ul>
+                    <li><a href="ask.html"><img src="../img/img1.jpg" alt=""/></a></li>
+                    <li><a href="###"><img src="../img/img5.jpg" alt=""/></a></li>
+                    <li><a href="###"><img src="../img/img6.jpg" alt=""/></a></li>
+                </ul>
             </div>
-            <div class="state" id="J_page"></div>
+            <div class="state">
+                <ul></ul>
+            </div>
         </div>
         <!-- /轮播图 -->
         <!-- 人气排名 -->

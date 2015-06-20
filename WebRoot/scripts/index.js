@@ -6,7 +6,7 @@ $(function(){
     initEvent();
 
     TouchSlide({
-        slideCell:"#slideBox",
+        slideCell:"#J_slide",
         titCell:".state ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
         mainCell:".picbox ul",
         effect:"leftLoop",
