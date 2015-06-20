@@ -16,15 +16,37 @@ $(function(){
     var html = [];
     $.each(timus, function(idx, ele){
         html.push('<li>' +
-            '<h4>' + idx + '：' + ele.question + '</h4>' +
+            '<h4>' + (idx + 1) + ': ' + ele.question + '</h4>' +
             '<ul class="next">' +
-                '<li><label ><input type="radio" name="a" checked/>A. RVML</label></li>' +
-                '<li><label ><input type="radio" name="a"/>B. IDML</label></li>' +
-                '<li><label ><input type="radio" name="a"/>C. HNML</label></li>' +
-                '<li><label ><input type="radio" name="a"/>D. MSML</label></li>' +
+                getItems(ele, idx) +
             '</ul>' +
         '</li>');
     });
 
-    
+    $('#j-quiz').html(html.join(''));
+
+    $('#j-enter').click(function(eve){
+        eve.preventDefault();
+        var answers = getAnswers();
+    })
+
+    function getItems(ele, index){
+        var item = [];
+        $.each(ele.answers, function(i, e){
+            item.push('<li><label ><input type="radio" name="f_' + index + '" value="' + i + '"/>' + String.fromCharCode(65 + i) + ': ' + e + '</label></li>')
+        });
+
+        return item.join('')
+    }
+
+    function getAnswers() {
+        var ans = [];
+        var $fm = $('form');
+
+        for(var i=0; i<total; i++){
+            ans.push($fm.find('f_' + i).filter(':checked').val());
+        }
+
+        return ans
+    }
 });

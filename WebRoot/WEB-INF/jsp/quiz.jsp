@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </ul>
             </div>
             <div class="m-decisive-ft">
-                  <button class="g-btn g-btn-s g-btn-commit"><span>提 交</span></button>
+                  <button id="j-enter" class="g-btn g-btn-s g-btn-commit"><span>提 交</span></button>
             </div>
             </form>
         </div>
