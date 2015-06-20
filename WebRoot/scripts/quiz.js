@@ -1,10 +1,10 @@
 $(function(){
     var timus = [];
     var length = timu.length;
-    var total = 3;
+    var total = 4;
     var index = 0;
-
-    while(total--){
+    var j = total;
+    while(j--){
         index = Math.floor(Math.random() * length--);
         timus.push(timu.splice(index, 1)[0])
     }
@@ -27,7 +27,13 @@ $(function(){
 
     $('#j-enter').click(function(eve){
         eve.preventDefault();
+
         var answers = getAnswers();
+        var rightAns = getCorrectAnswers();
+        var score = getScore(answers, rightAns);
+        //alert(answers + "   " + rightAns + "  " + score);
+        $(this).hide();
+        alert('您的得分是: ' + score)
     })
 
     function getItems(ele, index){
@@ -44,9 +50,40 @@ $(function(){
         var $fm = $('form');
 
         for(var i=0; i<total; i++){
-            ans.push($fm.find('f_' + i).filter(':checked').val());
+            ans.push($fm.find('[name="f_' + i + '"]').filter(':checked').val());
         }
 
         return ans
+    }
+
+    function getCorrectAnswers() {
+        var ans = [];
+        var ques = timus;
+        var code = 0;
+        for(var i=0, len = ques.length; i<len; i++){
+            code = ques[i].correctAnswer.charCodeAt(0) - 65;
+            ans.push(code);
+        }
+
+        return ans
+    }
+
+    function getScore(answers, rightAns){
+        var len = rightAns.length;
+        var score = 0;
+        var base = 100 / len;
+        if(len > answers){
+            alert('请认真答完题再提交');
+            return -1;
+        }
+
+        $.each(rightAns, function(i, e){
+            if(e == answers[i]){
+                score += base;
+            }
+        })
+
+        score = Math.ceil(score);
+        return score
     }
 });
