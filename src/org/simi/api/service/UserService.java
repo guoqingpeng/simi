@@ -222,7 +222,7 @@ public class UserService {
 		   Map<String, Object> datas = new HashMap<String, Object>();
 		   ret.put("ret", true);
 		   datas.put("ulist", comList);
-		   //分页处理
+		   //TODO 总页数分页处理 暂时不做
 		   if (comList !=null && comList  .size() > 0) {
 			   
 		   }
