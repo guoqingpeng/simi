@@ -30,7 +30,7 @@
         answersIteratorIndex;
         superContainer.addClass('main-quiz-holder');
         for (questionsIteratorIndex = 0; questionsIteratorIndex < config.questions.length; questionsIteratorIndex++) {
-            contentFob += '<div class="slide-container"><div class="question-number">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div><h4 class="question">' + config.questions[questionsIteratorIndex].question + '</h4><ul class="answers next">';
+            contentFob += '<div class="slide-container"><div class="question-number">' + (questionsIteratorIndex + 1) + '/' + config.questions.length + '</div><h4 class="question">' + (questionsIteratorIndex + 1) + ': ' +config.questions[questionsIteratorIndex].question + '</h4><ul class="answers next">';
             for (answersIteratorIndex = 0; answersIteratorIndex < config.questions[questionsIteratorIndex].answers.length; answersIteratorIndex++) {
                 contentFob += '<li><label><input type="radio">' + config.questions[questionsIteratorIndex].answers[answersIteratorIndex] + '</label></li>';
             }
@@ -130,6 +130,7 @@
             return false;
         });
         superContainer.find('.final').click(function() {
+            debugger
             if ($(this).parents('.slide-container').find('li.selected').length === 0) {
                 notice.fadeIn(300);
                 return false;

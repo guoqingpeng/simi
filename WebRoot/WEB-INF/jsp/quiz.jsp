@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <form action="">
             <div class="m-decisive-bd">
-                <ul>
+                <ul id="j-quiz">
                     <li>
                         <h4>1：特殊餐食中印度餐的代码为（  ）</h4>
                         <ul class="next">
@@ -55,9 +55,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </ul>
                     </li>
                 </ul>
-                <div id="j-quiz">
-
-                </div>
             </div>
             <div class="m-decisive-ft">
                   <button class="g-btn g-btn-s g-btn-commit"><span>提 交</span></button>
@@ -95,7 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <!-- /提交引导 -->
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="/simi/scripts/lib/quiz.js"></script>
+<%-- <script type="text/javascript" src="/simi/scripts/lib/quiz.js"></script> --%>
 <script type="text/javascript" src="/simi/scripts/timu.js"></script>
 <script type="text/javascript" src="/simi/scripts/quiz.js"></script>
 </body>
