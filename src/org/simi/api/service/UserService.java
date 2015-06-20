@@ -113,32 +113,6 @@ public class UserService {
 	   }
 	   
 	   /**
-	    * 获取用户下关联的所有的评论
-	    * @param userId
-	    * @return
-	    */
-	   public List<Object> getUserCommnets(String userId){
-		   
-		   List<Object> comList = new ArrayList<Object>();
-		   comList = userDao.getUsercommnets(userId);
-		   return comList;
-		   
-	   }
-	   
-	   /**
-	    * 获取用户的所有点赞数
-	    * @param userId
-	    * @return
-	    */
-	   public int getUserZanCount(String userId){
-		   
-		   int dianzanCount =0 ;
-		   dianzanCount = userDao.getDianzanCountByUserId(userId);
-		   return dianzanCount;
-		   
-	   }
-	   
-	   /**
 	    * 保存用户的评论
 	    * @param user
 	    * @return
@@ -155,8 +129,75 @@ public class UserService {
 		    userDao.saveCommnet(commentUser, beCommentedUser, content);
 			ret.put("ret", true);
 			return ret;
+			
 		}
-	    
 	   
+	   /**
+	    * 获取用户下关联的所有的评论
+	    * @param userId
+	    * @return
+	    */
+	   public List<Object> getUserCommnets(String userId){
+		   
+		   List<Object> comList = new ArrayList<Object>();
+		   comList = userDao.getUsercommnets(userId);
+		   return comList;
+		   
+	   }
+	   
+	   /**
+	    * 保存用户的赞
+	    * 并且返回点赞的总数
+	    * @param user
+	    * @return
+	    */
+	   public  JSONObject saveZan(JSONObject zan){
+			 
+		    //点赞者唯一标识符 游客的重复赞暂时不处理
+		    // String zanDeviceId = zan.getString("deviceId");
+		    
+		    //被赞者id
+		    String beZandUser = zan.getString("beZanUserId");
+		    
+		    //点赞者的id
+		    String zanUserId = "";
+		    if(zan.containsKey("zanUserId")){
+		    	zanUserId = zan.getString("zanUserId");
+		    }
+		    
+		    JSONObject ret = new JSONObject();
+		    
+		    //校验是否重复点赞
+		    if (!"".equals(zanUserId)&&!userDao.isUserPraised(zanUserId, beZandUser)) {
+				
+		    	ret.put("ret", false);
+				ret.put("errmsg", "你已经点赞了哦");
+				return ret;
+			}
+		    
+		    //保存点赞
+		    userDao.saveCommnet(zanUserId, beZandUser, "");
+		    //返回点赞总数
+		    int zanCount = 0;
+		    zanCount = getUserZanCount(beZandUser);
+			ret.put("ret", true);
+			ret.put("errmsg", "");
+			ret.put("data", zanCount);
+			return ret;
+		}
+	   
+	   
+	   /**
+	    * 获取用户的所有点赞数
+	    * @param userId
+	    * @return
+	    */
+	   public int getUserZanCount(String userId){
+		   
+		   int dianzanCount =0 ;
+		   dianzanCount = userDao.getDianzanCountByUserId(userId);
+		   return dianzanCount;
+		   
+	   }
 	   
 }

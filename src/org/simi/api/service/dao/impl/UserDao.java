@@ -218,25 +218,6 @@ public class UserDao {
 		
 	}
 	
-	/**
-	 * 点赞保存
-	 * @param commentUser
-	 * @param beCommentedUser
-	 * @param comment
-	 */
-	public void saveDianZan(String commentUser,String beCommentedUser,String comment){
-		
-		//文件sql文
-		final StringBuffer insertSqlBuffer = new StringBuffer();
-		insertSqlBuffer.append(" INSERT INTO t_dianzan(");
-		insertSqlBuffer.append("  comment_user");
-		insertSqlBuffer.append(", be_commented_user");
-		insertSqlBuffer.append(", comment)VALUES(");
-		insertSqlBuffer.append("?,?,?)");
-		System.out.println(insertSqlBuffer.toString());
-		jdbcTemplate.update(insertSqlBuffer.toString(), new Object[]{commentUser,beCommentedUser,comment});
-		
-	}
 	
 	/**
 	 * 获取用户的所有的评论
@@ -248,8 +229,6 @@ public class UserDao {
      	StringBuffer comSql =new StringBuffer();
      	
      	//游客评论
- 		
-     	
      	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,c.comment comment FROM ");
  		comSql.append("t_comment c INNER JOIN t_user u ");
      	comSql.append("WHERE c.be_commented_user = '"+userId+"'");
@@ -275,18 +254,51 @@ public class UserDao {
     	return comments;
 	}
 	
+	/**
+	 * 点赞保存
+	 * @param commentUser
+	 * @param beCommentedUser
+	 * @param comment
+	 */
+	public void saveDianZan(String commentUser,String beCommentedUser,String comment){
+		
+		//文件sql文
+		final StringBuffer insertSqlBuffer = new StringBuffer();
+		insertSqlBuffer.append(" INSERT INTO t_dianzan(");
+		insertSqlBuffer.append("  comment_user");
+		insertSqlBuffer.append(", be_commented_user");
+		insertSqlBuffer.append(", device_id)VALUES(");
+		insertSqlBuffer.append("?,?,?)");
+		System.out.println(insertSqlBuffer.toString());
+		jdbcTemplate.update(insertSqlBuffer.toString(), new Object[]{commentUser,beCommentedUser,comment});
+		
+	}
+	
+	/**
+	 * 校验用户是否重复点赞
+	 * @param userId
+	 * @return
+	 */
+	public Boolean  isUserPraised(String zanUserId,String beZanUser){
+		
+		StringBuffer zanSql =new StringBuffer();
+     	zanSql.append("SELECT count(*) from t_dianzan WHERE  pk_praise_user = ? and pk_be_prised_user = ?");
+     	int zanCount = 0;
+     	zanCount = jdbcTemplate.queryForInt(zanSql.toString(),zanCount,beZanUser );
+		return zanCount >0 ? true:false;
+	}
 	
 	/**
 	 * 获取用户的所有的点赞数
 	 * @param userId
 	 * @return
 	 */
-	public int getDianzanCountByUserId(String userId){
+	public int getDianzanCountByUserId(String beZanUser){
 		
 		StringBuffer zanSql =new StringBuffer();
-     	zanSql.append("SELECT count(*) from t_comment WHERE  be_commented_user = ?");
+     	zanSql.append("SELECT count(*) from t_dianzan WHERE  pk_be_prised_user = ?");
      	int zanCount = 0;
-     	zanCount = jdbcTemplate.queryForInt(zanSql.toString(), userId);
+     	zanCount = jdbcTemplate.queryForInt(zanSql.toString(), beZanUser);
 		return zanCount;
 
 	}

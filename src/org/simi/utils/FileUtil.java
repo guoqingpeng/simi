@@ -67,8 +67,6 @@ public class FileUtil {
 	 */
 	public static void upLoadFileToUrl(String fileUrl){
 		
-		
-		
 	}
 
 }

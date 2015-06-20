@@ -11,7 +11,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.simi.api.service.UserService;
@@ -24,8 +23,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import sun.rmi.runtime.NewThreadAction;
 
 @Controller
 @RequestMapping("/user")
@@ -219,5 +216,20 @@ public class UserControlller {
    }
    
    
-  
+   /**
+    * 如果没有重复赞，则返回赞的总数
+    * 如果重复赞了，则返回错误信息
+    * @param zan
+    * @return
+    */
+   @RequestMapping(value = "/praise",method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject saveZan(@RequestBody JSONObject zan){
+
+	   JSONObject ret = new JSONObject();
+	   ret = userService.saveZan(zan);
+	   return ret;
+	   
+   }
+   
 }
