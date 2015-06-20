@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="rows">
                         <span class="title">星座: </span>
                         <div class="info w1" data-holder="xinzuo">
-                            
+
                         </div>
                     </div>
                     <div class="rows">
@@ -103,8 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="info">
                 <div class="btn-box">
-                    <a href="crewList.html" class="g-btn g-btn-s g-btn-commit"><span>乘务组</span></a>
-                    <a href="notCrewList.html" class="g-btn g-btn-s g-btn-commit"><span>非乘务组</span></a>
+                    <a href="/simi/user/userListInit.do?type=1" class="g-btn g-btn-s g-btn-commit"><span>乘务组</span></a>
+                    <a href="/simi/user/userListInit.do?type=2" class="g-btn g-btn-s g-btn-commit"><span>非乘务组</span></a>
                 </div>
             </div>
         </div>
@@ -225,7 +225,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             ]
         });
     </script>
-	<script src="/simi/scripts/utils.js" charset="utf-8"></script>
-	<script src="/simi/scripts/personal.js" charset="utf-8"></script>
+    <script src="/simi/scripts/utils.js" charset="utf-8"></script>
+    <script src="/simi/scripts/personal.js" charset="utf-8"></script>
 </body>
 </html>
