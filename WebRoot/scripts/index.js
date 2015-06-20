@@ -3,13 +3,15 @@ $(function(){
     var type = 0;
 
     loadData();
+    loadRenQiStar();
     initEvent();
 
     TouchSlide({
-        slideCell:"#J_slide",
+        slideCell:"#slideBox",
         titCell:".state ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
         mainCell:".picbox ul",
         effect:"leftLoop",
+        interTime: 5000,
         autoPage:true,//自动分页
         autoPlay:true //自动播放
     });
@@ -21,7 +23,7 @@ $(function(){
     function initEvent(){
         $('.cw-item').on('click', function(eve){
             $('.cw-item').removeClass('active');
-            type = $(this).data('type').addClass('active');
+            type = $(this).addClass('active').data('type');
             loadData();
         });
     }
@@ -34,12 +36,25 @@ $(function(){
                 page: page
             },
             function(json){
-                rendInfo(json.data);
+                rendInfo('def', json.data);
             }
         )
     }
 
-    function rendInfo(data){
+    function loadRenQiStar(){
+        var xhr = utils.ajaxSendJSON(
+            '/simi/user/popularity.do',
+            {
+                type: type,
+                page: page
+            },
+            function(json){
+                rendInfo('rq', json.data);
+            }
+        )
+    }
+
+    function rendInfo(type, data){
         var temp = '<li>' +
             '<div class="item">' +
                 '<a href="/simi/user/personalInit.do?userid={{id}}">' +
@@ -56,12 +71,30 @@ $(function(){
                 '</a>' +
             '</div>' +
         '</li>';
+        var tempRQ = '<div class="item">' +
+            '<a href="/simi/user/personalInit.do?userid={{id}}">' +
+                '<p>' +
+                    '<i class="g-ico g-ico-crown"></i>' +
+                    '<img src="{{img}}" alt=""/>' +
+                '</p>' +
+                '<span class="name">{{name}}</span>' +
+            '</a>' +
+        '</div>'
 
         var html = [];
+        var tmpl = {
+            'rq': tempRQ,
+            'def': temp
+        }[type];
+        var selector = {
+            'def': '#j-per-list',
+            'rq': '#j-rq-list'
+        }[type]
+        debugger
 
         $.each(data.uList, function(index, ele){
             html.push(
-                temp.replace(/\{\{img\}\}/g, ele.filePath || '../img/img4.jpg')
+                tmpl.replace(/\{\{img\}\}/g, ele.filePath || '../img/img4.jpg')
                     .replace(/\{\{name\}\}/g, ele.name || '')
                     .replace(/\{\{id\}\}/g, ele.id || '')
                     .replace(/\{\{price\}\}/g, ele.price || 0)
@@ -71,6 +104,6 @@ $(function(){
             )
         });
 
-        $('#j-per-list').html(html.join(''))
+        $(selector).html(html.join(''))
     }
 });

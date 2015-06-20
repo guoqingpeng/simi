@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-title">
             <h2>人气之星</h2>
         </div>
-        <div class="m-hits">
+        <div class="m-hits" id="j-rq-list">
             <div class="item">
                 <a href="personal.html">
                     <p>
