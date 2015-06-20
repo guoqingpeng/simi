@@ -229,4 +229,27 @@ public class UserService {
 		   }
 		  return comList;
 	   }
+	   
+	   /**
+	    * 模糊匹配用户信息	    * 
+	    * @param type
+	    * @param page
+	    * @return
+	    */
+	   public List<Map<String, Object>>  getMokeUserList(String searchKey,int page){
+		   
+		   List<Map<String, Object>> comList = new ArrayList<Map<String,Object>>();
+		   comList = (List<Map<String, Object>>)userDao.getMokeUsers(searchKey, page);
+		   
+		   JSONObject ret = new JSONObject();
+		   Map<String, Object> datas = new HashMap<String, Object>();
+		   ret.put("ret", true);
+		   datas.put("ulist", comList);
+		   
+		   //TODO 总页数 暂时不做
+		   if (comList !=null && comList  .size() > 0) {
+			   
+		   }
+		  return comList;
+	   }
 }

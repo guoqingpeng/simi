@@ -355,4 +355,50 @@ public class UserDao {
 		
 	}
 	
+	
+	/**
+	 * 返回当前类型，当前页数下的用户列表
+	 * 当前页，总页数
+	 * @param type
+	 * @param page
+	 * @return
+	 */
+	public List<Map<String, Object>> getMokeUsers(String searchKey,int page){
+		
+		List<Map<String, Object>> comList = null;
+		//该页下第一条数据
+		int beginIndex = (page-1)*CommonUtil.PER_PAGE;		
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" select f.local_path filePath ");
+		sqlBuffer.append(", IFNULL(u.id,'') id");
+		sqlBuffer.append(", IFNULL(u.name,'') name");
+		sqlBuffer.append(", IFNULL(u.age,'') age");
+		sqlBuffer.append(", IFNULL(u.job,'') job");
+		sqlBuffer.append(", IFNULL(u.height,'') height");
+		sqlBuffer.append(", IFNULL(u.sanwei,'') sanwei");
+		sqlBuffer.append(", IFNULL(u.company,'') company");
+		sqlBuffer.append(", IFNULL(u.xinzuo,'') xinzuo");
+		sqlBuffer.append(", IFNULL(u.weibo,'') weibo");
+		sqlBuffer.append(", IFNULL(u.weixin,'') weixin");
+		sqlBuffer.append(", IFNULL(u.hobby,'') hobby");
+		sqlBuffer.append(", IFNULL(u.sex,'') sex");
+		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
+		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
+		
+		//按照类型返回数据
+		sqlBuffer.append("  WHERE name like  '%"+searchKey+ "%");
+		sqlBuffer.append("  OR nickName like  '%"+searchKey+ "%");
+		sqlBuffer.append("  OR job like  '%"+searchKey+ "%");
+	    sqlBuffer.append("GROUP by u.id ORDER BY u.price  DESC limit ?,?");
+		
+		comList = jdbcTemplate.queryForList(sqlBuffer.toString(),beginIndex,CommonUtil.PER_PAGE);
+		System.out.println(sqlBuffer.toString());
+		if (comList !=null && comList.size() > 0) {
+			return comList;
+		}else {
+			return new ArrayList<Map<String,Object>>();
+		}
+		
+	}
+	
 }

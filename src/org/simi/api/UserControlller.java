@@ -304,4 +304,25 @@ public class UserControlller {
 	   System.out.println(ret);
 	   return ret;
    }
+   
+   /**
+    * 模糊搜素用户
+    * @param comment
+    * @return
+    */
+   @RequestMapping(value = "/searchUsers",method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject getMokeUsers(@RequestBody JSONObject key){
+	   
+	    String searchKey = key.getString("searchKey");
+	    int page = key.getInt("page");
+	    JSONObject ret = new JSONObject();
+	    List<Map<String, Object>> comList = userService.getMokeUserList(searchKey, page);
+	    ret.put("ret", true);
+		ret.put("errmsg", "");
+		ret.put("data", comList);
+	    return ret;
+   }
+   
+   
 }
