@@ -171,8 +171,12 @@ public class UserControlller {
         e.printStackTrace();
        }finally {
            try {
-               fis.close();
-				os.close();
+        	   if (fis !=null) {
+        		   fis.close();
+			    }
+        	   if (os !=null) {
+        		    os.close();
+			    }
 				} catch (IOException e) {
 				e.printStackTrace();
 				}  
@@ -266,4 +270,5 @@ public class UserControlller {
 	   System.out.println(ret);
 	   return ret;
    }
+   
 }
