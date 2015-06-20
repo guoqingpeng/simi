@@ -177,6 +177,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
+    <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+    <script src="/simi/scripts/utils.js" charset="utf-8"></script>
+    <script src="/simi/scripts/index.js" charset="utf-8"></script>
     <script type="text/javascript" src="../scripts/slider/scroll.js"></script>
     <script type="text/javascript">
     if(document.getElementById("J_slide")){

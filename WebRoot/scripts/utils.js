@@ -138,5 +138,20 @@ window.utils = {
         opt.type = 'POST';
         params = $.type(params) === 'string' ? params : JSON.stringify(params, null, 4);
         return this.ajaxSend(url, params, fnDone, fnFail, opt)
+    },
+
+    "initNav": function(){
+        $('.m-foot').on('click', 'a', function(eve) {
+            var $next = $(this).nextAll('.next');
+            if($next.length){
+                eve.preventDefault();
+                eve.stopPropagation();
+                $next.toggle();
+            }
+        });
+
+        $(document.body).on('click', function(eve){
+            $('.m-foot .next').hide();
+        })
     }
 };

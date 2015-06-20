@@ -10,7 +10,7 @@
 /* 头像 */
 .m-portrait .portrait{
     overflow: hidden;
-    max-height: 134px;
+    height: 134px;
 }
 .m-portrait .portrait img{
     vertical-align: top;

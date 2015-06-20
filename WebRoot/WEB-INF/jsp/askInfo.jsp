@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>无节操问答</h2>
         </div>
         <div class="m-question">
-            <p class="title">1.假如你变成了女人或者男人你会做得第一件事是（⊙o⊙）啥？</p>
+            <p class="title" id="content"></p>
             <div class="imgbox"><img src="../img/img9.jpg" alt=""/></div>
         </div>
         <!-- /无节操问答 -->
@@ -40,11 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <textarea name="" placeholder="发表评论"></textarea>
             </div>
             <div class="btn-box">
-                <button class="btn-discuss">发表评论</button>
+                <button id="j-discuss" class="btn-discuss">发表评论</button>
             </div>
             <div class="list">
-                <ul>
-                    <li>
+                <ul id="j-dis-list">
+                    <!-- <li>
                         <span class="portrait"></span>
                         <div class="info">
                             <div class="userName">
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <p>信息评价作为信息素养内容的重要组成部分,</p>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
@@ -100,6 +100,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script src="/simi/scripts/utils.js" charset="utf-8"></script>
-<script src="/simi/scripts/ask.js" charset="utf-8"></script>
+<script src="/simi/scripts/askInfo.js" charset="utf-8"></script>
 </body>
 </html>

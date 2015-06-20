@@ -5,6 +5,8 @@ $(function(){
     initEvent();
     loadDiscuss();
 
+    utils.initNav();
+
     function initEvent(){
         // 点赞
         $('#j-scan').on('touchstart', function(eve){
