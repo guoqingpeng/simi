@@ -208,7 +208,8 @@ public class UserService {
 	   }
 	   
 	   /**
-	    * 
+	    * 根据类型返回用户列表
+	    * 0：所有，1：乘务组，2：非乘务组
 	    * @param type
 	    * @param page
 	    * @return
@@ -222,7 +223,7 @@ public class UserService {
 		   Map<String, Object> datas = new HashMap<String, Object>();
 		   ret.put("ret", true);
 		   datas.put("ulist", comList);
-		   //TODO 总页数分页处理 暂时不做
+		   //TODO 总页数 暂时不做
 		   if (comList !=null && comList  .size() > 0) {
 			   
 		   }

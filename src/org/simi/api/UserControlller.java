@@ -75,6 +75,25 @@ public class UserControlller {
         
     }
     
+	/**
+	 * 首页跳转初始化
+	 * 
+	 * @return
+	 */
+    @RequestMapping(value = "/mainInit", method = RequestMethod.GET)
+    public ModelAndView mainInit(){
+    	
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/index");
+        return modelAndView;
+        
+    }
+    
+    
+    
+    
+    
     /**
 	 * 初始化图片和音频上传的页面
 	 * 
