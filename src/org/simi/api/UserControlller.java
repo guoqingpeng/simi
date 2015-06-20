@@ -32,8 +32,7 @@ public class UserControlller {
 	private UserService userService;
 	
 	/**
-	 * 注册页面初始化
-	 * 
+	 *初始化注册页面 
 	 * @return
 	 */
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
@@ -46,7 +45,6 @@ public class UserControlller {
 	
 	/**
 	 * 用户注册
-	 * 
 	 * @param userInfo
 	 * @return 返回注册信息
 	 */
@@ -62,7 +60,6 @@ public class UserControlller {
 	
 	/**
 	 * 个人主页初始化页面
-	 * 
 	 * @return
 	 */
     @RequestMapping(value = "/personalInit", method = RequestMethod.GET)
@@ -77,7 +74,6 @@ public class UserControlller {
     
 	/**
 	 * 首页跳转初始化
-	 * 
 	 * @return
 	 */
     @RequestMapping(value = "/mainInit", method = RequestMethod.GET)
@@ -90,13 +86,8 @@ public class UserControlller {
         
     }
     
-    
-    
-    
-    
     /**
 	 * 初始化图片和音频上传的页面
-	 * 
 	 * @return
 	 */
     @RequestMapping(value = "/uploadInit", method = RequestMethod.GET)
@@ -111,7 +102,6 @@ public class UserControlller {
     
 	/**
 	 * 图片，文档上传
-	 * 
 	 * @param userInfo
 	 * @return 返回注册信息
 	 */
@@ -290,4 +280,28 @@ public class UserControlller {
 	   return ret;
    }
    
+   /**
+    * 返回人气之星数据
+    * 前三名数据
+    * @param type
+    * @return
+    */
+   @RequestMapping(value = "/popularity",method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject searchRenqiZX(@RequestBody JSONObject obj){
+	   
+	   //获取用户的列表
+	   JSONObject ret = new JSONObject();
+	   //int page = obj.getInt("page");
+	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
+	   users = userService.getUserList("0", 1);
+	   //人气之星前三名
+	   users = users.subList(0, 3);
+	   Map<String, Object> datas= new HashMap<String, Object>();
+	   datas.put("uList",users);
+	   ret.put("ret", true);
+	   ret.put("data", datas);
+	   System.out.println(ret);
+	   return ret;
+   }
 }

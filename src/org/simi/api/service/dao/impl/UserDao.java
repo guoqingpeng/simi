@@ -233,7 +233,7 @@ public class UserDao {
      	
      	//游客评论
      	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,c.comment comment FROM ");
- 		comSql.append("t_comment c INNER JOIN t_user u ");
+ 		comSql.append("t_comment c");
      	comSql.append("WHERE c.be_commented_user = '"+userId+"'");
      	comSql.append("AND c.comment_user ='' ");
      	comSql.append(" ORDER BY c.id desc)");
