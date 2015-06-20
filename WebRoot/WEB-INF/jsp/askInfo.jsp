@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-discuss">
             <div class="title">评论</div>
             <div class="push">
-                <textarea name="" placeholder="发表评论"></textarea>
+                <textarea name="" id="j-text" placeholder="发表评论"></textarea>
             </div>
             <div class="btn-box">
                 <button id="j-discuss" class="btn-discuss">发表评论</button>

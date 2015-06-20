@@ -12,11 +12,11 @@ $(function(){
             var text = $('#j-text').val();
             if(text){
                 utils.ajaxSendJSON(
-                    '/simi/user/commnet.do',
+                    '/simi/question/reply.do',
                     {
-                        beCommentedUser: utils.getQueryString('userid'),
-                        content: text,
-                        commentUser: localStorage.getItem('userid') || ""
+                        questionId: utils.getQueryString('id'),
+                        reply: text,
+                        userId: localStorage.getItem('userid') || ""
                     },
                     function(json){
                         $('#j-text').val('');
@@ -35,9 +35,9 @@ $(function(){
 
     function loadData(){
         var xhr = utils.ajaxSendJSON(
-            '/simi/user/askList.do',
+            '/simi/question/rList.do',
             {
-                type: utils.getQueryString('id')
+                id: utils.getQueryString('id')
             },
             function(json){
                 rendDiscuss(json.data);
@@ -48,9 +48,12 @@ $(function(){
     function rendDiscuss(data){
         var $list = $('#j-dis-list');
         var html = [];
-        var data = data.comments || [];
+        var replys = data.replys || [];
         var length = data.length;
-        $.each(data, function(index, element){
+
+        $('#content').text(data.title);
+
+        $.each(replys, function(index, element){
             html.push('<li>' +
                         '<span class="portrait"></span>' +
                         '<div class="info">' +
