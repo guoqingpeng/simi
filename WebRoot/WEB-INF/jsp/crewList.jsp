@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>乘务组</h2>
         </div>
         <div class="m-ranking">
-            <ul class="g-clear">
+            <ul class="g-clear" id="j-per-list">
                 <li>
                     <div class="item">
                         <a href="personal.html">
@@ -131,5 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </ul>
     </footer>
 </div>
+<script src="/simi/scripts/utils.js" charset="utf-8"></script>
+<script src="/simi/scripts/perList.js" charset="utf-8"></script>
 </body>
 </html>
