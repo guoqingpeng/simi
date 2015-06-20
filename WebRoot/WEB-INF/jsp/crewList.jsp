@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-ranking">
             <ul class="g-clear" id="j-per-list">
-                <li>
+                <%-- <li>
                     <div class="item">
                         <a href="personal.html">
                             <span class="onePiece ">WANTED</span>
@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="cloud"></span>
                         </a>
                     </div>
-                </li>
+                </li> --%>
             </ul>
             <div class="aaaa" id="j-load-more">
                 点击加载更多
