@@ -232,4 +232,43 @@ public class UserControlller {
 	   
    }
    
+	/**
+	 * 用户列表乘务/非乘务页面初始化
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/userListInit", method = RequestMethod.GET)
+	public ModelAndView userListInit(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/crewList");
+		return modelAndView;
+	}
+   
+   /**
+    * 根据用户类型，返回乘务/非乘务列表数据
+    * @param type
+    * @return
+    */
+   @RequestMapping(value = "/uList",method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject searchUserListByType(@RequestBody JSONObject obj){
+	   //获取用户的列表
+	   JSONObject ret = new JSONObject();
+	   String type = obj.getString("type");
+	   Map<String, Object> o1= new HashMap<String, Object>();
+	   o1.put("name", "zhangsan");
+	   o1.put("age", 10);
+	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
+	   users = userService.getUserList(type, 1);
+	   
+	   Map<String, Object> o2= new HashMap<String, Object>();
+	   o2.put("uList",users);
+	   
+	   ret.put("ret", true);
+	   ret.put("data", o2);
+	   System.out.println(ret);
+	   return ret;
+   }
+   
 }

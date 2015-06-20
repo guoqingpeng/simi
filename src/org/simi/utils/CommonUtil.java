@@ -15,6 +15,9 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
 public class CommonUtil {
+	
+	//数据分页显示时的每页的显示的个数默认为20 个
+	public final static int  PER_PAGE = 2; 
 
 	/**
 	 * 获取接口访问凭证

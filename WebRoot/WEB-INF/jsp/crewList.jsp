@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="x5-page-mode" content="app"/>
     <title>乘务组列表</title>
     <link rel="stylesheet" href="../styles/release/list.css" />
+    <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <div class="doc crewList">

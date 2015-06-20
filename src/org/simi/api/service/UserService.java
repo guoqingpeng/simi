@@ -207,4 +207,25 @@ public class UserService {
 		   
 	   }
 	   
+	   /**
+	    * 
+	    * @param type
+	    * @param page
+	    * @return
+	    */
+	   public List<Map<String, Object>>  getUserList(String type,int page){
+		   
+		   List<Map<String, Object>> comList = new ArrayList<Map<String,Object>>();
+		   comList = (List<Map<String, Object>>)userDao.getUsersByType(type, page);
+		   
+		   JSONObject ret = new JSONObject();
+		   Map<String, Object> datas = new HashMap<String, Object>();
+		   ret.put("ret", true);
+		   datas.put("ulist", comList);
+		   //分页处理
+		   if (comList !=null && comList  .size() > 0) {
+			   
+		   }
+		  return comList;
+	   }
 }
