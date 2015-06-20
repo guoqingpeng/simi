@@ -4,6 +4,8 @@ $(function(){
     loadData();
     initEvent();
 
+    utils.initSearch();
+
     function initEvent(){
         // 评论
         $('#j-discuss').on('click', function(eve){
@@ -21,7 +23,7 @@ $(function(){
                     function(json){
                         $('#j-text').val('');
                         alert('评论成功!');
-                        loadDiscuss();
+                        loadData();
                     },
                     function(msg){
                         alert('评论失败，请联系管理员！');
@@ -49,7 +51,7 @@ $(function(){
         var $list = $('#j-dis-list');
         var html = [];
         var replys = data.replys || [];
-        var length = data.length;
+        var length = replys.length;
 
         $('#content').text(data.title);
 
@@ -61,7 +63,7 @@ $(function(){
                                 '<i class="storey">' + (length - index) + '楼</i>' +
                                 '<h2>' + (element.name || '游客') + '</h2>' +
                             '</div>' +
-                            '<p>' + element.comment + '</p>' +
+                            '<p>' + element.reply + '</p>' +
                         '</div>' +
                     '</li>')
         });

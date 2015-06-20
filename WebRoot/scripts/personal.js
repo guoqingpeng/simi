@@ -200,11 +200,22 @@ $(function(){
         $('[data-holder="price"]').text(price)
     }
 
+    var aniTimer = null;
     function startAni(){
-        $('#j-line').addClass('line');
+        // $('#j-line').addClass('line');
+        if(aniTimer){
+            clearInterval(aniTimer);
+            aniTimer = null;
+        }
+        aniTimer = setInterval(function(){
+            $('#j-line').css('height', '2px').animate({top:0}, 500).animate({'top':93}, 500)
+        }, 1000)
     }
 
     function stopAni(){
-        $('#j-line').removeClass('line');
+        clearInterval(aniTimer);
+        aniTimer = null;
+        $('#j-line').css('height', '0')
+        //$('#j-line').removeClass('line');
     }
 });

@@ -153,5 +153,13 @@ window.utils = {
         $(document.body).on('click', function(eve){
             $('.m-foot .next').hide();
         })
+    },
+
+    "initSearch": function(){
+        $('.sch-ipt').on('keydown', function(eve){
+            if(eve.keyCode === 13){
+                alert('搜索')
+            }
+        })
     }
 };
