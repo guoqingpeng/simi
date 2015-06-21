@@ -151,6 +151,7 @@ public class UserDao {
 						userInfoMap.put("weibo",rs.getString("weibo"));
 						userInfoMap.put("weixin",rs.getString("weixin"));
 						userInfoMap.put("hobby",rs.getString("hobby"));
+						userInfoMap.put("price",rs.getString("price"));
 						userInfoMap.put("sex",rs.getString("sex"));
 						userInfoMap.put("anouncement",rs.getString("anouncement"));
 						return userInfoMap;
@@ -185,20 +186,51 @@ public class UserDao {
 	 * @return
 	 */
 	public Map<String, String> getUserVoiceById(String userId){
-		   final Map< String, String> voice = new HashMap<String, String>();
+	try {
+		
+	
+		final Map< String, String> voice = new HashMap<String, String>();
 		   StringBuffer searchSql = new StringBuffer();
-		   searchSql.append("SELECT wx_current_id from t_file where pk_user = ? and fileType = ?");
+		   searchSql.append("SELECT last_upload_time,wx_current_id from t_file where pk_user = ? and fileType = ?");
 		   System.out.println(searchSql.toString());
 		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{userId,2},
 				   new RowMapper<Object>(){
 					@Override
 					public Object mapRow(final ResultSet rs, final int i)
 							throws SQLException {
+						voice.put("uploadTime", rs.getString("last_upload_time"));
 						voice.put("voiceId", rs.getString("wx_current_id"));
 						return voice;
 					}
 		   });
-		return voice;
+		   return voice;
+	} catch (Exception e) {
+		return null;
+	}
+		
+	}
+	
+	/**
+	 * 根据微信的音频id获取音频的基本信息
+	 * @param wx_origin_id
+	 * @return
+	 */
+	public Map<String, String> getVoiceByWXid(String wx_origin_id){
+		   final Map< String, String> voiceInfoMap = new HashMap<String, String>();
+		   StringBuffer searchSql = new StringBuffer();
+		   searchSql.append("SELECT * FROM t_file WHERE wx_origin_id = ?");
+		   System.out.println(searchSql.toString());
+		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{wx_origin_id},
+				   new RowMapper<Object>(){
+					@Override
+					public Object mapRow(final ResultSet rs, final int i)
+							throws SQLException {
+						voiceInfoMap.put("local_path", rs.getString("local_path"));
+						voiceInfoMap.put("wx_current_id", rs.getString("wx_current_id"));
+						return voiceInfoMap;
+					}
+		   });
+		return voiceInfoMap;
 	}
 	
 	/**
@@ -221,7 +253,6 @@ public class UserDao {
 		
 	}
 	
-	
 	/**
 	 * 获取用户的所有的评论
 	 * @param userId
@@ -233,17 +264,17 @@ public class UserDao {
      	
      	//游客评论
      	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,c.comment comment FROM ");
- 		comSql.append("t_comment c");
-     	comSql.append("WHERE c.be_commented_user = '"+userId+"'");
-     	comSql.append("AND c.comment_user ='' ");
+ 		comSql.append(" t_comment c");
+     	comSql.append(" WHERE c.be_commented_user = '"+userId+"'");
+     	comSql.append(" AND c.comment_user ='' ");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" UNION ");
         //非游客评论数据
 		comSql.append("(SELECT c.id id,u.name name,c.comment comment FROM ");
-     	comSql.append("t_comment c INNER JOIN t_user u ");
-     	comSql.append("ON c.comment_user = u.id ");
-     	comSql.append("WHERE c.be_commented_user = '"+userId+"'");
-     	comSql.append("AND c.comment_user is not null");
+     	comSql.append(" t_comment c INNER JOIN t_user u ");
+     	comSql.append(" ON c.comment_user = u.id ");
+     	comSql.append(" WHERE c.be_commented_user = '"+userId+"'");
+     	comSql.append(" AND c.comment_user is not null");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" order by id desc ");
      	
@@ -336,7 +367,6 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		
-		
 		if (!"0".equals(type)) {
 			//按照类型返回数据
 			sqlBuffer.append("  WHERE u.userType = ? GROUP by u.id ORDER BY u.price  DESC limit ?,?");
@@ -384,21 +414,46 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
-		
 		//按照类型返回数据
-		sqlBuffer.append("  WHERE name like  '%"+searchKey+ "%");
-		sqlBuffer.append("  OR nickName like  '%"+searchKey+ "%");
-		sqlBuffer.append("  OR job like  '%"+searchKey+ "%");
+		sqlBuffer.append("  WHERE name like  '%"+searchKey+ "%'");
+		sqlBuffer.append("  OR nickName like  '%"+searchKey+ "%'");
+		sqlBuffer.append("  OR job like  '%"+searchKey+ "%'");
 	    sqlBuffer.append("GROUP by u.id ORDER BY u.price  DESC limit ?,?");
-		
+	    System.out.println(sqlBuffer.toString());
 		comList = jdbcTemplate.queryForList(sqlBuffer.toString(),beginIndex,CommonUtil.PER_PAGE);
-		System.out.println(sqlBuffer.toString());
+		
 		if (comList !=null && comList.size() > 0) {
 			return comList;
 		}else {
 			return new ArrayList<Map<String,Object>>();
 		}
 		
+	}
+	
+	/**
+	 * 身价加分
+	 * @param price
+	 */
+	public void addPrice(String userId,int price){
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" UPDATE t_user ");
+		sqlBuffer.append(" SET price = price + ?");
+		sqlBuffer.append(" WHERE id = ?");
+		jdbcTemplate.update(sqlBuffer.toString(), price,userId);
+	}
+	
+	/**
+	 * 更新微信音频访问id
+	 * @param price
+	 */
+	public void updateVoice(String oldId,String newId,long current){
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" UPDATE t_file ");
+		sqlBuffer.append(" SET wx_origin_id = ? ");
+		sqlBuffer.append(" ,wx_current_id = ?");
+		sqlBuffer.append(" ,last_upload_time = ?");
+		sqlBuffer.append(" WHERE wx_origin_id = ?");
+		jdbcTemplate.update(sqlBuffer.toString(), newId,newId,current,oldId);
 	}
 	
 }

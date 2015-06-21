@@ -25,6 +25,9 @@ public class PastUtil {
 	public static String time = null;
 	public static String jsapi_ticket = null;
 	public static String app_id = null;
+	
+	public static final String APP_ID = "wx0738861136c0affb";
+	public static final String APP_KEY = "942a42d4ee8b21163ee54cddad1ccf02";
 
 	/**
 	 * 
@@ -144,7 +147,7 @@ public class PastUtil {
 	
 	public static Map<String, String>  getWxConfig(){
 		Map<String, String>  map = new HashMap<String, String>();
-		map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
+		map = PastUtil.getParam(APP_ID, APP_KEY);
 		return map;
 	}
 }
