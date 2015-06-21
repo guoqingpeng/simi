@@ -23,6 +23,7 @@ $('#j-save').on('click', function(eve){
         //alert('ok' + JSON.stringify(json, null, 4));
         if(json.ret === true){
             localStorage.setItem('userid', json.data.id);
+            localStorage.setItem('usertype', json.data.type);
             location.href = '/simi/user/uploadInit.do?userid=' + json.data.id
         }else{
             alert(json.errmsg)

@@ -48,11 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-dialect">
             <div class="record">
-                <p class="text">
-                    苍穹之剑武圣职业以下哪个技能会对目标
-                    造成土伤害？苍穹之剑真气获得方法有几
-                    种？
-                </p>
+                <p class="text" id="j-voice-text"></p>
                 <p class="tips">(请按方言朗读以上文字)</p>
                 <div class="title-info">
                     <time id="j-r-time">0"</time>
