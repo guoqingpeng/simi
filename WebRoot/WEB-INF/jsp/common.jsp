@@ -6,7 +6,7 @@
             appId: '${config.appid}',
             timestamp: ${config.timestamp},
             nonceStr: '${config.nonceStr}',
-            signature: '${cosnfig.signature}',
+            signature: '${config.signature}',
             access_token: '${config.access_token}',
             url: '${config.url}',
             jsapi_ticket: '${config.jsapi_ticket}',

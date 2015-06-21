@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 提交引导 -->
 <div class="mark" id="j-mask" style="display:none"></div>
 <div class="dialog angled-135" id="j-dialog"  style="display:none">
-    <i class="close"></i>
+    <%-- <i class="close"></i> --%>
     <div class="guide">
         分享您的得分将累计到自己身价中！
     </div>
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      appId: '${config.appid}',
      timestamp: ${config.timestamp},
      nonceStr: '${config.nonceStr}',
-     signature: '${cosnfig.signature}',
+     signature: '${config.signature}',
      access_token: '${config.access_token}',
      url: '${config.url}',
      jsapi_ticket: '${config.jsapi_ticket}',

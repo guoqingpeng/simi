@@ -54,7 +54,7 @@ $(function(){
         var rightAns = getCorrectAnswers();
         score = getScore(answers, rightAns);
         if(score !== -1){
-            $('#j-mask, #j-dialog').show();
+            showMask();
             //alert(answers + "   " + rightAns + "  " + score);
             $(this).hide();
             $('#j-score').text(score);
@@ -62,7 +62,7 @@ $(function(){
             title = SHARE_TITLE.replace("{{score}}", score)
             //alert('您的得分是: ' + score)
         }
-    })
+    });
 
     $('#j-share').on('click', function(eve) {
         console.log('share');
@@ -111,6 +111,8 @@ $(function(){
                // 用户取消分享后执行的回调函数
             }
         });
+
+        hideMask();
     })
 
     function getItems(ele, index){
@@ -190,5 +192,13 @@ $(function(){
                 alert(':( 实在抱歉，身价增加失败，请稍候再试!')
             }
         )
+    }
+
+    function showMask(){
+        $('#j-mask, #j-dialog').show();
+    }
+
+    function hideMask(){
+        $('#j-mask, #j-dialog').hide();
     }
 });
