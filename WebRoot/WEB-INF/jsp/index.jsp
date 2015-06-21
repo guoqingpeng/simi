@@ -28,7 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- 轮播图 -->
         <div id="slideBox" class="m-pic">
             <div class="picbox">
-                <ul></ul>
+                <ul>
+                    <li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
+                    <li><a href="javascript:;"><img src="../img/img5.jpg" alt=""/></a></li>
+                    <li><a href="javascript:;"><img src="../img/img6.jpg" alt=""/></a></li>
+                </ul>
             </div>
             <div class="state">
                 <ul></ul>
