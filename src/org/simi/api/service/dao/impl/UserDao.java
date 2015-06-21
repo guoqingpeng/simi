@@ -188,13 +188,14 @@ public class UserDao {
 	public Map<String, String> getUserVoiceById(String userId){
 		   final Map< String, String> voice = new HashMap<String, String>();
 		   StringBuffer searchSql = new StringBuffer();
-		   searchSql.append("SELECT wx_current_id from t_file where pk_user = ? and fileType = ?");
+		   searchSql.append("SELECT last_upload_time,wx_current_id from t_file where pk_user = ? and fileType = ?");
 		   System.out.println(searchSql.toString());
 		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{userId,2},
 				   new RowMapper<Object>(){
 					@Override
 					public Object mapRow(final ResultSet rs, final int i)
 							throws SQLException {
+						voice.put("uploadTime", rs.getString("last_upload_time"));
 						voice.put("voiceId", rs.getString("wx_current_id"));
 						return voice;
 					}
@@ -438,13 +439,14 @@ public class UserDao {
 	 * 更新微信音频访问id
 	 * @param price
 	 */
-	public void updateVoice(String oldId,String newId){
+	public void updateVoice(String oldId,String newId,long current){
 		StringBuffer sqlBuffer = new StringBuffer();
 		sqlBuffer.append(" UPDATE t_file ");
 		sqlBuffer.append(" SET wx_origin_id = ? ");
 		sqlBuffer.append(" ,wx_current_id = ?");
+		sqlBuffer.append(" ,last_upload_time = ?");
 		sqlBuffer.append(" WHERE wx_origin_id = ?");
-		jdbcTemplate.update(sqlBuffer.toString(), newId,newId,oldId);
+		jdbcTemplate.update(sqlBuffer.toString(), newId,newId,current,oldId);
 	}
 	
 }

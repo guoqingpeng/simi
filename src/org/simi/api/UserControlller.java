@@ -40,7 +40,7 @@ public class UserControlller {
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
 	
-	
+	    userService.getUserVoice("1024");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");

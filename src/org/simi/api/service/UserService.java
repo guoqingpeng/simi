@@ -16,8 +16,6 @@ import org.simi.utils.PastUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sun.java2d.pipe.SpanClipRenderer;
-
 @Service
 public class UserService {
 	
@@ -115,9 +113,23 @@ public class UserService {
 		   
 		   Map< String, String> voice = new HashMap<String, String>();
 		   voice = userDao.getUserVoiceById(userId);
+		   //过期的微信音频访问id
+		   String oldId = voice.get("voiceId");
+		   
+		   //获取音频最后一次的上传时间戳
+		   Long uploadTime = Long.parseLong((String)voice.get("uploadTime"));
+		   //当前服务器的时间戳
+		   long currentTime = System.currentTimeMillis();
+		   System.out.println(currentTime);
 		   //判断文件是否过期，过期则自动更新
 			try {
-				reUploadVoice("ZLF40xwfiyquTvOB_nwmxUiyKIOrkQIUvwmtqfhaKIPaMu6SIN7U152f59Nnu3NS");
+				/*计算时差，以天为单位为确保文件的必须能访问得到，3天过期
+				防止音频过期
+				*/
+				long diff = (currentTime - uploadTime)/1000/60/60/24;
+				if (diff > 2) {
+					reUploadVoice(oldId,currentTime);
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -290,7 +302,7 @@ public class UserService {
 	    * @param voiceId
 	 * @throws IOException 
 	    */
-	   public String reUploadVoice(String voiceId) throws IOException{
+	   public String reUploadVoice(String voiceId,long current) throws IOException{
 		   
 		   //获取已过期的音频信息
 		   Map<String, String> oldVoice = userDao.getVoiceByWXid(voiceId);
@@ -305,7 +317,7 @@ public class UserService {
 		   
 		   //重新获取token
 		   Map<String, String>  map = new HashMap<String, String>();
-		   map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
+		   map = PastUtil.getParam(PastUtil.APP_ID, PastUtil.APP_KEY);
 		   String access_token = (String)map.get("access_token");
 		   String sendUrl = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token="+access_token+"&type=voice";
 		   
@@ -314,7 +326,7 @@ public class UserService {
 		   String wx_id = obj.getString("media_id");
 		   System.out.println("更新后的音频id"+wx_id);
 		   //更新完后，将新数据更新到数据库
-		   userDao.updateVoice(voiceId, wx_id);
+		   userDao.updateVoice(voiceId, wx_id,current);
 		   return wx_id;
 	   }
 }
