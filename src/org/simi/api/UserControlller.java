@@ -388,15 +388,16 @@ public class UserControlller {
    /**
     * 主动请求，将过期的音频重新上传到微信服务器，跟新本地服务地址
     * @param voice
-    */
+   /*
    @RequestMapping(value = "/reUploadVoice",method = RequestMethod.POST)
    @ResponseBody
    public void reUploadVoice(@RequestBody JSONObject voice){
 	   
-	   //微信上过期的音频的id
-	   String voiceId = voice.getString("voiceId");
+	   //TODO
 	   
-   }
+       }
+   */
+   
    
 	/**
 	 *一站到底页面
