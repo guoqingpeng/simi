@@ -101,7 +101,7 @@ public class UserDao {
 	
 	/**
 	 * 保存单个音频文件信息
-	 * 音频信息文件累心默认设置为2
+	 * 音频信息文件类型默认设置为2
 	 * @param userId
 	 */
 	public void saveVoiceFile(String userId,String localPath, String wx_url,String wx_current_id){
@@ -135,6 +135,7 @@ public class UserDao {
 		   StringBuffer searchSql = new StringBuffer();
 		   searchSql.append("SELECT * FROM t_user WHERE id = ?");
 		   System.out.println(searchSql.toString());
+		   try {
 		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{userId},
 				   new RowMapper<Object>(){
 					@Override
@@ -157,6 +158,9 @@ public class UserDao {
 						return userInfoMap;
 					}
 		   });
+		  } catch (Exception e) {
+			  return userInfoMap;
+		  }
 		return userInfoMap;
 	}
 	
@@ -187,8 +191,6 @@ public class UserDao {
 	 */
 	public Map<String, String> getUserVoiceById(String userId){
 	try {
-		
-	
 		final Map< String, String> voice = new HashMap<String, String>();
 		   StringBuffer searchSql = new StringBuffer();
 		   searchSql.append("SELECT last_upload_time,wx_current_id from t_file where pk_user = ? and fileType = ?");
@@ -207,7 +209,6 @@ public class UserDao {
 	} catch (Exception e) {
 		return null;
 	}
-		
 	}
 	
 	/**
@@ -325,6 +326,7 @@ public class UserDao {
      	int zanCount = 0;
      	zanCount = jdbcTemplate.queryForInt(zanSql.toString(),zanUserId,beZanUser );
 		return zanCount >0 ? true:false;
+	
 	}
 	
 	/**
@@ -380,6 +382,7 @@ public class UserDao {
 			sqlBuffer.append("  GROUP by u.id ORDER BY u.price  DESC limit ?,?");
 			comList = jdbcTemplate.queryForList(sqlBuffer.toString(), beginIndex,CommonUtil.PER_PAGE);
 		}
+		
 		System.out.println(sqlBuffer.toString());
 		if (comList !=null && comList.size() > 0) {
 			return comList;
@@ -471,7 +474,6 @@ public class UserDao {
 		}else {
 			return new ArrayList<Map<String,Object>>();
 		}
-		
 	}
 	
 	/**
