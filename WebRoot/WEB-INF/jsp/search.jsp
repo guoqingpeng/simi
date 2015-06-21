@@ -45,19 +45,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
         <!-- /列表 -->
-        <div class="m-search">
-            <i class="g-ico g-ico-s g-ico-search"></i>
-            <span class="sch-ipt"><input type="text" value="" placeholder="搜索昵称或手机号"/></span>
-        </div>
+        <jsp:include page="searchCommon.jsp"/>
     </div>
-    <footer class="m-foot">
-        <ul>
-            <li><a href="javascript:;" title="首页">首页</a></li>
-            <li><a href="actRule.html" title="活动规则">活动规则</a></li>
-            <li><a href="onlineAct.html" title="线上活动">线上活动</a></li>
-            <li><a href="register.html" title="首页">我要报名</a></li>
-        </ul>
-    </footer>
+    <jsp:include page="root.jsp"/>
 </div>
 <script src="/simi/scripts/utils.js" charset="utf-8"></script>
 <script src="/simi/scripts/searchList.js" charset="utf-8"></script>

@@ -78,25 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
         <!-- /评论 -->
-        <div class="m-search">
-            <i class="g-ico g-ico-s g-ico-search"></i>
-            <span class="sch-ipt"><input type="search" value="" placeholder="搜索昵称或手机号"/></span>
-        </div>
+        <jsp:include page="searchCommon.jsp"/>
     </div>
-    <footer class="m-foot">
-        <ul class="first">
-            <li><a href="index.html" title="首页">首页</a></li>
-            <li><a href="actRule.html" title="活动规则">活动规则</a></li>
-            <li>
-                <a href="javascript:;" title="线上活动">线上活动</a>
-                <ul class="next">
-                    <li><a href="decisiveBattle.html">一战到底</a></li>
-                    <li><a href="ask.html">无节操问答</a></li>
-                </ul>
-            </li>
-            <li><a href="register.html" title="首页">我要报名</a></li>
-        </ul>
-    </footer>
+    <jsp:include page="root.jsp"/>
 </div>
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script src="/simi/scripts/utils.js" charset="utf-8"></script>
