@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         分享您的得分将累计到自己身价中！
     </div>
     <p class="title">本次得分</p>
-    <p class="num" id="j-score">99分</p>
+    <p class="num" id="j-score">0分</p>
     <p class="title" id="j-comment">太棒了!</p>
     <button class="btn" id="j-share">确定</button>
 </div>

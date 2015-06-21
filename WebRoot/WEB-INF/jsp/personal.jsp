@@ -78,16 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>照片展示</h2>
         </div>
         <div class="m-portraitPic">
-            <div class="info" id="j-imgs">
-                <!-- <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span> -->
-            </div>
+            <div class="info" id="j-imgs"></div>
         </div>
         <!-- /照片展示 -->
         <!-- 方言大挑战 -->
@@ -98,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="info" id="j-voice">
                 <span class="title">方言大挑战</span>
                 <div class="title-info">
-                    <time>18"</time>
+                    <time>0"</time>
                 </div>
             </div>
             <div class="info">
@@ -119,38 +110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <button id="j-discuss" class="btn-discuss">发表评论</button>
             </div>
             <div class="list">
-                <ul id="j-dis-list">
-                    <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">3楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">2楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">1楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li>
-                </ul>
+                <ul id="j-dis-list"></ul>
             </div>
         </div>
         <!-- /评论 -->

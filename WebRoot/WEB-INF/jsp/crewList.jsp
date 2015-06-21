@@ -39,84 +39,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-ranking">
             <ul class="g-clear" id="j-per-list">
-                <%-- <li>
-                    <div class="item">
-                        <a href="personal.html">
-                            <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
-                            <!-- 照片 -->
-                            <img src="../img/img4.jpg" alt=""/>
-                            <!-- 详情 -->
-                            <div class="info">
-                                <p>姓名：fuck</p>
-                                <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
-                            </div>
-                            <!-- 云彩 -->
-                            <span class="cloud"></span>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="item">
-                        <a href="personal.html">
-                            <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
-                            <!-- 照片 -->
-                            <img src="../img/img4.jpg" alt=""/>
-                            <!-- 详情 -->
-                            <div class="info">
-                                <p>姓名：fuck</p>
-                                <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
-                            </div>
-                            <!-- 云彩 -->
-                            <span class="cloud"></span>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="item">
-                        <a href="personal.html">
-                            <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
-                            <!-- 照片 -->
-                            <img src="../img/img4.jpg" alt=""/>
-                            <!-- 详情 -->
-                            <div class="info">
-                                <p>姓名：fuck</p>
-                                <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
-                            </div>
-                            <!-- 云彩 -->
-                            <span class="cloud"></span>
-                        </a>
-                    </div>
-                </li>
-                <li>
-                    <div class="item">
-                        <a href="personal.html">
-                            <span class="onePiece ">WANTED</span>
-                            <span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>01</span>
-                            <!-- 照片 -->
-                            <img src="../img/img4.jpg" alt=""/>
-                            <!-- 详情 -->
-                            <div class="info">
-                                <p>姓名：fuck</p>
-                                <p>身价：$1122</p>
-                                <p>公司：东方航空公司</p>
-                                <p>职业：空姐</p>
-                            </div>
-                            <!-- 云彩 -->
-                            <span class="cloud"></span>
-                        </a>
-                    </div>
-                </li> --%>
             </ul>
-            <div class="aaaa" id="j-load-more">
+            <div class="" id="j-load-more">
                 点击加载更多
             </div>
         </div>

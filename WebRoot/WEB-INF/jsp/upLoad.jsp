@@ -31,14 +31,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-portraitPic">
             <div class="info">
-                <span class="imgbox"><i class="close"></i><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img5.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
-                <span class="imgbox"><img src="../img/img6.jpg" alt="苍井空"/></span>
             </div>
         </div>
         <!-- /上传图片 -->
