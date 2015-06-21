@@ -7,6 +7,7 @@ $(function(){
 
     var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}, 你也来参加吧~~';
     var SHARE_LINK = 'http://letss.sinaapp.com/simi/user/quizInit.do';
+    var SHARE_DESC = '快来真空秀参加活动吧';
     var title = '';
 
     var resultComments = {
@@ -18,9 +19,7 @@ $(function(){
         poor: '好可怕啊！',
         worst: '悲痛欲绝！'
     };
-    var score = 1000;
-
-    addPrice()
+    var score = 0;
 
     if(!localStorage.getItem('userid')){
         alert('您还没有注册哦，请先注册了再参加可以啵~');
@@ -85,7 +84,7 @@ $(function(){
         // 分享给朋友
         wx.onMenuShareAppMessage({
             title: title, // 分享标题
-            desc: title, // 分享描述
+            desc: SHARE_DESC, // 分享描述
             link: SHARE_LINK, // 分享链接
             imgUrl: '', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
@@ -102,7 +101,7 @@ $(function(){
         // 分享到QQ
         wx.onMenuShareQQ({
             title: title, // 分享标题
-            desc: title, // 分享描述
+            desc: SHARE_DESC, // 分享描述
             link: SHARE_LINK, // 分享链接
             imgUrl: '', // 分享图标
             success: function () {
@@ -189,10 +188,11 @@ $(function(){
                 price: _score
             },
             function(json){
-                alert(':) 恭喜恭喜, 您的身价已经增加#' + _score + '#')
+                alert(':) 恭喜恭喜, 您的身价已经增加#' + _score + '#');
+                location.href = '/simi/user/mainInit.do';
             },
             function(){
-                alert(':( 实在抱歉，身价增加失败，请稍候再试!')
+                alert(':( 实在抱歉，身价增加失败，请刷新后再试!')
             }
         )
     }

@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- 点赞 -->
                 <div class="fingerprint">
                     <div class="info" id="j-scan">
-                        <div class="" id="j-line" style="display: block;"></div>
+                        <div class="line" id="j-line" style="display: block;"></div>
                         <!-- 扫描成功 -->
                         <div class="text" id="j-zan-tips"></div>
                     </div>
