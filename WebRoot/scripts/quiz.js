@@ -1,13 +1,13 @@
 $(function(){
     var timus = [];
     var length = timu.length;
-    var total = 4;
+    var total = 10;
     var index = 0;
     var j = total;
 
     utils.initNav();
 
-    var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}, 你也来参加吧~~';
+    var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}分, 你也来参加吧~~';
     var SHARE_LINK = 'http://letss.sinaapp.com/simi/user/quizInit.do';
     var SHARE_DESC = '快来真空秀参加活动吧';
     var title = '';
@@ -68,7 +68,6 @@ $(function(){
     });
 
     $('#j-share').on('click', function(eve) {
-        console.log('share');
         // 分享到朋友圈
         wx.onMenuShareTimeline({
             title: title, // 分享标题
@@ -181,7 +180,6 @@ $(function(){
     }
 
     function addPrice(){
-        alert('addPrice');
         var _score = score * 10;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',

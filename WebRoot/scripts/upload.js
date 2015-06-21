@@ -44,26 +44,27 @@ $(function(){
     $('.m-portraitPic').empty();
     $('#j-add').on('click', function(eve){
         eve.preventDefault();
-        if(images.localId.length >= 8){
-            alert('最多只能选择8张图片');
-            return
-        }
         wx.chooseImage({
             success: function(res){
                 var localIds = res.localIds;
-                var localId = images.localId;
-                //alert('lcaID::::::' + localId)
-                localId = localId.concat(localIds);
-
-                localId = localId.slice(0, 8);
-                //alert(res.localIds.length + '/' + localId.length)
-                $('.m-portraitPic').empty();
-                for(var i = 0, len = localId.length; i < len; i++) {
-                    $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="'
-                        + localId[i] + '" alt=""/></span>');
+                if(images.serverId.length + localIds.length > 8){
+                    alert('最多只能选择8张图片');
+                    return
                 }
+                //var localId = images.localId;
+                //localId = localId.concat(localIds);
+                //localId = localId.slice(0, 8);
+                //images.localId = localId
 
-                images.localId = localId
+                uploadImage(localIds);
+
+
+                //alert(res.localIds.length + '/' + localId.length)
+                // $('.m-portraitPic').empty();
+                // for(var i = 0, len = localId.length; i < len; i++) {
+                //     $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="'
+                //         + localId[i] + '" alt=""/></span>');
+                // }
             }
         });
     });
@@ -73,7 +74,8 @@ $(function(){
         var $parent = $(this).parent();
         var index = $parent.data('index');
         $parent.remove();
-        images.localId.splice(index, 1);
+        //images.localId.splice(index, 1);
+        images.serverId.splice(index, 1);
     });
 
     // 录音
@@ -134,7 +136,7 @@ $(function(){
     $('#j-save').click(function(eve){
         eve.preventDefault();
 
-        images.serverId = [];
+        //images.serverId = [];
 
         // 保存录音
         if(voice.localId !== '') {
@@ -144,45 +146,60 @@ $(function(){
                 success: function(res){
                     //alert('上传语音成功，serverId 为' + res.serverId);
                     voice.serverId = res.serverId;
-                    uploadImage(images.localId);
+                    //uploadImage(images.localId);
+                    save();
                 }
             });
         }else{
-            uploadImage(images.localId);
+            //uploadImage(images.localId);
+            save()
         }
     });
 
     function uploadImage(all){
         var a = all.slice(0);
-        if(a.length){
-            wx.uploadImage({
-                localId: all[0],
-                success: function (res) {
-                    //alert('图片成功，图片成功');
-                    images.serverId.push(res.serverId);
-                    a.shift();
-                    if(a.length){
-                        uploadImage(a)
-                    }else{
-                        save(images.serverId)
-                    }
-                },
-                fail: function (res) {
-                    alert(JSON.stringify(res));
+        wx.uploadImage({
+            localId: all[0],
+            success: function (res) {
+                //alert('图片成功，图片成功');
+                images.serverId.push(res.serverId);
+                a.shift();
+                if(a.length){
+                    uploadImage(a)
+                }else{
+                    showImage();
+                    //save(images.serverId)
                 }
-            });
-        }else{
-            alert('请先选择图片')
+            },
+            fail: function (res) {
+                alert(JSON.stringify(res));
+            }
+        });
+    }
+
+    function showImage(){
+        var ids = getUrls(images.serverId);
+        var start = $('.m-portraitPic').find('img').length;
+
+        for(var i = start, len = ids.length; i < len; i++) {
+            $('.m-portraitPic').append('<span class="imgbox" data-index="' + i + '"><i class="close"></i><img src="'
+                + ids[i] + '" alt=""/></span>');
         }
     }
 
     function save(urls){
+        if(!images.serverId.length){
+            alert('请先选择图片哦');
+            return
+        }
         params.images = getUrls(images.serverId);
-        params.voice = {
-            id: voice.serverId,
-            url: getURL(voice.serverId),
-            voiceLastTime : recordTime
-        };
+        if(voice.serverId){
+            params.voice = {
+                id: voice.serverId,
+                url: getURL(voice.serverId),
+                voiceLastTime : recordTime
+            };
+        }
 
         utils.ajaxSendJSON(
             '/simi/user/uploadFile.do',
