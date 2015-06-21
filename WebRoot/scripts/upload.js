@@ -121,7 +121,6 @@ $(function(){
     });
 
     function uploadImage(all){
-        alert('uploadd' + all);
         var a = all.slice(0);
         if(a.length){
             wx.uploadImage({
@@ -147,7 +146,8 @@ $(function(){
         params.images = getUrls(images.serverId);
         params.voice = {
             id: voice.serverId,
-            url: getURL(voice.serverId)
+            url: getURL(voice.serverId),
+            voiceLastTime : recordTime
         };
 
         utils.ajaxSendJSON(
