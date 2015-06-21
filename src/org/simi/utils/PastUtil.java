@@ -68,10 +68,14 @@ public class PastUtil {
 		StringBuffer requestUrl = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String url = requestUrl + "?" + queryString;
+		
+		//应用在部署时，替换，得到真实的访问地址
 		if (!url.contains("simi")) {
+			
 			url=url.replace("com/", "com/simi/");
-		}	
-
+			
+		}
+		
 		System.out.println(url);
 		return url;
 	}
