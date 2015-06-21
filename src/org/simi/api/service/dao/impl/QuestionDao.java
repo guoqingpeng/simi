@@ -75,9 +75,8 @@ public class QuestionDao {
     	return replys;
 	}
 	
-	
 	/**
-	 * 获取用户的基本信息
+	 * 获取问题名称
 	 * @param userId
 	 * @return
 	 */

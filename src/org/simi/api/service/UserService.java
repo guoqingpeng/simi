@@ -1,5 +1,6 @@
 package org.simi.api.service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +10,13 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.simi.api.service.dao.impl.UserDao;
+import org.simi.utils.CommonUtil;
 import org.simi.utils.FileUtil;
+import org.simi.utils.PastUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import sun.java2d.pipe.SpanClipRenderer;
 
 @Service
 public class UserService {
@@ -63,6 +68,8 @@ public class UserService {
 	    String localVoicePaht = FileUtil.downLoadFileFromUrl(userId, vioce.get("url").toString(),2);
 	    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString());
 	    
+	    //文件上传加10分
+	    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
 		ret.put("errmsg", "");
@@ -108,6 +115,14 @@ public class UserService {
 		   
 		   Map< String, String> voice = new HashMap<String, String>();
 		   voice = userDao.getUserVoiceById(userId);
+		   //判断文件是否过期，过期则自动更新
+			try {
+				reUploadVoice("ZLF40xwfiyquTvOB_nwmxUiyKIOrkQIUvwmtqfhaKIPaMu6SIN7U152f59Nnu3NS");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		   
 		   return voice;
 		   
 	   }
@@ -177,22 +192,29 @@ public class UserService {
 		    
 		    //保存点赞
 		    userDao.saveDianZan(zanUserId, beZandUser, "");
+		    
+		    
+		    //点赞给用户身价10分
+		    userDao.addPrice(beZandUser, CommonUtil.ZAN_SCORE);
+		    
 		    //返回点赞总数
 		    int zanCount = 0;
 		    zanCount = getUserZanCount(beZandUser);
 		    
 		    Map<String, Object> datas = new HashMap<String, Object>();
 		    
-		    //点赞成功之后，给用户的身价添加10分TODO
+		    //返回新的用户信息
+		    Map<String, String> userMap = userDao.getUserInfoById(beZandUser);
+		    
+		    String price = userMap.get("price");
 		    datas.put("zanCount", zanCount);
-		    datas.put("price", "100");
+		    datas.put("price", price);
 			ret.put("ret", true);
 			ret.put("errmsg", "");
 			ret.put("data", datas);
 			return ret;
 			
 		}
-	   
 	   
 	   /**
 	    * 获取用户的所有点赞数
@@ -251,5 +273,48 @@ public class UserService {
 			   
 		   }
 		  return comList;
+	   }
+	   
+	   /**
+	    * 给用户添加身价
+	    * @param userId
+	    * @param price
+	    */
+	   public void addPrice(String userId,int price){
+		   
+		   userDao.addPrice(userId, price);
+	   }
+	   
+	   /**
+	    * 重新上传音频到微信服务器
+	    * @param voiceId
+	 * @throws IOException 
+	    */
+	   public String reUploadVoice(String voiceId) throws IOException{
+		   
+		   //获取已过期的音频信息
+		   Map<String, String> oldVoice = userDao.getVoiceByWXid(voiceId);
+		   String path = oldVoice.get("local_path");
+		   
+		   //解析path，获取本地服务器上的文件的存放路径
+		   String url = path.split("\\?")[1];
+		   String userId = url.split("\\&")[1].split("=")[1];
+		   String fileName = url.split("\\&")[0].split("=")[1];
+		   
+		   String fullPath = FileUtil.FILE_SAVE_PATH+""+userId+"/"+fileName;
+		   
+		   //重新获取token
+		   Map<String, String>  map = new HashMap<String, String>();
+		   map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
+		   String access_token = (String)map.get("access_token");
+		   String sendUrl = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token="+access_token+"&type=voice";
+		   
+		   //重新上传音频到微信的服务器
+		   JSONObject obj = FileUtil.upLoadFileToUrl(sendUrl, fullPath);
+		   String wx_id = obj.getString("media_id");
+		   System.out.println("更新后的音频id"+wx_id);
+		   //更新完后，将新数据更新到数据库
+		   userDao.updateVoice(voiceId, wx_id);
+		   return wx_id;
 	   }
 }

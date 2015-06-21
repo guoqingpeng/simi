@@ -3,6 +3,8 @@ package org.simi.api;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,10 +39,13 @@ public class UserControlller {
 	 */
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
+	
+	
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
 		return modelAndView;
+
 	}
 	
 	/**
@@ -143,6 +148,7 @@ public class UserControlller {
 	    ret.put("errmsg", "");
 	    ret.put("data", allinfoMap);
 	    return ret;
+   
    }
    
    /**
@@ -158,7 +164,8 @@ public class UserControlller {
 		                HttpServletResponse response,
 		                String file,
 		                String userId) throws IOException{
-	  System.out.println("请求图片");
+	 
+	   System.out.println("请求图片");
 	   //禁止缓存
 	   response.setHeader("Pragma", "No-cache");
 	   response.setHeader("Cache-Control", "No-cache");
@@ -224,7 +231,7 @@ public class UserControlller {
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("comments", comList);
 		ret.put("data", dataMap);
-	   return ret;
+	    return ret;
 	   
    }
    
@@ -252,10 +259,12 @@ public class UserControlller {
 	 */
 	@RequestMapping(value = "/userListInit", method = RequestMethod.GET)
 	public ModelAndView userListInit(){
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/crewList");
 		return modelAndView;
+	
 	}
    
    /**
@@ -266,6 +275,7 @@ public class UserControlller {
    @RequestMapping(value = "/uList",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject searchUserListByType(@RequestBody JSONObject obj){
+	   
 	   //获取用户的列表
 	   JSONObject ret = new JSONObject();
 	   String type = obj.getString("type");
@@ -278,6 +288,7 @@ public class UserControlller {
 	   ret.put("data", datas);
 	   System.out.println(ret);
 	   return ret;
+   
    }
    
    /**
@@ -303,26 +314,91 @@ public class UserControlller {
 	   ret.put("data", datas);
 	   System.out.println(ret);
 	   return ret;
+   
    }
+   
+	/**
+	 *初始化搜索页面 
+	 * @return
+	 */
+	@RequestMapping(value = "/searchInit", method = RequestMethod.GET)
+	public ModelAndView searchInit(){
+	
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/search");
+		return modelAndView;
+	
+	}
    
    /**
     * 模糊搜素用户
     * @param comment
     * @return
+    * @throws UnsupportedEncodingException 
     */
    @RequestMapping(value = "/searchUsers",method = RequestMethod.POST)
    @ResponseBody
-   public JSONObject getMokeUsers(@RequestBody JSONObject key){
+   public JSONObject getMokeUsers(@RequestBody JSONObject key) throws UnsupportedEncodingException{
 	   
 	    String searchKey = key.getString("searchKey");
+	    System.out.println(searchKey);
+	    //中文解码
+	    searchKey = URLDecoder.decode(searchKey,"utf-8");
+	    System.out.println(searchKey);
 	    int page = key.getInt("page");
 	    JSONObject ret = new JSONObject();
-	    List<Map<String, Object>> comList = userService.getMokeUserList(searchKey, page);
+	    List<Map<String, Object>> users = userService.getMokeUserList(searchKey, page);
+	    Map<String, Object> datas= new HashMap<String, Object>();
+		datas.put("uList",users);
 	    ret.put("ret", true);
 		ret.put("errmsg", "");
-		ret.put("data", comList);
+		ret.put("data", datas);
 	    return ret;
+   
    }
    
+   /**
+    * 提供接口，统一添加身价
+    * @param addPrice
+    * @return
+    */
+   @RequestMapping(value = "/addPrice",method = RequestMethod.POST)
+   @ResponseBody
+   public JSONObject addPrice(@RequestBody JSONObject price){
+	   
+	   String userId = price.getString("userId");
+	   int score = price.getInt("price");
+	   JSONObject ret = new JSONObject();
+	   userService.addPrice(userId, score);
+	   return ret;
+	   
+   }
+   
+   /**
+    * 主动请求，将过期的音频重新上传到微信服务器，跟新本地服务地址
+    * @param voice
+    */
+   @RequestMapping(value = "/reUploadVoice",method = RequestMethod.POST)
+   @ResponseBody
+   public void reUploadVoice(@RequestBody JSONObject voice){
+	   
+	   //微信上过期的音频的id
+	   String voiceId = voice.getString("voiceId");
+	   
+   }
+   
+	/**
+	 *一站到底页面
+	 * @return
+	 */
+	@RequestMapping(value = "/quizInit", method = RequestMethod.GET)
+	public ModelAndView quizInit(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/quiz");
+		return modelAndView;
+
+	}
    
 }
