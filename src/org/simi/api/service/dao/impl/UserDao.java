@@ -186,7 +186,10 @@ public class UserDao {
 	 * @return
 	 */
 	public Map<String, String> getUserVoiceById(String userId){
-		   final Map< String, String> voice = new HashMap<String, String>();
+	try {
+		
+	
+		final Map< String, String> voice = new HashMap<String, String>();
 		   StringBuffer searchSql = new StringBuffer();
 		   searchSql.append("SELECT last_upload_time,wx_current_id from t_file where pk_user = ? and fileType = ?");
 		   System.out.println(searchSql.toString());
@@ -200,7 +203,11 @@ public class UserDao {
 						return voice;
 					}
 		   });
-		return voice;
+		   return voice;
+	} catch (Exception e) {
+		return null;
+	}
+		
 	}
 	
 	/**

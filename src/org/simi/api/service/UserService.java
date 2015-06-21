@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sound.midi.VoiceStatus;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -59,15 +61,21 @@ public class UserService {
 			userDao.savePicFile(userId,localPath,object.toString());
 		}
 	    
+	    
 	    JSONObject vioce = files.getJSONObject("voice");
 	    System.out.println("音频"+vioce.get("url"));
 	    
-	    //音频路径保存在本地服务器以及创建文件
-	    String localVoicePaht = FileUtil.downLoadFileFromUrl(userId, vioce.get("url").toString(),2);
-	    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString());
-	    
-	    //文件上传加10分
-	    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);
+	    //如果上传了音频，则保存音频信息
+	    if (vioce  !=null) {
+	    	
+	    	 //音频路径保存在本地服务器以及创建文件
+		    String localVoicePaht = FileUtil.downLoadFileFromUrl(userId, vioce.get("url").toString(),2);
+		    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString());
+		    
+		    //文件上传加10分
+		    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);
+		}
+	   
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
 		ret.put("errmsg", "");
@@ -113,6 +121,9 @@ public class UserService {
 		   
 		   Map< String, String> voice = new HashMap<String, String>();
 		   voice = userDao.getUserVoiceById(userId);
+		   if (voice ==null) {
+			   return null;
+		    }
 		   //过期的微信音频访问id
 		   String oldId = voice.get("voiceId");
 		   
@@ -130,6 +141,8 @@ public class UserService {
 				if (diff > 2) {
 					reUploadVoice(oldId,currentTime);
 				}
+				//重新获取最新的音频信息
+				voice = userDao.getUserVoiceById(userId);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -40,7 +40,7 @@ public class UserControlller {
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
 	
-	    userService.getUserVoice("1024");
+	    userService.getUserVoice("1025");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
@@ -141,8 +141,18 @@ public class UserControlller {
 	    
 	    // 音频信息
 	    Map<String, String> voice = new HashMap<String, String>();
+	    
 	    voice = userService.getUserVoice(userId);
-	    allinfoMap.put("voice", voice);
+	    //如果用户没有上传音频信息，则返回空数据
+		if ( voice ==null) {
+			
+			allinfoMap.put("voice", new HashMap<String, String>());
+			
+		}else {
+			
+			allinfoMap.put("voice", voice);
+		} 
+	    
 	    JSONObject ret = new JSONObject();
 	    ret.put("ret", true);
 	    ret.put("errmsg", "");
