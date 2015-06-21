@@ -38,9 +38,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>乘务组</h2>
         </div>
         <div class="m-ranking">
-            <ul class="g-clear" id="j-per-list">
+            <ul class="g-clear" id="j-per-list" style="min-height: 340px;">
             </ul>
-            <div class="" id="j-load-more">
+            <div class="" id="j-load-more" style="text-align: center;padding: 5px 0;">
                 点击加载更多
             </div>
         </div>
