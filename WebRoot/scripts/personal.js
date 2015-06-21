@@ -18,7 +18,6 @@ $(function(){
 
             timer = setInterval(function(){
                 if(++time === 3){
-                    console.info('点赞...');
                     zan();
                 }
             }, 1000);
