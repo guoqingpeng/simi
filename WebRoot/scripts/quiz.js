@@ -18,7 +18,9 @@ $(function(){
         poor: '好可怕啊！',
         worst: '悲痛欲绝！'
     };
-    var score = 0;
+    var score = 1000;
+
+    addPrice()
 
     if(!localStorage.getItem('userid')){
         alert('您还没有注册哦，请先注册了再参加可以啵~');
@@ -178,6 +180,7 @@ $(function(){
     }
 
     function addPrice(){
+        alert('addPrice');
         var _score = score * 10;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',

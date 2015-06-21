@@ -93,6 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- /提交引导 -->
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <%-- <script type="text/javascript" src="/simi/scripts/lib/quiz.js"></script> --%>
+<script type="text/javascript" src="/simi/scripts/utils.js"></script>
 <script type="text/javascript" src="/simi/scripts/timu.js"></script>
 <script type="text/javascript" src="/simi/scripts/quiz.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
