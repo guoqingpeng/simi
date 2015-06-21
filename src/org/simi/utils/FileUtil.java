@@ -18,7 +18,7 @@ import net.sf.json.JSONObject;
 public class FileUtil {
 	
 	//配置公共文件的服务器保存路径
-	public static String FILE_SAVE_PATH = "E:/files/";
+	public static String FILE_SAVE_PATH = "/home/default/files/";
 	
 	//配置公共的请求
 	public static String FILE_SERVER_PATH = "/simi/user/file.do?file=";
@@ -43,7 +43,7 @@ public class FileUtil {
 		      URL url = new URL(filePath);  
 		      java.io.BufferedInputStream bis = new BufferedInputStream(url.openStream());  
 		      byte[] bytes = new byte[100];
-		      String fileName = FILE_SAVE_PATH+userId+"\\";
+		      String fileName = FILE_SAVE_PATH+userId+"/";
 		      File folder = new File(fileName);
 		      
 		      if (!folder.isDirectory()) {
