@@ -43,12 +43,17 @@ $(function(){
         var rightAns = getCorrectAnswers();
         var score = getScore(answers, rightAns);
         if(score !== -1){
-            $('#j-mark, #j-dialog').show();
+            $('#j-mask, #j-dialog').show();
             //alert(answers + "   " + rightAns + "  " + score);
             $(this).hide();
             $('#j-score').text(score);
+            $('#j-comment').text(judgeSkills(score));
             //alert('您的得分是: ' + score)
         }
+    })
+
+    $('#j-enter').on('click', function(eve) {
+        alert('给微信添加回调');
     })
 
     function getItems(ele, index){
