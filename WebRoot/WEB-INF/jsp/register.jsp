@@ -113,21 +113,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">三维：</span>
                 <div class="label-info">
                     <span  class="select">
-                        <select name="sanwei">
+                        <select name="sanwei" id="j-sanwei">
                             <option value="1">骨感</option>
                             <option value="2">匀称</option>
                             <option value="3" selected="">性感</option>
                             <option value="4">丰满</option>
                         </select>
                     </span>
-                    <span  class="select" style="display:none" class="select" >
+                    <%-- <span  class="select" style="display:none" class="select" >
                         <select name="sanwei">
                             <option value="1">条顺</option>
                             <option value="2">匀称</option>
                             <option value="3">健壮</option>
                             <option value="4">健硕</option>
                         </select>
-                    </span>
+                    </span> --%>
                 </div>
             </div>
             <div class="rows">

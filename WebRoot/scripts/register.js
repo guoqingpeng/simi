@@ -54,4 +54,21 @@ $('#j-save').on('click', function(eve){
     }).fail(function(){
         alert('网络繁忙，请联系管理员!')
     });
-})
+});
+
+$('[name="sex"]').on('change', function(eve){
+    updateOptions($(this).val());
+});
+
+function updateOptions(val) {
+    var mapping = {
+        "1": ['骨感', '匀称', '性感', '丰满'],
+        "2": ['条顺', '匀称', '健壮', '健硕']
+    }
+    var options = mapping[val];
+    var html = [];
+    $.each(options, function(i, e){
+        html.push('<option value="' + (val + i) + '">' + e + '</option>')
+    });
+    $('#j-sanwei').empty().html(html.join(''))
+}
