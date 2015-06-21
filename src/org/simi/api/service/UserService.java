@@ -65,10 +65,9 @@ public class UserService {
 	    
 	    //如果上传了音频，则保存音频信息
 	    if (vioce  !=null) {
-	    	
 	    	 //音频路径保存在本地服务器以及创建文件
 		    String localVoicePaht = FileUtil.downLoadFileFromUrl(userId, vioce.get("url").toString(),2);
-		    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString());
+		    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString(),vioce.get("voiceTime").toString());
 		    
 		    //文件上传加10分
 		    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);

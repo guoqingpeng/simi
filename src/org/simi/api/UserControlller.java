@@ -413,4 +413,18 @@ public class UserControlller {
 		return modelAndView;
 
 	}
+	
+	/**
+	 *页面
+	 * @return
+	 */
+	@RequestMapping(value = "/actInit", method = RequestMethod.GET)
+	public ModelAndView actInit(){
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/actRule");
+		return modelAndView;
+
+	}
 }
