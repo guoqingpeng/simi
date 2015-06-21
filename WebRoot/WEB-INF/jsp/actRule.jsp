@@ -58,6 +58,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <jsp:include page="searchCommon.jsp"/>
     </div>
     <jsp:include page="foot.jsp"/>
+    <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+    <script src="/simi/scripts/utils.js" charset="utf-8"></script>
 </div>
 </body>
 </html>

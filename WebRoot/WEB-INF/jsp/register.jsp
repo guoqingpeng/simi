@@ -20,7 +20,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="x5-page-mode" content="app"/>
     <title>真.空秀-注册</title>
     <link rel="stylesheet" href="../styles/release/register.css" />
-    <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <div class="doc">
@@ -182,6 +181,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <jsp:include page="foot.jsp"/>
 </div>
+<script src="/simi/scripts/jquery-1.9.1.min.js"></script>
+<script src="/simi/scripts/utils.js" charset="utf-8"></script>
 <script src="/simi/scripts/jquery.serialize-object.js" charset="utf-8"></script>
 <script src="/simi/scripts/register.js" charset="utf-8"></script>
 </body>
