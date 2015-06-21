@@ -44,33 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <h2>人气之星</h2>
         </div>
         <div class="m-hits" id="j-rq-list">
-            <div class="item">
-                <a href="personal.html">
-                    <p>
-                        <i class="g-ico g-ico-crown"></i>
-                        <img src="../img/img2.png" alt=""/>
-                    </p>
-                    <span class="name">用户昵称</span>
-                </a>
-            </div>
-            <div class="item">
-                <a href="personal.html">
-                    <p>
-                        <i class="g-ico g-ico-crown"></i>
-                        <img src="../img/img3.jpg" alt=""/>
-                    </p>
-                    <span class="name">用户昵称</span>
-                </a>
-            </div>
-            <div class="item">
-                <a href="personal.html">
-                    <p>
-                        <i class="g-ico g-ico-crown"></i>
-                        <img src="../img/img2.png" alt=""/>
-                    </p>
-                    <span class="name">用户昵称</span>
-                </a>
-            </div>
         </div>
         <!-- /人气排名 -->
         <!-- top20 -->
