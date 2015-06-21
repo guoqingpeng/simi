@@ -185,7 +185,7 @@ public class UserControlller {
 	   FileInputStream fis = null; 
        OutputStream os = null; 
        try {
-        fis = new FileInputStream(FileUtil.FILE_SAVE_PATH+userId+"\\"+file);
+        fis = new FileInputStream(FileUtil.FILE_SAVE_PATH+userId+"/"+file);
         os = response.getOutputStream();
            int count = 0;
            byte[] buffer = new byte[1024*8];
