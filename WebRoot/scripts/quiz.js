@@ -4,7 +4,7 @@ $(function(){
     var total = 4;
     var index = 0;
     var j = total;
-    
+
     utils.initNav();
 
     var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}, 你也来参加吧~~';
@@ -60,7 +60,7 @@ $(function(){
             showMask();
             //alert(answers + "   " + rightAns + "  " + score);
             $(this).hide();
-            $('#j-score').text(score);
+            $('#j-score').text(score + '分');
             $('#j-comment').text(judgeSkills(score));
             title = SHARE_TITLE.replace("{{score}}", score)
             //alert('您的得分是: ' + score)
