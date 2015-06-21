@@ -30,11 +30,13 @@ public class UserService {
 	 public  JSONObject userRegister(JSONObject user){
 		 
 		int id = userDao.userRegister(user);
+		String type = user.getString("userType");
 		JSONObject ret = new JSONObject();
 		ret.put("ret", true);
 		ret.put("errmsg", "");
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("id", id);
+		dataMap.put("userType", type);
 		ret.put("data", dataMap);
 		return ret;
 		
@@ -61,17 +63,28 @@ public class UserService {
 	    
 	    
 	    JSONObject vioce = files.getJSONObject("voice");
-	    System.out.println("音频"+vioce.get("url"));
+	    
 	    
 	    //如果上传了音频，则保存音频信息
-	    if (vioce  !=null) {
+	    if (vioce !=null) {
 	    	
+		  //  System.out.println("音频"+vioce.get("url"));
+		    try {
+				
 	    	 //音频路径保存在本地服务器以及创建文件
 		    String localVoicePaht = FileUtil.downLoadFileFromUrl(userId, vioce.get("url").toString(),2);
-		    userDao.saveVoiceFile(userId, localVoicePaht,vioce.get("url").toString(), vioce.get("id").toString());
+		    
+		    String url = vioce.get("url").toString();
+		    String id = vioce.get("id").toString();
+		    String voiceLastTime = vioce.get("voiceLastTime").toString();
+		    
+		    userDao.saveVoiceFile(userId, localVoicePaht,url,id,voiceLastTime);
 		    
 		    //文件上传加10分
 		    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);
+		    } catch (Exception e) {
+		    	System.out.println("用户没有上传音频");
+		    }
 		}
 	   
 		JSONObject ret = new JSONObject();

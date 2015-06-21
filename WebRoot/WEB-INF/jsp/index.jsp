@@ -46,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-title">
             <div class="portal">
                 <span class="info">
-                    <a href="###" class="cw-item" data-type="0">乘务组</a>
-                    <a href="###" class="cw-item" data-type="1">非乘务组</a>
+                    <a href="###" class="cw-item" data-type="1">乘务组</a>
+                    <a href="###" class="cw-item" data-type="2">非乘务组</a>
                 </span>
             </div>
             <h2>参赛选手 TOP20</h2>

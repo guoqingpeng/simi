@@ -177,9 +177,9 @@ public class UserControlller {
 	 
 	   System.out.println("请求图片");
 	   //禁止缓存
-	   response.setHeader("Pragma", "No-cache");
-	   response.setHeader("Cache-Control", "No-cache");
-	   response.setDateHeader("Expires", 0);
+	  // response.setHeader("Pragma", "No-cache");
+	   response.setHeader("Cache-Control", "PUBLIC, max-age=" + 60*60*24*30 + ", must-revalidate");  
+	   response.setDateHeader("Expires", System.currentTimeMillis()+3600*24*30*1000);
 	   //指定生成的响应是图片
 	   response.setContentType("image/jpeg");
 	   FileInputStream fis = null; 
@@ -410,6 +410,20 @@ public class UserControlller {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/quiz");
+		return modelAndView;
+
+	}
+	
+	/**
+	 *页面
+	 * @return
+	 */
+	@RequestMapping(value = "/actInit", method = RequestMethod.GET)
+	public ModelAndView actInit(){
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("config",PastUtil.getWxConfig());
+		modelAndView.setViewName("/actRule");
 		return modelAndView;
 
 	}

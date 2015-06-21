@@ -104,7 +104,7 @@ public class UserDao {
 	 * 音频信息文件类型默认设置为2
 	 * @param userId
 	 */
-	public void saveVoiceFile(String userId,String localPath, String wx_url,String wx_current_id){
+	public void saveVoiceFile(String userId,String localPath, String wx_url,String wx_current_id,String voiceTime){
 		
 		//文件sql文
 		final StringBuffer insertSqlBuffer = new StringBuffer();
@@ -114,14 +114,16 @@ public class UserDao {
 		insertSqlBuffer.append(", wx_origin_id");
 		insertSqlBuffer.append(", wx_current_id");
 		insertSqlBuffer.append(", pk_user");
+		insertSqlBuffer.append(", voiceLastTime");
 		insertSqlBuffer.append(", fileType)VALUES(");
-		insertSqlBuffer.append("?,?,?,?,?,?)");
+		insertSqlBuffer.append("?,?,?,?,?,?,?)");
 		System.out.println(insertSqlBuffer.toString());
 		jdbcTemplate.update(insertSqlBuffer.toString(), new Object[]{wx_url,
 			                                                         localPath,
 																	 wx_current_id,
 			                                                         wx_current_id,
 			                                                         userId,
+			                                                         voiceTime,
 			                                                         2});
 	}
 	
@@ -193,7 +195,7 @@ public class UserDao {
 	try {
 		final Map< String, String> voice = new HashMap<String, String>();
 		   StringBuffer searchSql = new StringBuffer();
-		   searchSql.append("SELECT last_upload_time,wx_current_id from t_file where pk_user = ? and fileType = ?");
+		   searchSql.append("SELECT last_upload_time,wx_current_id ,voiceLastTime from t_file where pk_user = ? and fileType = ?");
 		   System.out.println(searchSql.toString());
 		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{userId,2},
 				   new RowMapper<Object>(){
@@ -202,6 +204,7 @@ public class UserDao {
 							throws SQLException {
 						voice.put("uploadTime", rs.getString("last_upload_time"));
 						voice.put("voiceId", rs.getString("wx_current_id"));
+						voice.put("voiceTime", rs.getString("voiceLastTime"));
 						return voice;
 					}
 		   });
@@ -424,7 +427,7 @@ public class UserDao {
 	
 		//0代表返回所有类型的数据
 		sqlBuffer.append("  GROUP by u.id ORDER BY (u.price-u.price_yestoday)  DESC limit ?,?");
-		comList = jdbcTemplate.queryForList(sqlBuffer.toString(), 0,2);
+		comList = jdbcTemplate.queryForList(sqlBuffer.toString(), 0,3);
 		System.out.println(sqlBuffer.toString());
 		if (comList !=null && comList.size() > 0) {
 			return comList;
@@ -460,6 +463,7 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.weixin,'') weixin");
 		sqlBuffer.append(", IFNULL(u.hobby,'') hobby");
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
+		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		//按照类型返回数据
