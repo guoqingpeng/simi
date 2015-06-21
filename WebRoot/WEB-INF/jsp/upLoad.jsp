@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <script>
          var config = {};
          wx.config(config = {
-            debug: true,
+            debug: false,
             appId: '${config.appid}',
             timestamp: ${config.timestamp},
             nonceStr: '${config.nonceStr}',
