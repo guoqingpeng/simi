@@ -1,6 +1,5 @@
+utils.initNav();
 $('#j-save').on('click', function(eve){
-    utils.initNav();
-
     eve.preventDefault();
 
     if($('[name="name"]').val() == ''){
