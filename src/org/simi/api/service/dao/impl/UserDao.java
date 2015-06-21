@@ -369,6 +369,7 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.weibo,'') weibo");
 		sqlBuffer.append(", IFNULL(u.weixin,'') weixin");
 		sqlBuffer.append(", IFNULL(u.hobby,'') hobby");
+		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
