@@ -1,11 +1,16 @@
 package org.simi.api;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
+import org.simi.utils.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -17,6 +22,20 @@ public class AppContextInitListener implements ApplicationListener<ContextRefres
 
     @Autowired
     private UpdatePriceTimer updatePriceTimer;
+    
+    static{
+    	
+    	Properties prop = new Properties();  
+        try {  
+        	
+            prop.load(AppContextInitListener.class.getClassLoader().getResourceAsStream("org/simi/api/path.properties"));
+        	
+            FileUtil.FILE_SAVE_PATH = prop.getProperty("save_file_path");  
+            
+        } catch(IOException e) {  
+        e.printStackTrace();  
+          }
+    }
     
 	public AppContextInitListener() {
 
@@ -42,6 +61,8 @@ public class AppContextInitListener implements ApplicationListener<ContextRefres
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent ev) {
+		
+		//解析jdbbc
 		
 		System.out.println("应用启动后测试");
 		 updatePriceTimer.showTimer(); 
