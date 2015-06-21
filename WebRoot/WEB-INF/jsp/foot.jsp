@@ -5,13 +5,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <footer class="m-foot">
     <ul class="first">
-        <li><a href="/simi/index" title="首页">首页</a></li>
-        <li><a href="/simi/actRule.html" title="活动规则">活动规则</a></li>
+        <li><a href="/simi/user/mainInit.do" title="首页">首页</a></li>
+        <li><a href="/simi/user/actInit.do" title="活动规则">活动规则</a></li>
         <li>
             <a href="javascript:;" title="线上活动">线上活动</a>
             <ul class="next">
-                <li><a href="decisiveBattle.html">一战到底</a></li>
-                <li><a href="ask.html">无节操问答</a></li>
+                <li><a href="/simi/user/quizInit.do">一战到底</a></li>
+                <li><a href="/simi/question/askInit.do">无节操问答</a></li>
             </ul>
         </li>
         <li><a href="/simi/user/regInit.do" title="首页">我要报名</a></li>
