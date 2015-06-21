@@ -5,6 +5,10 @@ $(function(){
     var index = 0;
     var j = total;
 
+    var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}, 你也来参加吧~~';
+    var SHARE_LINK = 'http://letss.sinaapp.com/simi/user/quizInit.do';
+    var title = '';
+
     var resultComments = {
         perfect: '你是爱因斯坦么?',
         excellent: '非常优秀!',
@@ -13,6 +17,13 @@ $(function(){
         bad: '太可怜了！',
         poor: '好可怕啊！',
         worst: '悲痛欲绝！'
+    };
+    var score = 0;
+
+    if(!localStorage.getItem('userid')){
+        alert('您还没有注册哦，请先注册了再参加可以啵~');
+        location.href = '/simi/user/regInit.do';
+        return
     }
 
     while(j--){
@@ -41,19 +52,65 @@ $(function(){
 
         var answers = getAnswers();
         var rightAns = getCorrectAnswers();
-        var score = getScore(answers, rightAns);
+        score = getScore(answers, rightAns);
         if(score !== -1){
             $('#j-mask, #j-dialog').show();
             //alert(answers + "   " + rightAns + "  " + score);
             $(this).hide();
             $('#j-score').text(score);
             $('#j-comment').text(judgeSkills(score));
+            title = SHARE_TITLE.replace("{{score}}", score)
             //alert('您的得分是: ' + score)
         }
     })
 
-    $('#j-enter').on('click', function(eve) {
-        alert('给微信添加回调');
+    $('#j-share').on('click', function(eve) {
+        console.log('share');
+        // 分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: title, // 分享标题
+            link: SHARE_LINK, // 分享链接
+            imgUrl: '', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                addPrice();
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享给朋友
+        wx.onMenuShareAppMessage({
+            title: title, // 分享标题
+            desc: title, // 分享描述
+            link: SHARE_LINK, // 分享链接
+            imgUrl: '', // 分享图标
+            type: 'link', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+                addPrice();
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+
+        // 分享到QQ
+        wx.onMenuShareQQ({
+            title: title, // 分享标题
+            desc: title, // 分享描述
+            link: SHARE_LINK, // 分享链接
+            imgUrl: '', // 分享图标
+            success: function () {
+               // 用户确认分享后执行的回调函数
+               addPrice();
+            },
+            cancel: function () {
+               // 用户取消分享后执行的回调函数
+            }
+        });
     })
 
     function getItems(ele, index){
@@ -116,5 +173,22 @@ $(function(){
         else if (score > 35) return resultComments.bad;
         else if (score > 20) return resultComments.poor;
         else return resultComments.worst;
+    }
+
+    function addPrice(){
+        var _score = score * 10;
+        utils.ajaxSendJSON(
+            '/simi/user/addPrice.do',
+            {
+                userId: localStorage.getItem('userid'),
+                price: _score
+            },
+            function(json){
+                alert(':) 恭喜恭喜, 您的身价已经增加#' + _score + '#')
+            },
+            function(){
+                alert(':( 实在抱歉，身价增加失败，请稍候再试!')
+            }
+        )
     }
 });
