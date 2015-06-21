@@ -31,16 +31,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-question">
             <ul id="j-ask-list">
-                <li><a href="askInfo.jsp?id=1">1.假如你变成了女人或者男人你会做得第一件事是（⊙o⊙）啥？</a></li>
-                <li><a href="askInfo.jsp?id=2">2.好色能改吗？</a></li>
-                <li><a href="askInfo.jsp?id=3">3.你小时候曾经想象过的出风头的场景是什么样的？</a></li>
-                <li><a href="askInfo.html">4.请说出一句证明你纯洁的话。</a></li>
-                <li><a href="askInfo.html">5.有人撒你一身油，对你说：别担心，有奥妙全自动，你咋办？</a></li>
-                <li><a href="askInfo.html">6.你的仇人在上厕所时，没纸出不来，你怎么办？</a></li>
-                <li><a href="askInfo.html">7.半夜遇见劫匪，他说不唱歌不让你走，你会唱什么？</a></li>
-                <li><a href="askInfo.html">8.你身上哪些部位被人赞美过？</a></li>
-                <li><a href="askInfo.html">9.有生以来你受过最重的伤是什么？时间地点？</a></li>
-                <li><a href="askInfo.html">10.平时会注意周围的帅哥美女（路人）吗？观察顺序是什么？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=1">1.假如你变成了女人或者男人你会做得第一件事是（⊙o⊙）啥？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=2">2.好色能改吗？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=3">3.你小时候曾经想象过的出风头的场景是什么样的？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=4">4.请说出一句证明你纯洁的话。</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=5">5.有人撒你一身油，对你说：别担心，有奥妙全自动，你咋办？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=6">6.你的仇人在上厕所时，没纸出不来，你怎么办？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=7">7.半夜遇见劫匪，他说不唱歌不让你走，你会唱什么？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=8">8.你身上哪些部位被人赞美过？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=9">9.有生以来你受过最重的伤是什么？时间地点？</a></li>
+                <li><a href="/simi/question/askInfoInit.do?id=10">10.平时会注意周围的帅哥美女（路人）吗？观察顺序是什么？</a></li>
             </ul>
         </div>
         <!-- /无节操问答 -->

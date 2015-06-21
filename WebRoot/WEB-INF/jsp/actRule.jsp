@@ -55,11 +55,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <!--二维码 -->
             <div class="qrCode"><img src="../bgimg/qrcode.png" alt=""/></div>
         </div>
-        <jsp:include page="searchCommon.jsp"/>
+        <%-- <jsp:include page="searchCommon.jsp"/> --%>
     </div>
     <jsp:include page="foot.jsp"/>
     <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
     <script src="/simi/scripts/utils.js" charset="utf-8"></script>
+    <script>
+        utils.initNav();
+    </script>
 </div>
 </body>
 </html>
