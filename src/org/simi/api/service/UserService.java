@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.sound.midi.VoiceStatus;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -342,4 +340,37 @@ public class UserService {
 		   userDao.updateVoice(voiceId, wx_id,current);
 		   return wx_id;
 	   }
+	   
+	   /**
+	    * 查询人气增长最快的用户
+	    * 0：所有，1：乘务组，2：非乘务组
+	    * @param type
+	    * @param page
+	    * @return
+	    */
+	   public List<Map<String, Object>>  getTopRenqiUserList(){
+		   
+		   List<Map<String, Object>> comList = new ArrayList<Map<String,Object>>();
+		   comList = userDao.getRenqiUsers();
+		   JSONObject ret = new JSONObject();
+		   Map<String, Object> datas = new HashMap<String, Object>();
+		   ret.put("ret", true);
+		   datas.put("ulist", comList);
+		   //TODO 总页数 暂时不做
+		   if (comList !=null && comList  .size() > 0) {
+			   
+		   }
+		  return comList;
+	   }
+	   
+	   
+	   
+	   /**
+	    * 定时任务，每天凌晨，跟新全用户表的旧的身价用来比较人气的增长
+	    */
+	   public void updateOldPrice(){
+		   
+		   userDao.updateAllUserPriceToOld();
+	   }
+	   
 }

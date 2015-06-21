@@ -40,7 +40,7 @@ public class UserControlller {
 	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
 	public ModelAndView loginInit(){
 	
-	    userService.getUserVoice("1025");
+	   // userService.getUserVoice("1025");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/register");
@@ -315,9 +315,8 @@ public class UserControlller {
 	   JSONObject ret = new JSONObject();
 	   //int page = obj.getInt("page");
 	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
-	   users = userService.getUserList("0", 1);
+	   users = userService.getTopRenqiUserList();
 	   //人气之星前三名
-	   users = users.subList(0, 3);
 	   Map<String, Object> datas= new HashMap<String, Object>();
 	   datas.put("uList",users);
 	   ret.put("ret", true);
@@ -381,6 +380,8 @@ public class UserControlller {
 	   int score = price.getInt("price");
 	   JSONObject ret = new JSONObject();
 	   userService.addPrice(userId, score);
+	   ret.put("ret", true);
+	   ret.put("errmsg", "");
 	   return ret;
 	   
    }
@@ -405,11 +406,11 @@ public class UserControlller {
 	 */
 	@RequestMapping(value = "/quizInit", method = RequestMethod.GET)
 	public ModelAndView quizInit(){
+		
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",PastUtil.getWxConfig());
 		modelAndView.setViewName("/quiz");
 		return modelAndView;
 
 	}
-   
 }

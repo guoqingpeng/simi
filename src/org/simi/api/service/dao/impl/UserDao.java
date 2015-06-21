@@ -220,6 +220,7 @@ public class UserDao {
 		   StringBuffer searchSql = new StringBuffer();
 		   searchSql.append("SELECT * FROM t_file WHERE wx_origin_id = ?");
 		   System.out.println(searchSql.toString());
+	       try {
 		   jdbcTemplate.queryForObject(searchSql.toString(), new Object[]{wx_origin_id},
 				   new RowMapper<Object>(){
 					@Override
@@ -230,6 +231,9 @@ public class UserDao {
 						return voiceInfoMap;
 					}
 		   });
+	       } catch (Exception e) {
+	    	  return new HashMap<String, String>();
+	       }
 		return voiceInfoMap;
 	}
 	
@@ -384,7 +388,47 @@ public class UserDao {
 		}
 		
 	}
+
+	/**
+	 * 人气前三的用户
+	 * 当前页，总页数
+	 * @param type
+	 * @param page
+	 * @return
+	 */
+	public List<Map<String, Object>> getRenqiUsers(){
+		
+		List<Map<String, Object>> comList = null;
+		//该页下第一条数据
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" select f.local_path filePath ");
+		sqlBuffer.append(", IFNULL(u.id,'') id");
+		sqlBuffer.append(", IFNULL(u.name,'') name");
+		sqlBuffer.append(", IFNULL(u.age,'') age");
+		sqlBuffer.append(", IFNULL(u.job,'') job");
+		sqlBuffer.append(", IFNULL(u.height,'') height");
+		sqlBuffer.append(", IFNULL(u.sanwei,'') sanwei");
+		sqlBuffer.append(", IFNULL(u.company,'') company");
+		sqlBuffer.append(", IFNULL(u.xinzuo,'') xinzuo");
+		sqlBuffer.append(", IFNULL(u.weibo,'') weibo");
+		sqlBuffer.append(", IFNULL(u.weixin,'') weixin");
+		sqlBuffer.append(", IFNULL(u.hobby,'') hobby");
+		sqlBuffer.append(", IFNULL(u.sex,'') sex");
+		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
+		sqlBuffer.append(", IFNULL(u.price-u.price_yestoday,0) incrument");
+		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 	
+		//0代表返回所有类型的数据
+		sqlBuffer.append("  GROUP by u.id ORDER BY (u.price-u.price_yestoday)  DESC limit ?,?");
+		comList = jdbcTemplate.queryForList(sqlBuffer.toString(), 0,2);
+		System.out.println(sqlBuffer.toString());
+		if (comList !=null && comList.size() > 0) {
+			return comList;
+		}else {
+			return new ArrayList<Map<String,Object>>();
+		}
+		
+	}
 	
 	/**
 	 * 返回当前类型，当前页数下的用户列表
@@ -456,4 +500,15 @@ public class UserDao {
 		jdbcTemplate.update(sqlBuffer.toString(), newId,newId,current,oldId);
 	}
 	
+
+	/**
+	 * 全表更新身价到旧身价中
+	 * @param price
+	 */
+	public void updateAllUserPriceToOld(){
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" UPDATE t_user ");
+		sqlBuffer.append(" SET price_yestoday = price ");
+		jdbcTemplate.update(sqlBuffer.toString());
+	}
 }
