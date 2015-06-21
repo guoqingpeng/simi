@@ -68,6 +68,10 @@ public class PastUtil {
 		StringBuffer requestUrl = request.getRequestURL();
 		String queryString = request.getQueryString();
 		String url = requestUrl + "?" + queryString;
+		if (!url.contains("simi")) {
+			url=url.replace("com/", "com/simi/");
+		}	
+
 		System.out.println(url);
 		return url;
 	}
