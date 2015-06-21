@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /活动说明 -->
         <jsp:include page="searchCommon.jsp"/>
     </div>
-    <jsp:include page="root.jsp"/>
+    <jsp:include page="foot.jsp"/>
 </div>
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>

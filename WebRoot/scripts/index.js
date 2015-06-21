@@ -5,6 +5,8 @@ $(function(){
     loadData();
     loadRenQiStar();
     initEvent();
+    
+    utils.initNav();
     utils.initSearch();
 
     TouchSlide({

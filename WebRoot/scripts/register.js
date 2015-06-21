@@ -1,4 +1,6 @@
 $('#j-save').on('click', function(eve){
+    utils.initNav();
+
     eve.preventDefault();
     var param = $('form').serializeJSON();
     //var deviceID = localStorage.getItem('deviceID');

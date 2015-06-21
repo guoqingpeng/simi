@@ -1,4 +1,6 @@
 $(function(){
+    utils.initSearch();
+    utils.initNav();
     // 上传图片
     var images = {
         serverId: [],

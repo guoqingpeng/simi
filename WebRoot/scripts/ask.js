@@ -4,6 +4,9 @@ $(function(){
     loadData();
     initEvent();
 
+    // utils.initNav();
+    utils.initSearch();
+
     function initEvent(){
         $('#j-load-more').on('click', function(eve){
             page++;

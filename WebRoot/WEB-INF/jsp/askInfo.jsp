@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /评论 -->
         <jsp:include page="searchCommon.jsp"/>
     </div>
-    <jsp:include page="root.jsp"/>
+    <jsp:include page="foot.jsp"/>
 </div>
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 <script src="/simi/scripts/utils.js" charset="utf-8"></script>

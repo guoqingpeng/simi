@@ -4,6 +4,8 @@ $(function(){
     var total = 4;
     var index = 0;
     var j = total;
+    
+    utils.initNav();
 
     var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}, 你也来参加吧~~';
     var SHARE_LINK = 'http://letss.sinaapp.com/simi/user/quizInit.do';

@@ -180,7 +180,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
         <!-- /注册 -->
     </div>
-    <jsp:include page="root.jsp"/>
+    <jsp:include page="foot.jsp"/>
 </div>
 <script src="/simi/scripts/jquery.serialize-object.js" charset="utf-8"></script>
 <script src="/simi/scripts/register.js" charset="utf-8"></script>

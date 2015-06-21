@@ -3,7 +3,9 @@ $(function(){
 
     loadData();
     initEvent();
+
     utils.initSearch();
+    utils.initNav();
 
     if(utils.getQueryString('type') == 2){
         $('h2').text('非乘务组')

@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <jsp:include page="searchCommon.jsp"/>
     </div>
-    <jsp:include page="root.jsp"/>
+    <jsp:include page="foot.jsp"/>
 </div>
 </body>
 </html>

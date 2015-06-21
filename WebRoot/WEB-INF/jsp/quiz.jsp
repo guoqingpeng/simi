@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <!-- /无节操问答 -->
     </div>
-    <jsp:include page="root.jsp"/>
+    <jsp:include page="foot.jsp"/>
 </div>
 <!-- 提交引导 -->
 <div class="mark" id="j-mask" style="display:none"></div>
