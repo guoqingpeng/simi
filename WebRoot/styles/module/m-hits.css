@@ -8,6 +8,7 @@
     overflow: hidden;
     background: #71dafd url(../../bgimg/trapezoid_1x.png);
     padding: 29px 0 20px 0;
+    min-height: 99px;
 }
 .m-hits a {
     display: block;
