@@ -67,7 +67,13 @@ public class PastUtil {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		StringBuffer requestUrl = request.getRequestURL();
 		String queryString = request.getQueryString();
-		String url = requestUrl + "?" + queryString;
+		String url="";
+		if (queryString==null ||"".equals(queryString)) {
+			url = requestUrl.toString();
+		}else {
+		    url = requestUrl + "?" + queryString;
+		}
+		
 		
 		//应用在部署时，替换，得到真实的访问地址
 		if (!url.contains("simi")) {
