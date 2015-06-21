@@ -2,6 +2,29 @@ $('#j-save').on('click', function(eve){
     utils.initNav();
 
     eve.preventDefault();
+
+    if($('[name="name"]').val() == ''){
+        alert('姓名必须填写');
+        return
+    }
+
+    if($('[name="nickName"]').val() == ''){
+        alert('昵称必须填写');
+        return
+    }
+
+
+    var type = $('[name="userType"]:checked').val();
+    if(!type){
+        alert('请先选择乘务类型');
+        return
+    }
+
+    if(type == 1 && !$('[name="company"]').val()){
+        alert('乘务组需要填写公司名称');
+        return
+    }
+
     var param = $('form').serializeJSON();
     //var deviceID = localStorage.getItem('deviceID');
 

@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">姓名：</span>
                 <div class="label-info">
                     <span class="ipt-box">
-                    <input name="name" value="张三" type="text"/>
+                    <input name="name" value="" type="text"/>
                     </span>
                 </div>
             </div>
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">年龄：</span>
                 <div class="label-info">
                     <span class="ipt-box">
-                        <input name="age" value="23" type="text"/>
+                        <input name="age" value="" type="text"/>
                     </span>
                 </div>
             </div>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">所属公司：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                    <input name="company" value="Qunar" type="text"/>
+                    <input name="company" value="" type="text"/>
                     </span>
                     <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">职业：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                    <input name="job" value="jisuanji" type="text"/>
+                    <input name="job" value="" type="text"/>
                     </span>
                 </div>
             </div>
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">昵称：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                        <input name="nickName" value="nickName" type="text"/>
+                        <input name="nickName" value="" type="text"/>
                     </span>
                     <br/>
                     <span class="tips">由字母或者数字组成</span>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">身高：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                        <input name="height" value="189" type="text"/>
+                        <input name="height" value="" type="text"/>
                     </span>
                 </div>
             </div>
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <option value="1">骨感</option>
                             <option value="2">匀称</option>
                             <option value="3" selected="">性感</option>
-                            <option value="4">丰满代替</option>
+                            <option value="4">丰满</option>
                         </select>
                     </span>
                     <span  class="select" style="display:none" class="select" >
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">星座：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                        <input type="text" name="xinzuo" value="天平座"/>
+                        <input type="text" name="xinzuo" value=""/>
                     </span>
                 </div>
             </div>
@@ -142,7 +142,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">微博：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
-                    <input name="weibo" value="weibo.com" type="text"/>
+                    <input name="weibo" value="" type="text"/>
                     </span>
                 </div>
             </div>
@@ -166,7 +166,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <span class="label">拉票宣言：</span>
                 <div class="label-info">
                    <span  class="textarea">
-                   <textarea name="anouncement" placeholder="拉票宣言">啦啦啦，我是卖报的小行家...</textarea>
+                   <textarea name="anouncement" placeholder="拉票宣言"></textarea>
                    </span>
                 </div>
             </div>
