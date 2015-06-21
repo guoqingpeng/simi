@@ -79,16 +79,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </footer>
 </div>
 <!-- 提交引导 -->
-<div class="mark" style="display:none"></div>
-<div class="dialog angled-135"  style="display:none">
+<div class="mark" id="j-mask" style="display:none"></div>
+<div class="dialog angled-135" id="j-dialog"  style="display:none">
     <i class="close"></i>
     <div class="guide">
         分享您的得分将累计到自己身价中！
     </div>
     <p class="title">本次得分</p>
-    <p class="num">99分</p>
-    <p class="title">太棒了!</p>
-    <button class="btn">确定</button>
+    <p class="num" id="j-score">99分</p>
+    <p class="title" id="j-comment">太棒了!</p>
+    <button class="btn" id="j-enter">确定</button>
 </div>
 <!-- /提交引导 -->
 <script src="/simi/scripts/jquery-1.9.1.min.js"></script>

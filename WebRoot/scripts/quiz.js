@@ -4,6 +4,17 @@ $(function(){
     var total = 4;
     var index = 0;
     var j = total;
+
+    var resultComments = {
+        perfect: '你是爱因斯坦么?',
+        excellent: '非常优秀!',
+        good: '很好，发挥不错!',
+        average: '一般般了。',
+        bad: '太可怜了！',
+        poor: '好可怕啊！',
+        worst: '悲痛欲绝！'
+    }
+
     while(j--){
         index = Math.floor(Math.random() * length--);
         timus.push(timu.splice(index, 1)[0])
@@ -31,9 +42,13 @@ $(function(){
         var answers = getAnswers();
         var rightAns = getCorrectAnswers();
         var score = getScore(answers, rightAns);
-        //alert(answers + "   " + rightAns + "  " + score);
-        $(this).hide();
-        alert('您的得分是: ' + score)
+        if(score !== -1){
+            $('#j-mark, #j-dialog').show();
+            //alert(answers + "   " + rightAns + "  " + score);
+            $(this).hide();
+            $('#j-score').text(score);
+            //alert('您的得分是: ' + score)
+        }
     })
 
     function getItems(ele, index){
@@ -72,7 +87,7 @@ $(function(){
         var len = rightAns.length;
         var score = 0;
         var base = 100 / len;
-        if(len > answers){
+        if(len > answers.join('').length){
             alert('请认真答完题再提交');
             return -1;
         }
@@ -85,5 +100,16 @@ $(function(){
 
         score = Math.ceil(score);
         return score
+    }
+
+    function judgeSkills(score) {
+        var returnString;
+        if (score === 100) return resultComments.perfect;
+        else if (score > 90) return resultComments.excellent;
+        else if (score > 70) return resultComments.good;
+        else if (score > 50) return resultComments.average;
+        else if (score > 35) return resultComments.bad;
+        else if (score > 20) return resultComments.poor;
+        else return resultComments.worst;
     }
 });
