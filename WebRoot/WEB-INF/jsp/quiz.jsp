@@ -35,26 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <form action="">
             <div class="m-decisive-bd">
-                <ul id="j-quiz">
-                    <li>
-                        <h4>1：特殊餐食中印度餐的代码为（  ）</h4>
-                        <ul class="next">
-                            <li class="active"><label ><input type="radio" name="a" checked/>A. RVML</label></li>
-                            <li><label ><input type="radio" name="a"/>B. IDML</label></li>
-                            <li><label ><input type="radio" name="a"/>C. HNML</label></li>
-                            <li><label ><input type="radio" name="a"/>D. MSML</label></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <h4>2：特殊餐食中印度餐的代码为（  ）</h4>
-                        <ul class="next">
-                            <li><label ><input type="checkbox" name="b"/>A. RVML</label></li>
-                            <li><label ><input type="checkbox" name="b"/>B. IDML</label></li>
-                            <li><label ><input type="checkbox" name="b"/>C. HNML</label></li>
-                            <li><label ><input type="checkbox" name="b"/>D. MSML</label></li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul id="j-quiz"></ul>
             </div>
             <div class="m-decisive-ft">
                   <button id="j-enter" class="g-btn g-btn-s g-btn-commit"><span>提 交</span></button>
