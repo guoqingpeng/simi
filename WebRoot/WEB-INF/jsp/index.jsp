@@ -30,8 +30,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="picbox">
                 <ul>
                     <li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
-                    <li><a href="javascript:;"><img src="../img/img5.jpg" alt=""/></a></li>
-                    <li><a href="javascript:;"><img src="../img/img6.jpg" alt=""/></a></li>
                 </ul>
             </div>
             <div class="state">

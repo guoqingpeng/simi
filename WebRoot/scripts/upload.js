@@ -101,12 +101,14 @@ $(function(){
             });
 
             $btn.addClass('recording').find('p').show();
+            $btn.find('p').text("开始录音...");
         }else{
             wx.stopRecord({
                 success: function(res){
                     voice.localId = res.localId;
                     clearInterval(voiceTimer);
                     $btn.removeClass('recording').find('p').hide();
+                    $btn.find('p').text("点击录音...");
                 },
                 fail: function(res){
                     alert(JSON.stringify(res));

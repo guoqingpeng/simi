@@ -11,6 +11,14 @@ $('#j-save').on('click', function(eve){
         alert('昵称必须填写');
         return
     }
+    if($('[name="phone"]').val() == ''){
+        alert('请填写手机号');
+        return
+    }
+    if($('[name="email"]').val() == ''){
+        alert('请填写邮箱');
+        return
+    }
 
 
     var type = $('[name="userType"]:checked').val();

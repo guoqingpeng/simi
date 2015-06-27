@@ -37,6 +37,9 @@
 
 }
 .m-ranking li img{
+    background-image: url(../../bgimg/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center center;
     width: 120px;
     height: 97px;
 }
