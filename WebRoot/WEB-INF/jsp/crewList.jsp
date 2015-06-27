@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-ranking">
             <ul class="g-clear" id="j-per-list" style="min-height: 340px;">
             </ul>
-            <div class="" id="j-load-more" style="text-align: center;padding: 5px 0;">
+            <div class="load-more" id="j-load-more">
                 点击加载更多
             </div>
         </div>
