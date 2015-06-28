@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-question">
             <p class="title" id="content"></p>
-            <div class="imgbox" id="j-img"><img src="../img/img9.jpg" alt=""/></div>
+            <div class="imgbox" id="j-img"><img src="" alt=""/></div>
         </div>
         <!-- /无节操问答 -->
         <!-- 评论 -->

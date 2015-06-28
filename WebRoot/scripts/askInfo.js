@@ -74,6 +74,6 @@ $(function(){
     }
 
     function setImage() {
-        $('#j-img').attr('src', '/simi/bgimg/ask-' + utils.getQueryString('id') + '.jpg')
+        $('#j-img').find('img').attr('src', '/simi/bgimg/ask/ask-' + utils.getQueryString('id') + '.jpg')
     }
 });
