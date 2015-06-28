@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-decisive">
             <div class="m-decisive-hd">
-                <span class=""><a href="?">乘 务</a></span>
-                <span class="active"><a href="javascript:;">非 乘 务</a></span>
+                <span class=""><a href="/simi/user/quizInit.do?type=1">乘 务</a></span>
+                <span class=""><a href="/simi/user/quizInit.do?type=2">非 乘 务</a></span>
             </div>
             <form action="">
             <div class="m-decisive-bd">
@@ -63,6 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <%-- <script type="text/javascript" src="/simi/scripts/lib/quiz.js"></script> --%>
 <script type="text/javascript" src="/simi/scripts/utils.js"></script>
 <script type="text/javascript" src="/simi/scripts/timu.js"></script>
+<script type="text/javascript" src="/simi/scripts/timu_1.js"></script>
 <script type="text/javascript" src="/simi/scripts/quiz.js"></script>
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script>
