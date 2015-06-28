@@ -62,7 +62,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span  class="ipt-box">
                     <input name="company" value="" type="text"/>
                     </span>
-                    <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
             </div>
