@@ -27,11 +27,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- 头像 -->
         <div class="m-portrait">
             <div class="portrait">
-                <img id="j-portrait" src="../img/img5.jpg" alt=""/>
+                <!--<img id="j-portrait" src="../img/img5.jpg" alt=""/>-->
+                <!-- 修改 background-position-Y的值-->
+                <div class="img"  id="j-portrait" style="background-image: url(../img/img5.jpg)"></div>
                 <!-- 点赞 -->
                 <div class="fingerprint">
                     <div class="info" id="j-scan">
-                        <div class="line" id="j-line" style="display: block;"></div>
+                        <div class="line" id="j-line"></div>
                         <!-- 扫描成功 -->
                         <div class="text" id="j-zan-tips"></div>
                     </div>

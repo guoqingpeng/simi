@@ -50,8 +50,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="label-info">
                     <span class="select">
                         <select name="sex" >
-                            <option value="1">男</option>
-                            <option value="2" selected>女</option>
+                            <option value="2">男</option>
+                            <option value="1" selected>女</option>
                         </select>
                     </span>
                 </div>
@@ -69,7 +69,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="rows">
                 <span class="label">类型：</span>
                 <div class="label-info">
-                    <span  class="ipt-box">
                     <label>
                         <input type="radio" name="userType" value="1">
                         乘务
@@ -78,8 +77,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <input type="radio" name="userType" value="2">
                         非乘务
                     </label>
-                    </span>
-                    <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
             </div>
             <div class="rows">
@@ -133,6 +130,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="label-info">
                     <span  class="ipt-box">
                         <input type="text" name="xinzuo" value=""/>
+                    </span>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="label">手机号：</span>
+                <div class="label-info">
+                    <span class="ipt-box">
+                        <input name="phone" value="" maxlength="11" type="text"/>
+                    </span>
+                </div>
+            </div>
+            <div class="rows">
+                <span class="label">邮箱：</span>
+                <div class="label-info">
+                    <span class="ipt-box">
+                        <input name="email" value="" type="text"/>
                     </span>
                 </div>
             </div>

@@ -8,6 +8,10 @@
     padding: 20px 0;
     overflow: hidden;
 }
+.m-register label{
+    display: inline-block;
+    margin-right: 20px;
+}
 .m-register .rows{
     *zoom: 1;
     padding-right: 20px;
@@ -29,7 +33,7 @@
 }
 .m-register .label-info{
     overflow: hidden;
-    line-height: 20px;
+    line-height: 30px;
 }
 .m-register .ipt-box,
 .m-register .select,
@@ -39,25 +43,52 @@
     border: solid 1px #ccc;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    line-height: 28px;
+    line-height: 18px;
 }
 .m-register .ipt-box input[type="text"]{
     border: 0;
     outline: none;
     width: 100%;
-    line-height: 28px;
-    height: 28px;
+    padding: 5px 0;
+    height: 18px;
 }
 .m-register .select{
-    padding: 5px;
-    line-height: 17px;
-    height: 17px;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: white;
+    padding: 0 5px;
+}
+.select:before, .select:after {
+    content: '';
+    position: absolute;
+    right: 11px;
+    width: 0;
+    height: 0;
+    border-left: 3px outset transparent;
+    border-right: 3px outset transparent;
+}
+.select:before {
+    top: 10px;
+    border-bottom: 3px solid #7f9298;
+}
+.select:after {
+    top: 16px;
+    border-top: 3px solid #7f9298;
 }
 .m-register .select select{
     width: 100%;
-    border: none;
-    padding: 0;
+    height: 26px;
+    line-height: 14px;
     outline: none;
+    position: relative;
+    z-index: 2;
+    padding: 5px 0;
+    padding-right: 0;
+    background: transparent;
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    -webkit-appearance: none;
 }
 .m-register .textarea textarea{
     width: 100%;
@@ -65,7 +96,9 @@
     border: 0;
     height: 60px;
     outline: none;
+    line-height: 28px;
 }
 .m-register .tips{
+    line-height: 18px;
    color: #ff5a00;
 }

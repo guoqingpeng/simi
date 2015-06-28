@@ -7,13 +7,27 @@
 .m-portrait{
     position: relative;
 }
+.m-portrait img{
+    background-image: url(../../bgimg/loading.gif);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
 /* 头像 */
 .m-portrait .portrait{
+    position: relative;
     overflow: hidden;
     height: 180px;
 }
+.m-portrait .img{
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: 100%;
+}
 .m-portrait .portrait img{
+    position: absolute;
     vertical-align: top;
+    top: -50%;
 }
 /* 指纹 */
 .m-portrait .fingerprint{
