@@ -25,7 +25,7 @@ public class WeixinConfigController {
 	@RequestMapping(value = "/getConfig", method = RequestMethod.GET)
 	public ModelAndView showIt() {
 		Map<String, String>  map = new HashMap<String, String>();
-		map = PastUtil.getParam("wx0738861136c0affb", "942a42d4ee8b21163ee54cddad1ccf02");
+		map = PastUtil.getWxConfig();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("config",map);
 		modelAndView.setViewName("/common");

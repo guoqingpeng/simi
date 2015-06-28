@@ -47,8 +47,10 @@ public class UserDao {
 		insertSqlBuffer.append(",sex");
 		insertSqlBuffer.append(",anouncement");
 		insertSqlBuffer.append(",userType");
+		insertSqlBuffer.append(",phone");
+		insertSqlBuffer.append(",email");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,,?,?,?,?,?)");
 		
 		//返回的用户的数据的id
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -73,6 +75,8 @@ public class UserDao {
 				pStatement.setString(12,(String)user.get("sex"));
 				pStatement.setString(13,(String)user.get("anouncement"));
 				pStatement.setString(14, (String)user.get("userType"));
+				pStatement.setString(15, (String)user.get("phone"));
+				pStatement.setString(16, (String)user.get("email"));
 				return pStatement;
 			}},keyHolder);
 		System.out.println("返回来的注册的id"+keyHolder.getKey().intValue());
@@ -157,6 +161,8 @@ public class UserDao {
 						userInfoMap.put("price",rs.getString("price"));
 						userInfoMap.put("sex",rs.getString("sex"));
 						userInfoMap.put("anouncement",rs.getString("anouncement"));
+						userInfoMap.put("phone",rs.getString("phone"));
+						userInfoMap.put("email",rs.getString("email"));
 						return userInfoMap;
 					}
 		   });
@@ -375,6 +381,8 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
+		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		
 		if (!"0".equals(type)) {
@@ -423,6 +431,8 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(", IFNULL(u.price-u.price_yestoday,0) incrument");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
+		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 	
 		//0代表返回所有类型的数据
@@ -465,6 +475,8 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
+		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		//按照类型返回数据
 		sqlBuffer.append("  WHERE name like  '%"+searchKey+ "%'");
