@@ -1,5 +1,7 @@
 ﻿package org.simi.utils;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -12,8 +14,14 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Date;
+
+import javax.imageio.ImageIO;
 
 import net.sf.json.JSONObject;
+
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class FileUtil {
 	
@@ -23,12 +31,18 @@ public class FileUtil {
 	//配置公共的请求
 	public static String FILE_SERVER_PATH = "/simi/user/file.do?file=";
 	
+	public static  int SIZE = 480;
+	
 	String result = "";
 	String end="\r\n";
 	String twoHyphens = "--"; //用于拼接
 	String boundary="*****"; //用于拼接 可自定义
 	URL submit = null;
 	JSONObject json=null;
+	
+	 private Image img;  
+	 private int width;  
+	 private int height;
 	
 	/**
 	 * 从微信服务器下载文件
@@ -69,11 +83,17 @@ public class FileUtil {
 		      bis.close();  
 		      bos.flush();  
 		      bos.close();
-		  
+		      
+		      //如果是，则将图片按照宽度等比缩放
+		      if(type ==1){
+		    	  FileUtil imgCom = new FileUtil(localPath);  
+			      imgCom.resizeFix(SIZE, SIZE,localPath); 
+		      }
 		    }  
 		    catch (Exception e) {  
 		      e.printStackTrace();  
 		    }  
+		    
 		return FILE_SERVER_PATH+stuffix+"&userId="+userId;
 	}
 	
@@ -174,5 +194,81 @@ public class FileUtil {
 		
 		}
 		return JSONObject.fromObject(result);
+	}
+	
+	 /** 
+     * 构造函数 
+     */  
+    public FileUtil(String fileName) throws IOException {  
+        File file = new File(fileName);// 读入文件  
+        img = ImageIO.read(file);      // 构造Image对象  
+        width = img.getWidth(null);    // 得到源图宽  
+        height = img.getHeight(null);  // 得到源图长  
+    }  
+    
+    /** 
+     * 按照宽度还是高度进行压缩 
+     * @param w int 最大宽度 
+     * @param h int 最大高度 
+     */  
+    public void resizeFix(int w, int h,String file) throws IOException {  
+    	
+//        if (width / height > w / h) {  
+//            resizeByWidth(w,file);  
+//        } else {  
+//            resizeByHeight(h,file);  
+//        }  
+    	
+    	resizeByWidth(w, file);
+    }  
+    /** 
+     * 以宽度为基准，等比例放缩图片 
+     * @param w int 新宽度 
+     */  
+    public void resizeByWidth(int w,String file) throws IOException {  
+        int h = (int) (height * w / width);  
+        resize(w, h,file);  
+    }  
+    /** 
+     * 以高度为基准，等比例缩放图片 
+     * @param h int 新高度 
+     */  
+    public void resizeByHeight(int h,String file) throws IOException {  
+        int w = (int) (width * h / height);  
+        resize(w, h,file);  
+    }  
+ 
+    /**
+     * 强制压缩/放大图片到固定的大小 
+     * @param w
+     * @param h
+     * @param des
+     * @throws IOException
+     */
+    public void resize(int w, int h,String file) throws IOException {  
+        // SCALE_SMOOTH 的缩略算法 生成缩略图片的平滑度的 优先级比速度高 生成的图片质量比较好 但速度慢  
+        BufferedImage image = new BufferedImage(w, h,BufferedImage.TYPE_INT_RGB );   
+        image.getGraphics().drawImage(img, 0, 0, w, h, null); // 绘制缩小后的图  
+        File destFile = new File(file);  
+        FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流  
+        // 可以正常实现bmp、png、gif转jpg  
+        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);  
+        encoder.encode(image); // JPEG编码  
+        out.close();  
+    }  
+    
+    /**
+     * 按照宽度等比缩放测试
+     * @param args
+     * @throws IOException
+     */
+    
+    public static void main(String[] args) throws IOException {
+		
+    	System.out.println("开始：" + new Date().toLocaleString());  
+    	FileUtil imgCom = new FileUtil("E:/temp/file2.jpeg");  
+        imgCom.resizeFix(480, 480,"E:/temp/file2.jpeg");  
+        System.out.println("结束：" + new Date().toLocaleString());  
+        
 	}
 }

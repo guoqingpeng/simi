@@ -47,8 +47,10 @@ public class UserDao {
 		insertSqlBuffer.append(",sex");
 		insertSqlBuffer.append(",anouncement");
 		insertSqlBuffer.append(",userType");
+		insertSqlBuffer.append(",telephone");
+		insertSqlBuffer.append(",email");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,,?,?,?,?,?)");
 		
 		//返回的用户的数据的id
 		KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -73,6 +75,8 @@ public class UserDao {
 				pStatement.setString(12,(String)user.get("sex"));
 				pStatement.setString(13,(String)user.get("anouncement"));
 				pStatement.setString(14, (String)user.get("userType"));
+				pStatement.setString(15, (String)user.get("telephone"));
+				pStatement.setString(16, (String)user.get("email"));
 				return pStatement;
 			}},keyHolder);
 		System.out.println("返回来的注册的id"+keyHolder.getKey().intValue());
