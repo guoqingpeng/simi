@@ -1,10 +1,13 @@
 $(function(){
     if(utils.getQueryString('type') == '2'){
         timu = timu1;
+        $('.m-decisive-hd').find('a').last().parent().addClass('active');
+    }else{
+        $('.m-decisive-hd').find('a').first().parent().addClass('active');
     }
     var timus = [];
     var length = timu.length;
-    var total = 10;
+    var total = 5;
     var index = 0;
     var j = total;
 
