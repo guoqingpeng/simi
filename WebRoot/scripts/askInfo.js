@@ -6,6 +6,8 @@ $(function(){
 
     utils.initSearch();
 
+    setImage();
+
     function initEvent(){
         // 评论
         $('#j-discuss').on('click', function(eve){
@@ -69,5 +71,9 @@ $(function(){
         });
 
         $list.html(html.join(''))
+    }
+
+    function setImage() {
+        $('#j-img').attr('src', '/simi/bgimg/ask-' + utils.getQueryString('id') + '.jpg')
     }
 });
