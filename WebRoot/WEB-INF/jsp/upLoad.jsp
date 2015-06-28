@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="">
                     <button class="recordStar">
                         <i class="g-ico g-ico-l g-ico-suona"></i>
-                        <p>点击开始录音...</p>
+                        <p>点击录音...</p>
                     </button>
                 </div>
                 <div id="j-re-record" class="hide mt10">
