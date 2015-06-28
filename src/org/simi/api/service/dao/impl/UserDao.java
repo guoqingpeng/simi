@@ -285,7 +285,7 @@ public class UserDao {
      	comSql.append(" UNION ");
         //非游客评论数据
 		comSql.append("(SELECT c.id id,u.name name,c.comment comment ," +
-				"(SELECT max(local_path)  from t_file where pk_user = c.comment_user and fileType = '1') " +
+				"(SELECT min(local_path)  from t_file where pk_user = c.comment_user and fileType = '1' order by id) " +
 				"pic FROM ");
      	comSql.append(" t_comment c INNER JOIN t_user u ");
      	comSql.append(" ON c.comment_user = u.id ");
