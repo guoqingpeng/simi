@@ -131,7 +131,7 @@ $(function(){
         var voiceId = '';
         $('#j-voice')
             //.data('id', id)
-            .find('time').text(data.voice.voiceTime || 0 + '"')
+            .find('time').text((data.voice.voiceTime || 0) + '"')
             .end()
             .on('click', function(eve){
                 eve.preventDefault();

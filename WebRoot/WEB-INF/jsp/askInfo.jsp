@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-question">
             <p class="title" id="content"></p>
-            <div class="imgbox"><img src="../img/img9.jpg" alt=""/></div>
+            <div class="imgbox" id="j-img"><img src="" alt=""/></div>
         </div>
         <!-- /无节操问答 -->
         <!-- 评论 -->
@@ -44,36 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="list">
                 <ul id="j-dis-list">
-                    <!-- <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">3楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">2楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="portrait"></span>
-                        <div class="info">
-                            <div class="userName">
-                                <i class="storey">1楼</i>
-                                <h2>用户昵称用户昵称</h2>
-                            </div>
-                            <p>信息评价作为信息素养内容的重要组成部分,</p>
-                        </div>
-                    </li> -->
                 </ul>
             </div>
         </div>

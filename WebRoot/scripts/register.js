@@ -24,7 +24,7 @@ $('#j-save').on('click', function(eve){
         return
     }
     if(!/^1\d{10}$/.test(phone)){
-        alert('电话号码只能是11位数字');
+        alert('手机号只能是11位数字');
         return
     }
 
