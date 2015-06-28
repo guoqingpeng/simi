@@ -293,8 +293,7 @@ public class UserDao {
      	comSql.append(" AND c.comment_user is not null");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" order by id desc ");
-     	
-    	System.out.println(comSql.toString());
+    	System.out.println("评论列表"+comSql.toString());
     	List rows = jdbcTemplate.queryForList(comSql.toString());   
     	Iterator it = rows.iterator();   
     	while(it.hasNext()) {   
