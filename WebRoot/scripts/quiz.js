@@ -1,9 +1,13 @@
 $(function(){
+    if(utils.getQueryString('type') == '2'){
+        timu = timu1;
+    }
     var timus = [];
     var length = timu.length;
     var total = 10;
     var index = 0;
     var j = total;
+
 
     utils.initNav();
 
