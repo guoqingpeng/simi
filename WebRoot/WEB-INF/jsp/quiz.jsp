@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="m-decisive">
             <div class="m-decisive-hd">
-                <span class=""><a href="javascript:;">乘 务</a></span>
-                <span class=""><a href="javascript:;">非 乘 务</a></span>
+                <span class="/simi/user/quizInit.do?type=1"><a href="javascript:;">乘 务</a></span>
+                <span class="/simi/user/quizInit.do?type=2"><a href="javascript:;">非 乘 务</a></span>
             </div>
             <form action="">
             <div class="m-decisive-bd">
