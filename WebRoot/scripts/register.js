@@ -14,23 +14,29 @@ $('#j-save').on('click', function(eve){
     }
 
     if(!/^[a-zA-Z0-9]{6,}$/.test(nickName)){
-        alert('昵称职能是数字和字母，不得少于6位');
+        alert('昵称只能是数字和字母，不得少于6位');
         return
     }
 
-    if($('[name="nickName"]').val() == ''){
-        alert('昵称必须填写');
-        return
-    }
-    if($('[name="phone"]').val() == ''){
+    var phone = $('[name="phone"]').val();
+    if(phone == ''){
         alert('请填写手机号');
         return
     }
-    if($('[name="email"]').val() == ''){
-        alert('请填写邮箱');
+    if(!/^1\d{10}$/.test(phone)){
+        alert('电话号码只能是11位数字');
         return
     }
 
+    var email = $('[name="email"]').val();
+    if(email == ''){
+        alert('请填写邮箱');
+        return
+    }
+    if(!/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-zA-Z]{2,}$/.test(email)){
+        alert('邮箱格式不对');
+        return
+    }
 
     var type = $('[name="userType"]:checked').val();
     if(!type){

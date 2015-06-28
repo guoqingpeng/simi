@@ -23,11 +23,11 @@ $(function(){
     };
     var score = 0;
 
-    if(!localStorage.getItem('userid')){
-        alert('您还没有注册哦，请先注册了再参加可以啵~');
-        location.href = '/simi/user/regInit.do';
-        return
-    }
+    // if(!localStorage.getItem('userid')){
+    //     alert('您还没有注册哦，请先注册了再参加可以啵~');
+    //     location.href = '/simi/user/regInit.do';
+    //     return
+    // }
 
     while(j--){
         index = Math.floor(Math.random() * length--);

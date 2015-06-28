@@ -76,6 +76,7 @@ $(function(){
         eve.preventDefault();
         var $btn = $(this);
         if(!isRecording){
+            recordTime = 0;
             wx.startRecord({
                 success: function(){
                     voiceTimer = setInterval(function(){
@@ -95,7 +96,7 @@ $(function(){
                 success: function(res){
                     voice.localId = res.localId;
                     clearInterval(voiceTimer);
-                    $btn.removeClass('recording').find('p').hide();
+                    $btn.removeClass('recording');
                     $btn.find('p').text("重新录音...");
                 },
                 fail: function(res){
