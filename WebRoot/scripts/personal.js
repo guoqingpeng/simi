@@ -162,7 +162,7 @@ $(function(){
         var length = data.length;
         $.each(data, function(index, element){
             html.push('<li>' +
-                        '<span class="portrait"></span>' +
+                        '<span class="portrait"' + (element.pic ? ' style="background: url(' + element.pic + ') no-repeat;background-size: cover;border-radius:50%;"' : '')+ '></span>' +
                         '<div class="info">' +
                             '<div class="userName">' +
                                 '<i class="storey">' + (length - index) + '楼</i>' +

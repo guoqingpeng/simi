@@ -187,7 +187,7 @@ $(function(){
     }
 
     function addPrice(){
-        var _score = score * 10;
+        var _score = score * 1;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',
             {
