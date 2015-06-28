@@ -277,14 +277,16 @@ public class UserDao {
      	StringBuffer comSql =new StringBuffer();
      	
      	//游客评论
-     	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,c.comment comment FROM ");
+     	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,c.comment comment ,"+"''"+" pic FROM ");
  		comSql.append(" t_comment c");
      	comSql.append(" WHERE c.be_commented_user = '"+userId+"'");
      	comSql.append(" AND c.comment_user ='' ");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" UNION ");
         //非游客评论数据
-		comSql.append("(SELECT c.id id,u.name name,c.comment comment FROM ");
+		comSql.append("(SELECT c.id id,u.name name,c.comment comment ," +
+				"(SELECT max(local_path)  from t_file where pk_user = '"+userId+"' and fileType = '1') " +
+				"pic FROM ");
      	comSql.append(" t_comment c INNER JOIN t_user u ");
      	comSql.append(" ON c.comment_user = u.id ");
      	comSql.append(" WHERE c.be_commented_user = '"+userId+"'");
