@@ -285,7 +285,7 @@ public class UserDao {
      	comSql.append(" UNION ");
         //非游客评论数据
 		comSql.append("(SELECT c.id id,u.name name,c.comment comment ," +
-				"(SELECT max(local_path)  from t_file where pk_user = '"+userId+"' and fileType = '1') " +
+				"(SELECT min(local_path)  from t_file where pk_user = c.comment_user and fileType = '1' order by id) " +
 				"pic FROM ");
      	comSql.append(" t_comment c INNER JOIN t_user u ");
      	comSql.append(" ON c.comment_user = u.id ");
@@ -293,8 +293,7 @@ public class UserDao {
      	comSql.append(" AND c.comment_user is not null");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" order by id desc ");
-     	
-    	System.out.println(comSql.toString());
+    	System.out.println("评论列表"+comSql.toString());
     	List rows = jdbcTemplate.queryForList(comSql.toString());   
     	Iterator it = rows.iterator();   
     	while(it.hasNext()) {   

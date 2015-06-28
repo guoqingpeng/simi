@@ -48,7 +48,7 @@ public class QuestionDao {
 	    List<Object> replys = new ArrayList<Object>();
      	StringBuffer comSql =new StringBuffer();
      	//游客回复
-     	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,q.question question,c.reply reply FROM ");
+     	comSql.append("(SELECT c.id id ,"+"'游客'"+" name,q.question question,c.reply reply ,"+"''"+" pic FROM ");
  		comSql.append("t_question_reply c INNER JOIN t_question q ON c.replyTo = q.id ");
      	comSql.append(" WHERE ");
      	comSql.append(" c.replyUser ='' ");
@@ -56,7 +56,9 @@ public class QuestionDao {
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" UNION ");
         //非游客回复
-		comSql.append("(SELECT c.id id,u.name name,q.question question ,c.reply reply FROM ");
+		comSql.append("(SELECT c.id id,u.name name,q.question question ,c.reply reply, " +
+				"(SELECT min(local_path)  from t_file where pk_user = c.replyUser and fileType = '1' order by id ) pic " +
+				"FROM ");
      	comSql.append("t_question_reply c INNER JOIN t_user u ");
      	comSql.append("ON c.replyUser = u.id ");
      	comSql.append("INNER JOIN t_question q ON c.replyTo = q.id ");
@@ -65,7 +67,7 @@ public class QuestionDao {
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" order by id desc ");
      	
-    	System.out.println(comSql.toString());
+    	System.out.println("SSSS"+comSql.toString());
     	List rows = jdbcTemplate.queryForList(comSql.toString());   
     	Iterator it = rows.iterator();   
     	while(it.hasNext()) {   
