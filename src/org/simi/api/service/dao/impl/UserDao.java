@@ -50,7 +50,7 @@ public class UserDao {
 		insertSqlBuffer.append(",phone");
 		insertSqlBuffer.append(",email");
 		insertSqlBuffer.append(")VALUES");
-		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		
 		//返回的用户的数据的id
 		KeyHolder keyHolder = new GeneratedKeyHolder();
