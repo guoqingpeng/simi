@@ -79,7 +79,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         非乘务
                     </label>
                     </span>
-                    <br/>
                     <span class="tips">乘务员必填公司简称，例：东航</span>
                 </div>
             </div>
@@ -97,7 +96,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span  class="ipt-box">
                         <input name="nickName" value="" type="text"/>
                     </span>
-                    <br/>
                     <span class="tips">由字母或者数字组成</span>
                 </div>
             </div>

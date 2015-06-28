@@ -7,6 +7,17 @@ $('#j-save').on('click', function(eve){
         return
     }
 
+    var nickName = $('[name="nickName"]').val();
+    if(nickName == ''){
+        alert('昵称必须填写');
+        return
+    }
+
+    if(!/^[a-zA-Z0-9]{6,}$/.test(nickName)){
+        alert('昵称职能是数字和字母，不得少于6位');
+        return
+    }
+
     if($('[name="nickName"]').val() == ''){
         alert('昵称必须填写');
         return
