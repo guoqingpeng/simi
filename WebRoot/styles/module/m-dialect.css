@@ -38,9 +38,8 @@
 }
 /* 文案 */
 .m-dialect .tips{
-    text-align: right;
-    color: #ff8d66;
-    font-weight: 700;
+    padding-bottom: 10px;
+    color: red;
 }
 .m-dialect .text{
     line-height: 24px;

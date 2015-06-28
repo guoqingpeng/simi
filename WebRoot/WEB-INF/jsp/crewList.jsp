@@ -19,18 +19,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="x5-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
     <meta name="x5-page-mode" content="app"/>
-    <title>乘务组列表</title>
+    <title>真.空秀-乘务组</title>
     <link rel="stylesheet" href="../styles/release/list.css" />
     <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
 </head>
 <body>
 <div class="doc crewList">
-    <!-- 头部 -->
-    <header class="doc-hd">
-        <section class="m-head">
-            <h1>真.空秀</h1>
-        </section>
-    </header>
     <!-- /头部 -->
     <div class="doc-bd">
         <!-- 列表 -->

@@ -44,9 +44,8 @@ mark { background-color: yellow; }
 /* 清除文本线条装饰 */
 ins, s, u, del { text-decoration: none; }
 /* 预设默认链接表现 */
-a { color: #25a4bb; text-decoration: none;  -webkit-tap-highlight-color:rgba(0,0,0,0); }
-a:active { color: #ccc; }
-a:hover { color: #ff6600; }
+a { color: #25a4bb; text-decoration: none;   }
+a:visited { -webkit-tap-highlight-color:transparent; }
 /* 图片自适应 */
 img { width: 100%; }
 /* 美化radio/checkbox */

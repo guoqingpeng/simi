@@ -48,19 +48,28 @@
 }
 /* 二级导航 */
 .m-foot .next{
-    display: none;
+    display: block;
     position: absolute;
     top: -80px;
     width: 100%;
     background-color: #008ce9;
 }
 .m-foot .next li{
-    overflow: hidden;
-    float: none;
-    width: 100%;
     padding-right: 1px;
+    border: solid 1px #00bdf3;
+    border-right: 0;
+    margin-bottom: -1px;
+    position: relative;
+}
+.m-foot .next li:after{
+    content: "";
+    display: block;
+    height: 40px;
+    width: 1px;
+    background-color: #00bdf3;
+    position: absolute;
+    right: -1px;
+    top: 0;
 }
 .m-foot .next li a{
-    margin-bottom: -1px;
-    border: solid 1px #00bdf3;
 }
