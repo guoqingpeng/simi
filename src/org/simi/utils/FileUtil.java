@@ -14,7 +14,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
 
@@ -24,7 +23,7 @@ import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 
 public class FileUtil {
-	
+
 	//配置公共文件的服务器保存路径
 	public static String FILE_SAVE_PATH = "/home/default/files/";
 	
@@ -256,19 +255,5 @@ public class FileUtil {
         encoder.encode(image); // JPEG编码  
         out.close();  
     }  
-    
-    /**
-     * 按照宽度等比缩放测试
-     * @param args
-     * @throws IOException
-     */
-    
-    public static void main(String[] args) throws IOException {
-		
-    	System.out.println("开始：" + new Date().toLocaleString());  
-    	FileUtil imgCom = new FileUtil("E:/temp/file2.jpeg");  
-        imgCom.resizeFix(480, 480,"E:/temp/file2.jpeg");  
-        System.out.println("结束：" + new Date().toLocaleString());  
-        
-	}
+ 
 }
