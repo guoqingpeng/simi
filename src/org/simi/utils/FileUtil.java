@@ -86,8 +86,8 @@ public class FileUtil {
 		      
 		      //如果是，则将图片按照宽度等比缩放
 		      if(type ==1){
-		    	  FileUtil imgCom = new FileUtil(localPath);  
-			      imgCom.resizeFix(SIZE, SIZE,localPath); 
+//		    	  FileUtil imgCom = new FileUtil(localPath);  
+//			      imgCom.resizeFix(SIZE, SIZE,localPath); 
 		      }
 		    }  
 		    catch (Exception e) {  
