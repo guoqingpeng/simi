@@ -47,7 +47,7 @@ public class UserDao {
 		insertSqlBuffer.append(",sex");
 		insertSqlBuffer.append(",anouncement");
 		insertSqlBuffer.append(",userType");
-		insertSqlBuffer.append(",telephone");
+		insertSqlBuffer.append(",phone");
 		insertSqlBuffer.append(",email");
 		insertSqlBuffer.append(")VALUES");
 		insertSqlBuffer.append("(?,?,?,?,?,?,?,?,?,?,?,,?,?,?,?,?)");
@@ -75,7 +75,7 @@ public class UserDao {
 				pStatement.setString(12,(String)user.get("sex"));
 				pStatement.setString(13,(String)user.get("anouncement"));
 				pStatement.setString(14, (String)user.get("userType"));
-				pStatement.setString(15, (String)user.get("telephone"));
+				pStatement.setString(15, (String)user.get("phone"));
 				pStatement.setString(16, (String)user.get("email"));
 				return pStatement;
 			}},keyHolder);
@@ -161,7 +161,7 @@ public class UserDao {
 						userInfoMap.put("price",rs.getString("price"));
 						userInfoMap.put("sex",rs.getString("sex"));
 						userInfoMap.put("anouncement",rs.getString("anouncement"));
-						userInfoMap.put("telephone",rs.getString("telephone"));
+						userInfoMap.put("phone",rs.getString("phone"));
 						userInfoMap.put("email",rs.getString("email"));
 						return userInfoMap;
 					}
@@ -381,7 +381,7 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
-		sqlBuffer.append(", IFNULL(u.telephone,'') telephone");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
 		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		
@@ -431,7 +431,7 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
 		sqlBuffer.append(", IFNULL(u.price-u.price_yestoday,0) incrument");
-		sqlBuffer.append(", IFNULL(u.telephone,'') telephone");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
 		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 	
@@ -475,7 +475,7 @@ public class UserDao {
 		sqlBuffer.append(", IFNULL(u.sex,'') sex");
 		sqlBuffer.append(", IFNULL(u.price,'') price");
 		sqlBuffer.append(", IFNULL(u.anouncement,'') anouncement");
-		sqlBuffer.append(", IFNULL(u.telephone,'') telephone");
+		sqlBuffer.append(", IFNULL(u.phone,'') phone");
 		sqlBuffer.append(", IFNULL(u.email,'') email");
 		sqlBuffer.append(" FROM t_file f INNER JOIN t_user u on f.pk_user = u.id AND f.fileType = '1'");
 		//按照类型返回数据
