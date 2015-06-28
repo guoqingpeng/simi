@@ -199,10 +199,12 @@ public class FileUtil {
      * 构造函数 
      */  
     public FileUtil(String fileName) throws IOException {  
+    	
         File file = new File(fileName);// 读入文件  
         img = ImageIO.read(file);      // 构造Image对象  
         width = img.getWidth(null);    // 得到源图宽  
         height = img.getHeight(null);  // 得到源图长  
+        
     }  
     
     /** 
@@ -212,21 +214,18 @@ public class FileUtil {
      */  
     public void resizeFix(int w, int h,String file) throws IOException {  
     	
-//        if (width / height > w / h) {  
-//            resizeByWidth(w,file);  
-//        } else {  
-//            resizeByHeight(h,file);  
-//        }  
-    	
     	resizeByWidth(w, file);
+    	
     }  
     /** 
      * 以宽度为基准，等比例放缩图片 
      * @param w int 新宽度 
      */  
-    public void resizeByWidth(int w,String file) throws IOException {  
-        int h = (int) (height * w / width);  
-        resize(w, h,file);  
+    public void resizeByWidth(int w,String file) throws IOException {
+    	
+        int h = (int) (height * w / width);
+        resize(w, h,file);
+        
     }  
     /** 
      * 以高度为基准，等比例缩放图片 
@@ -246,7 +245,7 @@ public class FileUtil {
      */
     public void resize(int w, int h,String file) throws IOException {  
         // SCALE_SMOOTH 的缩略算法 生成缩略图片的平滑度的 优先级比速度高 生成的图片质量比较好 但速度慢  
-        BufferedImage image = new BufferedImage(w, h,BufferedImage.TYPE_INT_RGB );   
+        BufferedImage image = new BufferedImage(w, h,BufferedImage.TYPE_INT_RGB );
         image.getGraphics().drawImage(img, 0, 0, w, h, null); // 绘制缩小后的图  
         File destFile = new File(file);  
         FileOutputStream out = new FileOutputStream(destFile); // 输出到文件流  
