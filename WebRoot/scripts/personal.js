@@ -85,6 +85,7 @@ $(function(){
                 rendInfo(json.data);
                 rendImages(json.data);
                 rendVoice(json.data);
+                scrollBgImg(json.data);
             }
         )
     }
@@ -207,15 +208,44 @@ $(function(){
             clearInterval(aniTimer);
             aniTimer = null;
         }
-        aniTimer = setInterval(function(){
-            $('#j-line').css('height', '2px').animate({top:0}, 500).animate({'top':93}, 500)
-        }, 1000)
+        aniTimer = setInterval(ani, 1000);
+
+        function ani(){
+            $('#j-line').show().animate({top:0}, 500).animate({'top':93}, 500)
+        }
+
+        ani();
     }
 
     function stopAni(){
         clearInterval(aniTimer);
         aniTimer = null;
-        $('#j-line').css('height', '0')
+        $('#j-line').hide()
         //$('#j-line').removeClass('line');
+    }
+
+    function scrollBgImg(data){
+        // $('#j-portrait').css('background-position-y', '0')
+        var images = data.images;
+        var img = new Image();
+        var timer = 0;
+        var h = 0;
+
+        img.src = images[0];
+
+        timer = setInterval(function(){
+            h = img.height;
+            if(h){
+                h = h * $('#j-portrait').width() / img.width - 180;
+                clearInterval(timer);
+                // $('#j-portrait').animate({'background-position-y':0}, 5000)
+                setInterval(ani, 18000);
+            }
+        }, 50);
+
+        function ani(){
+            $('#j-portrait').delay(1000).animate({'background-position-y':'0%'}, 8000).animate({'background-position-y': '99.99%'}, 8000)
+        }
+        ani();
     }
 });
