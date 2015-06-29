@@ -8,6 +8,9 @@
     padding: 20px 0;
     overflow: hidden;
 }
+.m-register .warn{
+	color:#ff5a00
+}
 .m-register label{
     display: inline-block;
     margin-right: 20px;

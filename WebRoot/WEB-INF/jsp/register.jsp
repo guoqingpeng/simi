@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <form class="m-register">
             <div class="rows">
-                <span class="label">姓名：</span>
+                <span class="label"><i class="warn">*</i>姓名：</span>
                 <div class="label-info">
                     <span class="ipt-box">
                     <input name="name" value="" type="text"/>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="rows">
-                <span class="label">昵称：</span>
+                <span class="label"><i class="warn">*</i>昵称：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
                         <input name="nickName" value="" type="text"/>
@@ -133,7 +133,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="rows">
-                <span class="label">手机号：</span>
+                <span class="label"><i class="warn">*</i>手机号：</span>
                 <div class="label-info">
                     <span class="ipt-box">
                         <input name="phone" value="" maxlength="11" type="text"/>
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="rows">
-                <span class="label">邮箱：</span>
+                <span class="label"><i class="warn">*</i>邮箱：</span>
                 <div class="label-info">
                     <span class="ipt-box">
                         <input name="email" value="" type="text"/>
