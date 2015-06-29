@@ -181,7 +181,8 @@ public class UserDao {
 	    List<Object> imgList = new ArrayList<Object>();
      	StringBuffer imgSql =new StringBuffer();
      	System.out.println(userId);
-    	imgSql.append("SELECT local_path from t_file where pk_user = '"+userId+"'" +" AND fileType = 1");
+     	//2015-06-29 修改了此处
+    	imgSql.append("SELECT local_path from t_file where pk_user = '"+userId+"'" +" AND fileType = 1 order by id");
     	System.out.println(imgSql.toString());
     	List rows = jdbcTemplate.queryForList(imgSql.toString());   
     	Iterator it = rows.iterator();   
