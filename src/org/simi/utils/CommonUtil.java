@@ -23,7 +23,7 @@ public class CommonUtil {
 	public final static int  ZAN_SCORE = 10; 
 	
 	//上传音频加20分
-	public final static int  UPLOAD_VOICE_SCORE = 100; 
+	public final static int  UPLOAD_VOICE_SCORE = 1000; 
 
 	/**
 	 * 获取接口访问凭证
