@@ -59,7 +59,8 @@
 }
 .g-btn-commit:active span,
 .g-btn-warn span,
-.g-btn-warn:active span{
+.g-btn-warn:active span,
+.g-btn-commit:visited{
     background: -webkit-linear-gradient(#f9a300,#f38600,#f25e00);
     background: linear-gradient(#f9a300,#f38600,#f25e00);
     color: #fff;

@@ -70,11 +70,11 @@
 }
 .select:before {
     top: 10px;
-    border-bottom: 3px solid #7f9298;
+    border-bottom: 3px solid #ccc;
 }
 .select:after {
     top: 16px;
-    border-top: 3px solid #7f9298;
+    border-top: 3px solid #ccc;
 }
 .m-register .select select{
     width: 100%;
