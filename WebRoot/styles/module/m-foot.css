@@ -48,7 +48,7 @@
 }
 /* 二级导航 */
 .m-foot .next{
-    display: block;
+    display: none;
     position: absolute;
     top: -80px;
     width: 100%;
