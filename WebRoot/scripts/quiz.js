@@ -187,6 +187,9 @@ $(function(){
     }
 
     function addPrice(){
+        if(!localStorage.getItem('userid')){
+            return
+        }
         var _score = score * 1;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',
