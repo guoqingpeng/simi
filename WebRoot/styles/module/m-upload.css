@@ -17,11 +17,15 @@
 .m-upload .up-btn button{
     display: block;
     width: 100%;
-    height: 48px;
-    line-height: 48px;
+    height: 60px;
+    line-height: 60px;
     color: #fff;
-    font-size: 16px;
+    font-size: 20px;
     border: 0;
     outline: none;
     background-color: #ff5a00;
+}
+.m-upload .red{ 
+	padding: 5px 0
+	color:red; 
 }
