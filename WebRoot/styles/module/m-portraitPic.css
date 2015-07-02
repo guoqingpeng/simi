@@ -19,23 +19,20 @@
     margin-bottom: 10px;
     border: solid 2px #0070dd;
 }
-.m-portraitPic .imgbox:frist{
-    position: relative;
-}
-.m-portraitPic .imgbox:after{
-    position: absolute;
-    right: 40px;
-    bottom: 50px;
-    width: 59px;
-    height: 110px;
-    display: block;
-    content: "";
-    background-image: url(../../bgimg/watermark.png);
-    background-repeat: no-repeat;
-    opacity:0.6;
-    background-size: 59px 110px;
-    transform:rotate(45deg);
-    -webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+.m-portraitPic .imgbox:first-child:after{
+	position: absolute;
+	right: 35px;
+	bottom: 10px;
+	width: 59px;
+	height: 110px;
+	display: block;
+	content: "";
+	background-image: url(../../bgimg/watermark.png);
+	background-repeat: no-repeat;
+	opacity: 0.6;
+	background-size: 59px 110px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 /*.m-portraitPic .imgbox img{
     max-height: 185px;
