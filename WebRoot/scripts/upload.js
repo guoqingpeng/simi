@@ -100,7 +100,8 @@ $(function(){
                     $btn.find('p').text("重新录音...");
                 },
                 fail: function(res){
-                    alert(JSON.stringify(res));
+                    //alert(JSON.stringify(res));
+                    alert('请升级到最新版本再进行录音！');
                 }
             });
         }

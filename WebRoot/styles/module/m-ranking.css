@@ -86,6 +86,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.m-ranking .fzm{
+    font-size: 14px;
+}
 /* ico */
 .m-ranking .rank{
     position: absolute;
