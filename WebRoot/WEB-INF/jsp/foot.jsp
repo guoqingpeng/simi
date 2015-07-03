@@ -17,3 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a href="/simi/user/regInit.do" title="首页">我要报名</a></li>
     </ul>
 </footer>
+<div class="doc-ft">
+    <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
+</div>

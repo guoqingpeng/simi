@@ -23,8 +23,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link rel="stylesheet" href="../styles/release/index.css" />
 </head>
 <body>
-<div class="doc">
-    <div class="doc-bd index">
+<div class="doc  index">
+    <div class="doc-bd">
         <!-- 轮播图 -->
         <div id="slideBox" class="m-pic">
             <div class="picbox">

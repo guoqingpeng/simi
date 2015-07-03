@@ -45,3 +45,11 @@
 .actRule{
     background-color: #cde9ff;
 }
+.doc-ft{
+    border-top: solid 1px #005ee2;
+    text-align: center;
+    padding: 20px 0 70px 0
+}
+.doc-ft a{
+    color: #333;
+}
