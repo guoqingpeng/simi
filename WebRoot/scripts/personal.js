@@ -7,6 +7,7 @@ $(function(){
 
     utils.initNav();
     utils.initSearch();
+    utils.fixbug();
 
     function initEvent(){
         // 点赞

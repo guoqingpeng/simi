@@ -3,6 +3,9 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
+<div class="doc-ft">
+    <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
+</div>
 <footer class="m-foot">
     <ul class="first">
         <li><a href="/simi/user/mainInit.do" title="首页">首页</a></li>
@@ -17,6 +20,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a href="/simi/user/regInit.do" title="首页">我要报名</a></li>
     </ul>
 </footer>
-<div class="doc-ft">
-    <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
-</div>

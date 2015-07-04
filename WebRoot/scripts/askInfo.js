@@ -5,6 +5,7 @@ $(function(){
     initEvent();
 
     utils.initSearch();
+    utils.fixbug();
 
     setImage();
 

@@ -8,6 +8,7 @@ $(function(){
 
     utils.initNav();
     utils.initSearch();
+    utils.fixbug();
 
     TouchSlide({
         slideCell:"#slideBox",

@@ -13,6 +13,7 @@ $(function(){
 
 
     utils.initNav();
+    utils.fixbug();
 
     var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}分, 你也来参加吧~~';
     var SHARE_LINK = 'http://haiyilingdong.com/simi/user/quizInit.do';

@@ -6,6 +6,7 @@ $(function(){
 
     // utils.initNav();
     utils.initSearch();
+    utils.fixbug();
 
     function initEvent(){
         $('#j-load-more').on('click', function(eve){
