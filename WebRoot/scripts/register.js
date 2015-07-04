@@ -71,6 +71,7 @@ $('#j-save').on('click', function(eve){
         if(json.ret === true){
             localStorage.setItem('userid', json.data.id);
             localStorage.setItem('usertype', json.data.userType);
+            localStorage.setItem('quizScoreCount', 0);
             location.href = '/simi/user/uploadInit.do?userid=' + json.data.id
         }else{
             alert(json.errmsg)
