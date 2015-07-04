@@ -1,4 +1,5 @@
 utils.initNav();
+utils.fixbug();
 $('#j-save').on('click', function(eve){
     eve.preventDefault();
 
