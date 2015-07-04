@@ -161,5 +161,12 @@ window.utils = {
                 location.href = '/simi/user/searchInit.do?q=' + $(eve.target).val()
             }
         })
+    },
+    "fixbug": function(){
+        $('input:text, textarea').on('focus', function(eve){
+            $('.m-foot').css('position', 'static');
+        }).on('blur', function(eve){
+            $('.m-foot').css('position', 'fixed');
+        })
     }
 };

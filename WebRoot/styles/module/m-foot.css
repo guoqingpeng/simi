@@ -38,14 +38,14 @@
 .m-foot .first > li:first-child:after{
     width: 0;
 }
-.m-foot .first > li:after {
+/* .m-foot .first > li:after {
     display: block;
     float: left;
     width: 1px;
     height: 40px;
     content: "";
     background-color: #0033cc;
-}
+} */
 /* 二级导航 */
 .m-foot .next{
     display: none;
