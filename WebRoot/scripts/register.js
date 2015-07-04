@@ -28,15 +28,15 @@ $('#j-save').on('click', function(eve){
         return
     }
 
-    var email = $('[name="email"]').val();
-    if(email == ''){
-        alert('请填写邮箱');
-        return
-    }
-    if(!/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-zA-Z]{2,}$/.test(email)){
-        alert('邮箱格式不对');
-        return
-    }
+    // var email = $('[name="email"]').val();
+    // if(email == ''){
+    //     alert('请填写邮箱');
+    //     return
+    // }
+    // if(!/^([a-z0-9A-Z]+[-|\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\.)+[a-zA-Z]{2,}$/.test(email)){
+    //     alert('邮箱格式不对');
+    //     return
+    // }
 
     var type = $('[name="userType"]:checked').val();
     if(!type){
