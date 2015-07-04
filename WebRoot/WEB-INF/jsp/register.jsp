@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </label>
                 </div>
             </div>
-            <div class="rows">
+            <div class="rows" style="display:none">
                 <span class="label">职业：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="tips">由字母或者数字组成</span>
                 </div>
             </div>
-            <div class="rows">
+            <div class="rows" style="display:none">
                 <span class="label">身高：</span>
                 <div class="label-info">
                     <span  class="ipt-box">
@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </span>
                 </div>
             </div>
-            <div class="rows">
+            <div class="rows" style="display:none">
                 <span class="label"><i class="warn">*</i>邮箱：</span>
                 <div class="label-info">
                     <span class="ipt-box">
