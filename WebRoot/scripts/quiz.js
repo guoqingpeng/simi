@@ -190,7 +190,7 @@ $(function(){
     function addPrice(){
         var count = localStorage.getItem('quizScoreCount') || '';
         count = Number(count);
-
+alert(count);
         if(!localStorage.getItem('userid') || count > 1){
             return
         }
