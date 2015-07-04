@@ -40,10 +40,10 @@ public class UserService {
 			ret.put("ret", false);
 			ret.put("errmsg", "该昵称已被注册");
 			return ret;
-		}else if (userDao.isPhoneNumberRepeat(phone)) {
-			ret.put("ret", false);
-			ret.put("errmsg", "该手机号码已被注册");
-			return ret;
+//		}else if (userDao.isPhoneNumberRepeat(phone)) {
+//			ret.put("ret", false);
+//			ret.put("errmsg", "该手机号码已被注册");
+//			return ret;
 		}else if (userDao.isEmailRepeat(email)) {
 			ret.put("ret", false);
 			ret.put("errmsg", "该邮箱已被注册");

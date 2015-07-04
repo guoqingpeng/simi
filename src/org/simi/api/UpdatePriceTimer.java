@@ -34,7 +34,7 @@ public class UpdatePriceTimer {
         Date date = calendar.getTime();
         Timer timer = new Timer();
         System.out.println(date);
-//        
+
         int period = 2 * 1000;
         //每天的date时刻执行task，每隔2秒重复执行
 //        timer.schedule(task, date, period);
