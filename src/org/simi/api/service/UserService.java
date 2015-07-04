@@ -101,8 +101,11 @@ public class UserService {
 		    
 		    userDao.saveVoiceFile(userId, localVoicePaht,url,id,voiceLastTime);
 		    
-		    //文件上传加10分
+		    //文件上传加1000分
 		    userDao.addPrice(userId, CommonUtil.UPLOAD_VOICE_SCORE);
+		    
+		    //人气分初始化
+		    userDao.addRenqi(userId, CommonUtil.UPLOAD_VOICE_SCORE);
 		    } catch (Exception e) {
 		    	System.out.println("用户没有上传音频");
 		    }

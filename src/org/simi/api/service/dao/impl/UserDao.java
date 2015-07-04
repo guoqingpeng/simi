@@ -508,6 +508,18 @@ public class UserDao {
 	}
 	
 	/**
+	 * 身价加分
+	 * @param price
+	 */
+	public void addRenqi(String userId,int price){
+		StringBuffer sqlBuffer = new StringBuffer();
+		sqlBuffer.append(" UPDATE t_user ");
+		sqlBuffer.append(" SET price_yestoday = ?");
+		sqlBuffer.append(" WHERE id = ?");
+		jdbcTemplate.update(sqlBuffer.toString(), price,userId);
+	}
+	
+	/**
 	 * 更新微信音频访问id
 	 * @param price
 	 */
