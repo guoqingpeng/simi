@@ -189,12 +189,13 @@ $(function(){
     function addPrice(){
         var count = localStorage.getItem('quizScoreCount') || '';
         count = Number(count);
+        alert(count)
 
         if(!localStorage.getItem('userid') || count > 1){
             return
         }
         localStorage.setItem('quizScoreCount', ++count);
-        
+
         var _score = score * 1;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',
