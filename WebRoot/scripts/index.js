@@ -79,7 +79,7 @@ $(function(){
             '<a href="/simi/user/personalInit.do?userid={{id}}">' +
                 '<p>' +
                     '<i class="g-ico g-ico-crown"></i>' +
-                    '<img src="{{img}}" alt=""/>' +
+                    '<div class="img-con"><img src="{{img}}" alt=""/></div>' +
                 '</p>' +
                 '<span class="name">{{name}}</span>' +
             '</a>' +

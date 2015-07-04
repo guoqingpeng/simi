@@ -29,10 +29,16 @@
     width: 75px;
     height: 75px;
     margin: auto }
-.m-hits .item img {
-    border-radius: 59%;
-    width: 75px;
+
+.m-hits .item .img-con{
+    border-radius: 50%;
     height: 75px;
+    overflow: hidden;
+}
+.m-hits .item img {
+    /* border-radius: 59%; */
+    width: 75px;
+    /* height: 75px; */
 }
 .m-hits .g-ico-crown {
     width: 45px;
