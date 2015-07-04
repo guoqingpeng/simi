@@ -36,12 +36,18 @@
     border: solid 2px #0d4c8c;
 
 }
+
+.m-ranking li .img-con{
+    height: 97px;
+    overflow: hidden;
+}
+
 .m-ranking li img{
     background-image: url(../../bgimg/loading.gif);
     background-repeat: no-repeat;
     background-position: center center;
     width: 120px;
-    height: 97px;
+    /* height: 97px; */
 }
 .m-ranking a{
     display: block;
