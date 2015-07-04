@@ -532,4 +532,59 @@ public class UserDao {
 		sqlBuffer.append(" SET price_yestoday = price ");
 		jdbcTemplate.update(sqlBuffer.toString());
 	}
+	
+	/**
+	 * 校验邮箱是否重复
+	 * @param userId
+	 * @return
+	 */
+	public Boolean isEmailRepeat(String email){
+		
+		StringBuffer zanSql =new StringBuffer();
+		zanSql.append("SELECT count(*) from t_user WHERE  email = ?");
+		int num = 0;
+     	num = jdbcTemplate.queryForInt(zanSql.toString(), email);
+     	if (num > 0) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
+	
+	/**
+	 * 校验昵称是否重复
+	 * @param userId
+	 * @return
+	 */
+	public boolean isNicknameRepeat(String nickName){
+		
+		StringBuffer zanSql =new StringBuffer();
+		zanSql.append("SELECT count(*) from t_user WHERE  nickName = ?");
+		int num = jdbcTemplate.queryForInt(zanSql.toString(), nickName);
+     	if (num > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	/**
+	 * 校验手机号码是否重复
+	 * @param userId
+	 * @return
+	 */
+	public boolean isPhoneNumberRepeat(String phone){
+		
+		StringBuffer zanSql =new StringBuffer();
+     	zanSql.append("SELECT count(*) from t_user WHERE  phone = ?");
+     	int num = jdbcTemplate.queryForInt(zanSql.toString(), phone);
+     	
+     	if (num > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 }

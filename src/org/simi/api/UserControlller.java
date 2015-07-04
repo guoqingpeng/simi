@@ -60,7 +60,7 @@ public class UserControlller {
 	    JSONObject ret = new JSONObject();
 	    ret=  userService.userRegister(userInfo);
 		return ret;
-		
+
    }
 	
 	/**

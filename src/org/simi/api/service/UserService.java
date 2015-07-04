@@ -29,9 +29,31 @@ public class UserService {
 	 */
 	 public  JSONObject userRegister(JSONObject user){
 		 
+		JSONObject ret = new JSONObject();
+		 
+		//昵称,邮箱，手机号码的重复校验
+		String nickName = user.getString("nickName");
+		String email = user.getString("email");
+		String phone = user.getString("phone");
+		
+		if (userDao.isNicknameRepeat(nickName)) {
+			ret.put("ret", false);
+			ret.put("errmsg", "该昵称已被注册");
+			return ret;
+		}else if (userDao.isPhoneNumberRepeat(phone)) {
+			ret.put("ret", false);
+			ret.put("errmsg", "该手机号码已被注册");
+			return ret;
+		}else if (userDao.isEmailRepeat(email)) {
+			ret.put("ret", false);
+			ret.put("errmsg", "该邮箱已被注册");
+			return ret;
+		}
+		
+		//重复校验通过之后继续注册业务
 		int id = userDao.userRegister(user);
 		String type = user.getString("userType");
-		JSONObject ret = new JSONObject();
+		
 		ret.put("ret", true);
 		ret.put("errmsg", "");
 		Map<String, Object> dataMap = new HashMap<String, Object>();
@@ -61,9 +83,7 @@ public class UserService {
 			userDao.savePicFile(userId,localPath,object.toString());
 		}
 	    
-	    
 	    JSONObject vioce = files.getJSONObject("voice");
-	    
 	    
 	    //如果上传了音频，则保存音频信息
 	    if (vioce !=null) {
