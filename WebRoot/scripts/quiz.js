@@ -187,9 +187,14 @@ $(function(){
     }
 
     function addPrice(){
-        if(!localStorage.getItem('userid')){
+        var count = localStorage.getItem('quizScoreCount') || '';
+        count = Number(count);
+
+        if(!localStorage.getItem('userid') || count > 1){
             return
         }
+        localStorage.setItem('quizScoreCount', ++count);
+        
         var _score = score * 1;
         utils.ajaxSendJSON(
             '/simi/user/addPrice.do',
