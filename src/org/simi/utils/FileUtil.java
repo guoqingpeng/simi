@@ -30,7 +30,7 @@ public class FileUtil {
 	//配置公共的请求
 	public static String FILE_SERVER_PATH = "/simi/user/file.do?file=";
 	
-	public static  int SIZE = 480;
+	public static  int SIZE = 640;
 	
 	String result = "";
 	String end="\r\n";
@@ -214,8 +214,12 @@ public class FileUtil {
      */  
     public void resizeFix(int w, int h,String file) throws IOException {  
     	
-    	resizeByWidth(w, file);
-    	
+    	/**
+    	 * 宽度大于1000时才压缩
+    	 */
+    	if (width > 1000) {
+    		resizeByWidth(w, file);
+		}
     }  
     /** 
      * 以宽度为基准，等比例放缩图片 
