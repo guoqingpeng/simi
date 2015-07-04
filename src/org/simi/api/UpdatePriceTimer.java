@@ -30,7 +30,7 @@ public class UpdatePriceTimer {
         int day = calendar.get(Calendar.DAY_OF_MONTH);//每天
         
         //定制每天执行，
-        calendar.set(year, month, day, 12, 23, 00);
+        calendar.set(year, month, day, 23, 59, 59);
         Date date = calendar.getTime();
         Timer timer = new Timer();
         System.out.println(date);
