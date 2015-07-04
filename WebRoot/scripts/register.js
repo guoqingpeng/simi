@@ -45,10 +45,10 @@ $('#j-save').on('click', function(eve){
         return
     }
 
-    if(type == 1 && !$('[name="company"]').val()){
+    /*if(type == 1 && !$('[name="company"]').val()){
         alert('乘务组需要填写公司名称');
         return
-    }
+    }*/
 
     var param = $('form').serializeJSON();
     //var deviceID = localStorage.getItem('deviceID');

@@ -42,8 +42,6 @@ $(function(){
                     '<div class="info">' +
                         '<p>姓名：{{name}}</p>' +
                         '<p>身价：<span class="fzm">{{price}}$</span></p>'
-                        '<p>公司：{{company}}</p>' +
-                        '<p>职业：{{job}}</p>' +
                     '</div>' +
                     '<span class="cloud"></span>' +
                 '</a>' +
