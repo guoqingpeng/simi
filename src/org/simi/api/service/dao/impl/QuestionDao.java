@@ -60,10 +60,10 @@ public class QuestionDao {
 				"(SELECT min(local_path)  from t_file where pk_user = c.replyUser and fileType = '1' order by id ) pic " +
 				"FROM ");
      	comSql.append("t_question_reply c INNER JOIN t_user u ");
-     	comSql.append("ON c.replyUser = u.id ");
-     	comSql.append("INNER JOIN t_question q ON c.replyTo = q.id ");
-     	comSql.append("WHERE c.replyTo = '"+question+"'");
-     	comSql.append("AND c.replyUser is not null");
+     	comSql.append(" ON c.replyUser = u.id ");
+     	comSql.append(" INNER JOIN t_question q ON c.replyTo = q.id ");
+     	comSql.append(" WHERE c.replyTo = '"+question+"'");
+     	comSql.append(" AND c.replyUser is not null");
      	comSql.append(" ORDER BY c.id desc)");
      	comSql.append(" order by id desc ");
      	

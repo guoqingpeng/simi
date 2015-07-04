@@ -83,6 +83,7 @@ public class QuestionControlller {
 		dataMap.put("replys", comList);
 		dataMap.put("title", title);
 		ret.put("data", dataMap);
+		System.out.println(dataMap.toString());
 	    return ret;
    }
    
