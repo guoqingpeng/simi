@@ -191,7 +191,7 @@ $(function(){
         var count = localStorage.getItem('quizScoreCount') || '';
         count = Number(count);
 
-        if(!localStorage.getItem('userid') || count > 1){
+        if(!localStorage.getItem('userid') || count >= 1){
             return
         }
         localStorage.setItem('quizScoreCount', ++count);
