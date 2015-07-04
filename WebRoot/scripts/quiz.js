@@ -15,7 +15,7 @@ $(function(){
     utils.initNav();
 
     var SHARE_TITLE = '我在#真空.秀#参加了#一站到底#, 得分: {{score}}分, 你也来参加吧~~';
-    var SHARE_LINK = 'http://letss.sinaapp.com/simi/user/quizInit.do';
+    var SHARE_LINK = 'http://haiyilingdong.com/simi/user/quizInit.do';
     var SHARE_DESC = '快来真空秀参加活动吧';
     var title = '';
 
@@ -79,7 +79,7 @@ $(function(){
         wx.onMenuShareTimeline({
             title: title, // 分享标题
             link: SHARE_LINK, // 分享链接
-            imgUrl: '', // 分享图标
+            imgUrl: 'http://haiyilingdong.com/simi/bgimg/logo_1x.png', // 分享图标
             success: function () {
                 // 用户确认分享后执行的回调函数
                 addPrice();
@@ -94,7 +94,7 @@ $(function(){
             title: title, // 分享标题
             desc: SHARE_DESC, // 分享描述
             link: SHARE_LINK, // 分享链接
-            imgUrl: '', // 分享图标
+            imgUrl: 'http://haiyilingdong.com/simi/bgimg/logo_1x.png', // 分享图标
             type: 'link', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
             success: function () {
@@ -111,7 +111,7 @@ $(function(){
             title: title, // 分享标题
             desc: SHARE_DESC, // 分享描述
             link: SHARE_LINK, // 分享链接
-            imgUrl: '', // 分享图标
+            imgUrl: 'http://haiyilingdong.com/simi/bgimg/logo_1x.png', // 分享图标
             success: function () {
                // 用户确认分享后执行的回调函数
                addPrice();
@@ -189,7 +189,6 @@ $(function(){
     function addPrice(){
         var count = localStorage.getItem('quizScoreCount') || '';
         count = Number(count);
-        alert(count)
 
         if(!localStorage.getItem('userid') || count > 1){
             return
