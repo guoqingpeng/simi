@@ -6,6 +6,7 @@ $(function(){
 
     utils.initSearch();
     utils.fixbug();
+    utils.initNav();
 
     setImage();
 
