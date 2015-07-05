@@ -376,7 +376,7 @@ public class UserDao {
 		//该页下第一条数据
 		int beginIndex = (page-1)*CommonUtil.PER_PAGE;		
 		StringBuffer sqlBuffer = new StringBuffer();
-		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do=default.jpg&userId=default') filePath ");
+		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do?file=default.jpg&userId=default') filePath ");
 		sqlBuffer.append(", IFNULL(u.id,'') id");
 		sqlBuffer.append(", IFNULL(u.name,'') name");
 		sqlBuffer.append(", IFNULL(u.age,'') age");
@@ -426,7 +426,7 @@ public class UserDao {
 		List<Map<String, Object>> comList = null;
 		//该页下第一条数据
 		StringBuffer sqlBuffer = new StringBuffer();
-		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do=default.jpg&userId=default') filePath ");
+		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do?file=default.jpg&userId=default') filePath ");
 		sqlBuffer.append(", IFNULL(u.id,'') id");
 		sqlBuffer.append(", IFNULL(u.name,'') name");
 		sqlBuffer.append(", IFNULL(u.age,'') age");
@@ -470,7 +470,7 @@ public class UserDao {
 		//该页下第一条数据
 		int beginIndex = (page-1)*CommonUtil.PER_PAGE;		
 		StringBuffer sqlBuffer = new StringBuffer();
-		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do=default.jpg&userId=default') filePath ");
+		sqlBuffer.append(" select IFNULL((select min(local_path) file from t_file  where pk_user = u.id AND fileType = '1' order by id ),'file.do?file=default.jpg&userId=default') filePath ");
 		sqlBuffer.append(", IFNULL(u.id,'') id");
 		sqlBuffer.append(", IFNULL(u.name,'') name");
 		sqlBuffer.append(", IFNULL(u.age,'') age");
