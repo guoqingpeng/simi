@@ -77,7 +77,8 @@ public class QuestionDao {
             String username = (String)userMap.get("name");
             String pic = (String)userMap.get("pic");
             if((pic == null || "".equals(pic)) && (!"游客".equals(username))) {
-                pic = FileUtil.FILE_SAVE_PATH + "default.jpg?userId=default";
+                //pic = FileUtil.FILE_SAVE_PATH + "default.jpg?userId=default";
+            	pic = "/simi/bgimg/cover.jpg";
                 userMap.put("pic", pic);
             }
             replys.add(userMap);
