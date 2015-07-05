@@ -118,7 +118,7 @@ $(function(){
     function rendImages(data){
         var images = data.images;
         var html = [];
-        $('#j-portrait').css('background-image', 'url(' + images[0] + ')');
+        $('#j-portrait').css('background-image', 'url(' + (images[0] || '/simi/bgimg/cover.jpg') + ')');
 
         $.each(images, function(idx, ele){
             html.push('<span class="imgbox"><img src="' + ele + '" alt=""/></span>')
