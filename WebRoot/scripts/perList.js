@@ -58,7 +58,7 @@ $(function(){
                     .replace(/\{\{price\}\}/g, ele.price || 0)
                     .replace(/\{\{company\}\}/g, ele.company || '')
                     .replace(/\{\{job\}\}/g, ele.job || '')
-                    .replace(/\{\{index\}\}/g, (((page - 1) * 2) + index + 101 + '').slice(1))
+                    .replace(/\{\{index\}\}/g, (((page - 1) * 20) + index + 101 + '').slice(1))
             )
         });
 
