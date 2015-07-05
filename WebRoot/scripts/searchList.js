@@ -33,10 +33,10 @@ $(function(){
                 '<a href="/simi/user/personalInit.do?userid={{id}}">' +
                     '<span class="onePiece ">WANTED</span>' +
                     '<span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>{{index}}</span>' +
-                    '<img src="{{img}}" alt=""/>' +
+                    '<div class="img-con"><img src="{{img}}" alt=""/></div>' +
                     '<div class="info">' +
                         '<p>姓名：{{name}}</p>' +
-                        '<p>身价：<span class="fzm">{{price}}$</span></p>'
+                        '<p>身价：<span class="fzm">{{price}}$</span></p>' +
                     '</div>' +
                     '<span class="cloud"></span>' +
                 '</a>' +
