@@ -164,6 +164,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
             </div>
             <div class="rows">
+                <input type="hidden" name="company" value="">
+                <input type="hidden" name="job" value="">
                 <span class="label">&nbsp;</span>
                 <div class="label-info">
                     <button id="j-save" class="g-btn g-btn-s g-btn-warn"><span>保存并下一步</span></button>
