@@ -305,7 +305,7 @@ public class UserDao {
             String pic = (String)userMap.get("pic");
             if((pic == null || "".equals(pic)) && (!"游客".equals(username))) {
                 //pic = FileUtil.FILE_SAVE_PATH + "default.jpg?userId=default";
-            	pic = "/simi/bgimg/cover.jpg";
+            	pic = "/simi/user/file.do?file=default.jpg&userId=default";
                 userMap.put("pic", pic);
             }
             comments.add(userMap);
