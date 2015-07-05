@@ -29,7 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div id="slideBox" class="m-pic">
             <div class="picbox">
                 <ul>
-                    <li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
+                    <li><a href="javascript:;"><img src="../img/img10.png" alt=""/></a></li>
+					<li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
                 </ul>
             </div>
             <div class="state">
