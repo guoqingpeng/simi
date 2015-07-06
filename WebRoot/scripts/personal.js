@@ -18,7 +18,7 @@ $(function(){
                 time = 0;
 
             timer = setInterval(function(){
-                if(++time === 3){
+                if(++time === 2){
                     zan();
                 }
             }, 1000);
