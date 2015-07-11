@@ -83,6 +83,7 @@ $(function(){
                     voiceTimer = setInterval(function(){
                         $('#j-r-time').text(recordTime++ + '"');
                     }, 1000)
+                    isRecording = true;
                     // startRecordTime = +new Date();
                 },
                 cancel: function(){
@@ -97,6 +98,7 @@ $(function(){
                 success: function(res){
                     voice.localId = res.localId;
                     clearInterval(voiceTimer);
+                    isRecording = false;
                     $btn.removeClass('recording');
                     $btn.find('p').text("重新录音...");
                 },
@@ -106,7 +108,7 @@ $(function(){
                 }
             });
         }
-        isRecording = !isRecording;
+        // isRecording = !isRecording;
     })/*.on('touchend-', function(eve){
         eve.preventDefault();
         wx.stopRecord({
