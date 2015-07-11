@@ -103,7 +103,7 @@ $(function(){
             });
 
             $btn.addClass('recording').find('p').show();
-            $btn.find('p').text("正在录音...<i>再次点击停止</i>");
+            $btn.find('p').html("正在录音...<i>再次点击停止</i>");
         }else{
             wx.stopRecord({
                 success: function(res){
