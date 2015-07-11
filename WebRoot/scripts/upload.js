@@ -93,6 +93,9 @@ $(function(){
                 success: function(){
                     voiceTimer = setInterval(function(){
                         $('#j-r-time').text(recordTime++ + '"');
+                        if(recordTime === 30){
+                            stop();
+                        }
                     }, 1000)
                     isRecording = true;
                     // startRecordTime = +new Date();
@@ -105,6 +108,10 @@ $(function(){
             $btn.addClass('recording').find('p').show();
             $btn.find('p').html("正在录音...<i>再次点击停止</i>");
         }else{
+            stop();
+        }
+
+        function stop(){
             wx.stopRecord({
                 success: function(res){
                     voice.localId = res.localId;

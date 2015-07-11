@@ -34,7 +34,7 @@ $(function(){
 
     function rendInfo(data){
         var temp = '<li>' +
-            '<div class="item">' +
+            '<div class="item {{cls}}">' +
                 '<a href="/simi/user/personalInit.do?userid={{id}}">' +
                     '<span class="onePiece ">WANTED</span>' +
                     '<span class="rank"><i class="g-ico g-ico-s g-ico-heart"></i>{{index}}</span>' +
@@ -59,6 +59,7 @@ $(function(){
                     .replace(/\{\{company\}\}/g, ele.company || '')
                     .replace(/\{\{job\}\}/g, ele.job || '')
                     .replace(/\{\{index\}\}/g, (((page - 1) * 20) + index + 101 + '').slice(1))
+                    .replace(/\{\{cls\}\}/g, ele.price >= 8000 ? 'celeb' : '')
             )
         });
 
