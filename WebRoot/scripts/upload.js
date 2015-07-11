@@ -58,7 +58,7 @@ $(function(){
         });
     });
 
-    $('.m-portraitPic').on('click', '.close', function(eve){
+    $('.m-portraitPic').on('touchstart', '.close', function(eve){
         eve.preventDefault();
         var $parent = $(this).parent();
         var index = $parent.data('index');
@@ -143,6 +143,25 @@ $(function(){
     $('#j-save').click(function(eve){
         eve.preventDefault();
 
+        if(isRecording){
+            // alert('请先停止录音');
+            wx.stopRecord({
+                success: function(res){
+                    voice.localId = res.localId;
+                    clearInterval(voiceTimer);
+                    isRecording = false;
+                    $btn.removeClass('recording');
+                    $btn.find('p').text("重新录音...");
+                    $('#j-save').trigger('click');
+                },
+                fail: function(res){
+                    //alert(JSON.stringify(res));
+                    alert('请升级到最新版本再进行录音！');
+                    location.reload();
+                }
+            });
+            return
+        }
         //images.serverId = [];
 
         // 保存录音
