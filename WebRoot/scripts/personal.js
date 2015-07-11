@@ -134,7 +134,7 @@ $(function(){
             //.data('id', id)
             .find('time').text((data.voice.voiceTime || 0) + '"')
             .end()
-            .on('click', function(eve){
+            .on('touchend', function(eve){
                 eve.preventDefault();
                 if(voiceId){
                     playVoice(voiceId);

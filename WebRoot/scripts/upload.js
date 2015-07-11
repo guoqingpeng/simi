@@ -77,10 +77,10 @@ $(function(){
         complete: function (res) {
           voice.localId = res.localId;
           alert('录音时间已超过一分钟');
-          clearInterval(voiceTimer);
-          isRecording = false;
-          $btn.removeClass('recording');
-          $btn.find('p').text("重新录音...");
+        //   clearInterval(voiceTimer);
+        //   isRecording = false;
+        //   $btn.removeClass('recording');
+        //   $btn.find('p').text("重新录音...");
         }
     });
 
@@ -103,7 +103,7 @@ $(function(){
             });
 
             $btn.addClass('recording').find('p').show();
-            $btn.find('p').text("正在录音...");
+            $btn.find('p').text("正在录音...<i>再次点击停止</i>");
         }else{
             wx.stopRecord({
                 success: function(res){
@@ -208,7 +208,7 @@ $(function(){
             params.voice = {
                 id: voice.serverId,
                 url: getURL(voice.serverId),
-                voiceLastTime : recordTime
+                voiceLastTime : recordTime - 1
             };
         }
 
