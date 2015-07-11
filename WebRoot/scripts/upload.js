@@ -145,22 +145,6 @@ $(function(){
 
         if(isRecording){
             alert('请先停止录音');
-            wx.stopRecord({
-                success: function(res){
-                    alert('succss');
-                    voice.localId = res.localId;
-                    clearInterval(voiceTimer);
-                    isRecording = false;
-                    $btn.removeClass('recording');
-                    $btn.find('p').text("重新录音...");
-                    $('#j-save').trigger('click');
-                },
-                fail: function(res){
-                    //alert(JSON.stringify(res));
-                    alert('请升级到最新版本再进行录音！');
-                    location.reload();
-                }
-            });
             return
         }
         //images.serverId = [];
