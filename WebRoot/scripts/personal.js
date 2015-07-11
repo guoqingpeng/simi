@@ -126,7 +126,7 @@ $(function(){
 
         $('#j-imgs').data('images', images).html(html.join(''));
     }
-
+    var isPlaying = false;
     function rendVoice(data){
         var id = data.voice.voiceId;
         var voiceId = '';
@@ -135,6 +135,10 @@ $(function(){
             .find('time').text((data.voice.voiceTime || 0) + '"')
             .end()
             .on('touchend', function(eve){
+                if(isPlaying){
+                    return
+                }
+                isPlaying = true;
                 eve.preventDefault();
                 if(voiceId){
                     playVoice(voiceId);
@@ -158,6 +162,7 @@ $(function(){
         wx.onVoicePlayEnd({
             complete: function (res) {
               alert('录音播放结束');
+              isPlaying = false;
             }
         });
     }
