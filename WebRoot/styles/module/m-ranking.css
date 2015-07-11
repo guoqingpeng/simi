@@ -50,6 +50,8 @@
     min-height: 97px;
 }
 .m-ranking a{
+    position: relative;
+    z-index: 5;
     display: block;
     color: #fff;
 }
@@ -132,6 +134,7 @@
 }
 /* 名人 */
 .m-ranking .celeb:after{
+    z-index: 1;
     width: 146px;
     height: 213px;
     content: "";

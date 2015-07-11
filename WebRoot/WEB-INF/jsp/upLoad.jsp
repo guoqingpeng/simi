@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="m-dialect">
             <div class="record">
                 <p class="text" id="j-voice-text"></p>
-                <p class="tips">(请按方言朗读以上文字,上传录音后可获得1000身价)</p>
+                <p class="tips">(请用方言朗读以上文字<i class="blue">30秒以内</i>,上传录音后可获得1000身价)</p>
                 <div class="title-info">
                     <time id="j-r-time">0"</time>
                 </div>
