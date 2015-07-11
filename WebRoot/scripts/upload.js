@@ -93,7 +93,7 @@ $(function(){
                 success: function(){
                     voiceTimer = setInterval(function(){
                         $('#j-r-time').text(recordTime++ + '"');
-                        if(recordTime > 30){
+                        if(recordTime >= 30){
                             stop();
                         }
                     }, 1000)
