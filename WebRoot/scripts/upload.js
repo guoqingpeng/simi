@@ -92,7 +92,7 @@ $(function(){
             wx.startRecord({
                 success: function(){
                     voiceTimer = setInterval(function(){
-                        $('#j-r-time').text(recordTime++ + '"');
+                        $('#j-r-time').text(++recordTime + '"');
                         if(recordTime >= 30){
                             stop();
                         }
