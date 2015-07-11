@@ -215,7 +215,7 @@ $(function(){
             params.voice = {
                 id: voice.serverId,
                 url: getURL(voice.serverId),
-                voiceLastTime : recordTime - 1
+                voiceLastTime : recordTime > 30 ? 30 : recordTime
             };
         }
 
