@@ -82,7 +82,7 @@ $(function(){
           $btn.removeClass('recording');
           $btn.find('p').text("重新录音...");
         }
-      });
+    });
 
     $('.recordStar').on('touchstart', function(eve){
         eve.preventDefault();
@@ -144,9 +144,10 @@ $(function(){
         eve.preventDefault();
 
         if(isRecording){
-            // alert('请先停止录音');
+            alert('请先停止录音');
             wx.stopRecord({
                 success: function(res){
+                    alert('succss');
                     voice.localId = res.localId;
                     clearInterval(voiceTimer);
                     isRecording = false;
