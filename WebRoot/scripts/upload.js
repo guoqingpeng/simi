@@ -73,6 +73,17 @@ $(function(){
     var startRecordTime = 0;
     var recordTime = 0;
 
+    wx.onVoiceRecordEnd({
+        complete: function (res) {
+          voice.localId = res.localId;
+          alert('录音时间已超过一分钟');
+          clearInterval(voiceTimer);
+          isRecording = false;
+          $btn.removeClass('recording');
+          $btn.find('p').text("重新录音...");
+        }
+      });
+
     $('.recordStar').on('touchstart', function(eve){
         eve.preventDefault();
         var $btn = $(this);
@@ -188,7 +199,7 @@ $(function(){
             alert('请先选择图片哦');
             return
         }
-        params.images = getUrls(images.serverId);
+        params.images = (getUrls(images.serverId) || []).slice(-8);
         if(voice.serverId){
             params.voice = {
                 id: voice.serverId,

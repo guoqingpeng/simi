@@ -154,6 +154,12 @@ $(function(){
                 localId: id
             });
         }
+
+        wx.onVoicePlayEnd({
+            complete: function (res) {
+              alert('录音播放结束');
+            }
+        });
     }
 
     function rendDiscuss(data){
