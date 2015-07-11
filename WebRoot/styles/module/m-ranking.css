@@ -94,13 +94,14 @@
 }
 .m-ranking .fzm{
     font-size: 16px;
-    font-family: 黑体;
+    font-family: "黑体";
 }
 /* ico */
 .m-ranking .rank{
     position: absolute;
     top: -10.5px;
     right: -8px;
+    z-index: 5;
     padding-right: 5px;
     height: 21px;
     line-height: 21px;
@@ -129,3 +130,17 @@
     background: -webkit-linear-gradient(#0092eb,#007aea,#005ee2);
     background: -linear-gradient(#0092eb,#007aea,#005ee2);
 }
+/* 名人 */
+.m-ranking .celeb:after{
+    width: 146px;
+    height: 213px;
+    content: "";
+    display: block;
+    position: absolute;
+    left: -9px;
+    top: -11px;
+    background-image: url(../../bgimg/border.png);
+    background-size: 146px 213px;
+    background-repeat: no-repeat;
+}
+.m-ranking .celeb .cloud{ z-index: 4; width: 86px; height: 35px; background-image: url(../../bgimg/mingren.png);background-size: 86px 35px;left: 20px; bottom: -27px;}

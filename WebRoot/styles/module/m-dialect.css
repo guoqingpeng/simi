@@ -32,6 +32,7 @@
     font-weight: 700;
     font-size: 22px;text-align: right;
 }
+.m-dialect .title-info:active{ background: url(../../bgimg/voice_2x2.png) no-repeat;background-size: 208px 40.5px; }
 .m-dialect .title-info time{
     line-height: 41px;
     padding-right: 20px;
@@ -80,11 +81,14 @@
     background-color: rgba(0, 0, 0, .8);
 }
 .m-dialect .recording .g-ico-suona{
-    width: 42.5px;
-    height: 65.5px;
+    margin-top: -6px;
+    width: 37.5px;
+    height: 60.5px;
     background: url( ../../bgimg/mike_2x.png) no-repeat;
-    background-size: 42.5px 65.5px;
+    background-size: 37.5px 60.5px;
 }
+.m-dialect .recording p i{ display: block; font-size: 12px; }
 .m-dialect .mt10{
     margin-top: 10px;
 }
+.m-dialect .split{ padding-top: 10px; border-top: solid 1px #ccc; box-shadow:inset 0 1px 0 rgba(204,204,204,.2) }

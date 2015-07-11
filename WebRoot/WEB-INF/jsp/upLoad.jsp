@@ -57,8 +57,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div id="j-re-record" class="hide mt10">
                     <button class="g-btns g-btn-s g-btn-warn"><span>重新录音</span></button>
                 </div>
-                <div id="j-save" class="mt10">
-                    <button class="g-btns g-btn-s g-btn-warn"><span>确定上传</span></button>
+                <div id="j-save" class="mt10 split">
+                    <button class="g-btns g-btn-s g-btn-warn"><span>保存</span></button>
                 </div>
             </div>
         </div>
