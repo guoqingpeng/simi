@@ -13,6 +13,12 @@ $(function(){
 
     initVoiceText();
 
+    var fileUploaded = localStorage.getItem('fileUploaded');
+    if(fileUploaded == '1'){
+        alert('您已经传过图片了，请不要重新上传');
+        location.href = '/simi/user/personalInit.do?userid=' + utils.getQueryString('userid');
+    }
+
     function initVoiceText(){
         var text = {
             "1": [
@@ -225,6 +231,7 @@ $(function(){
             function(json){
                 if(json.ret === true){
                     clear();
+                    localStorage.setItem('fileUploaded', 1);
                     location.href = '/simi/user/personalInit.do?userid=' + json.data.id;
                 }
             }
