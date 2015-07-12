@@ -190,10 +190,18 @@ $(function(){
 
     function zan(){
         stopAni();
+        var list = localStorage.getItem('commendUsers');
+        var id = utils.getQueryString('userid');
+
+        if((',' + list + ',').indexOf(',' + id + ',') !== -1){
+            alert('您已经点赞过了');
+            return
+        }
+
         utils.ajaxSendJSON(
             '/simi/user/praise.do',
             {
-                beZanUserId: utils.getQueryString('userid'),
+                beZanUserId: id,
                 zanUserId: localStorage.getItem('userid')
             },
             function(json){
@@ -201,6 +209,8 @@ $(function(){
                 $('#j-zan-tips').text('点赞成功');
                 $('#j-scan').off('touchstart touchend');
                 updatePrice(json.data.price);
+
+                localStorage.setItem('commendUsers', list ? list + ',' + id : id)
             },
             function(msg){
                 alert(msg);
