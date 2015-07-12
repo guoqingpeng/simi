@@ -118,6 +118,9 @@ $(function(){
     function rendImages(data){
         var images = data.images;
         var html = [];
+        if(images.length > 8){
+            images = images.slice(0, 8);
+        }
         $('#j-portrait').css('background-image', 'url(' + (images[0] || '/simi/bgimg/cover.jpg') + ')');
 
         $.each(images, function(idx, ele){

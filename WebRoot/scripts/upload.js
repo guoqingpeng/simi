@@ -13,15 +13,16 @@ $(function(){
 
     initVoiceText();
 
-    // var fileUploaded = localStorage.getItem('fileUploaded');
-    // // var localId = localStorage.getItem('userid');
-    // var paramId = utils.getQueryString('userid');
-    // alert(localId + '   ' + paramId)
-    // if(fileUploaded == paramId ){
-    //     alert('您已经传过图片了，请不要重新上传');
-    //     location.href = '/simi/user/personalInit.do?userid=' + paramId;
-    //     return
-    // }
+    var fileUploaded = localStorage.getItem('fileUploaded');
+    // var localId = localStorage.getItem('userid');
+    var paramId = utils.getQueryString('userid');
+    if(fileUploaded == paramId ){
+        alert('您已经传过图片了，请不要重新上传');
+        setTimeout(function(){
+            location.href = '/simi/user/personalInit.do?userid=' + paramId;
+        }, 200)
+        return
+    }
 
     function initVoiceText(){
         var text = {
