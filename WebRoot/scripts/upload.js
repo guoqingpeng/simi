@@ -13,11 +13,15 @@ $(function(){
 
     initVoiceText();
 
-    var fileUploaded = localStorage.getItem('fileUploaded');
-    if(fileUploaded == '1'){
-        alert('您已经传过图片了，请不要重新上传');
-        location.href = '/simi/user/personalInit.do?userid=' + utils.getQueryString('userid');
-    }
+    // var fileUploaded = localStorage.getItem('fileUploaded');
+    // // var localId = localStorage.getItem('userid');
+    // var paramId = utils.getQueryString('userid');
+    // alert(localId + '   ' + paramId)
+    // if(fileUploaded == paramId ){
+    //     alert('您已经传过图片了，请不要重新上传');
+    //     location.href = '/simi/user/personalInit.do?userid=' + paramId;
+    //     return
+    // }
 
     function initVoiceText(){
         var text = {
@@ -231,7 +235,7 @@ $(function(){
             function(json){
                 if(json.ret === true){
                     clear();
-                    localStorage.setItem('fileUploaded', 1);
+                    localStorage.setItem('fileUploaded', json.data.id);
                     location.href = '/simi/user/personalInit.do?userid=' + json.data.id;
                 }
             }
