@@ -72,7 +72,6 @@ public class UserControlller {
     	
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
-        
         modelAndView.setViewName("/personal");
         return modelAndView;
         
@@ -87,20 +86,6 @@ public class UserControlller {
     	
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
-        
-        //更新访问总次数
-        userService.upMainVist();
-        
-        //获取最新的访问总次数
-        int visitCount = userService.getMainVist();
-        modelAndView.addObject("visitCount", visitCount);
-        
-        //获取用户注册数
-        int regCount = userService.getRegCount();
-        modelAndView.addObject("regCount", regCount);
-        
-        System.out.println("访问总数"+ visitCount);
-        System.out.println("注册数"+regCount);
         modelAndView.setViewName("/index");
         return modelAndView;
         
@@ -145,13 +130,8 @@ public class UserControlller {
 	    String userId = userid.getString("id");
         Map<String, Object> allinfoMap = new HashMap<String, Object>();
         
-        //更新个人主页的访问总次数
-        userService.upPersonVist(userId);
 	    // 基本信息
 	    Map<String, String> baseInfo = userService.getUserBaseInfo(userId);
-	    System.out.println("个人页面访问总次数"+baseInfo.get("visitCount"));
-	    System.out.println("个人点赞数"+baseInfo.get("zanCount"));
-	    
 	    allinfoMap.put("baseInfo", baseInfo);
 	    
 	    // 图片列表

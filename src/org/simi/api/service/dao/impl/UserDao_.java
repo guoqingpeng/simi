@@ -164,10 +164,6 @@ public class UserDao {
 						userInfoMap.put("anouncement",rs.getString("anouncement"));
 						userInfoMap.put("phone",rs.getString("phone"));
 						userInfoMap.put("email",rs.getString("email"));
-						
-						//添加返回的个人首页的访问的次数
-						userInfoMap.put("visitCount",rs.getString("visit_count"));
-						
 						return userInfoMap;
 					}
 		   });
@@ -367,39 +363,6 @@ public class UserDao {
 
 	}
 	
-	
-	/**
-	 * 获取用户的总的注册数
-	 * @param userId
-	 * @return
-	 */
-	public int getAllUserCount(){
-		
-		StringBuffer zanSql =new StringBuffer();
-     	zanSql.append("SELECT count(*) from t_user");
-     	int zanCount = 0;
-     	zanCount = jdbcTemplate.queryForInt(zanSql.toString());
-		return zanCount;
-
-	}
-	
-	/**
-	 * 获取首页的总的访问数
-	 * @param userId
-	 * @return
-	 */
-	public int getMainVisitCount(){
-		
-		StringBuffer zanSql =new StringBuffer();
-     	zanSql.append("SELECT main_visit_count  from t_main_visit");
-     	int zanCount = 0;
-     	zanCount = jdbcTemplate.queryForInt(zanSql.toString());
-		return zanCount;
-
-	}
-	
-	
-	
 	/**
 	 * 返回当前类型，当前页数下的用户列表
 	 * 当前页，总页数
@@ -564,30 +527,6 @@ public class UserDao {
 		sqlBuffer.append(" WHERE id = ?");
 		jdbcTemplate.update(sqlBuffer.toString(), price,userId);
 	}
-	
-	/**
-	 *首页的访问量加1
-	 * @param price
-	 */
-	public void addMainVisitOne(){
-		StringBuffer sqlBuffer = new StringBuffer();
-		sqlBuffer.append(" UPDATE t_main_visit ");
-		sqlBuffer.append(" SET main_visit_count = main_visit_count + 1");
-		jdbcTemplate.update(sqlBuffer.toString());
-	}
-	
-	/**
-	 * 个人首页的访问加1
-	 * @param price
-	 */
-	public void addPersonVisit(String userId){
-		StringBuffer sqlBuffer = new StringBuffer();
-		sqlBuffer.append(" UPDATE t_user ");
-		sqlBuffer.append(" SET visit_count = visit_count + 1");
-		sqlBuffer.append(" WHERE id = ?");
-		jdbcTemplate.update(sqlBuffer.toString(),userId);
-	}	
-	
 	
 	/**
 	 * 更新微信音频访问id

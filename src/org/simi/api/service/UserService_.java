@@ -36,15 +36,15 @@ public class UserService {
 		String email = user.getString("email");
 		String phone = user.getString("phone");
 		
-//		if (userDao.isNicknameRepeat(nickName)) {
-//			ret.put("ret", false);
-//			ret.put("errmsg", "该昵称已被注册");
-//			return ret;
-//		}else if (userDao.isPhoneNumberRepeat(phone)) {
-//			ret.put("ret", false);
-//			ret.put("errmsg", "该手机号码已被注册");
-//			return ret;
-//		}
+		if (userDao.isNicknameRepeat(nickName)) {
+			ret.put("ret", false);
+			ret.put("errmsg", "该昵称已被注册");
+			return ret;
+		}else if (userDao.isPhoneNumberRepeat(phone)) {
+			ret.put("ret", false);
+			ret.put("errmsg", "该手机号码已被注册");
+			return ret;
+		}
 //		}else if (userDao.isEmailRepeat(email)) {
 //			ret.put("ret", false);
 //			ret.put("errmsg", "该邮箱已被注册");
@@ -130,63 +130,9 @@ public class UserService {
 		   
 		   Map< String, String> userInfoMap = new HashMap<String, String>();
 		   userInfoMap = userDao.getUserInfoById(userId);
-		   
-		   //获取个人的点赞个数
-		   int zanCount = userDao.getDianzanCountByUserId(userId);
-		   
-		   //将点赞个数放入返回的map中
-		   userInfoMap.put("zanCount", zanCount+"");
 		   return userInfoMap;
 		   
 	   }
-	   
-	   
-	   /**
-		  * 获取首页的访问量
-		  * @param userId
-		  * @return
-		  */
-		   public int getMainVist(){
-			   
-			   return userDao.getMainVisitCount();
-			   
-		   }
-		   
-		   /**
-			  *更新首页的访问量
-			  * @param userId
-			  * @return
-			  */
-			   public void  upMainVist(){
-				   
-				   userDao.addMainVisitOne();
-				   
-			   }
-			   
-			   
-			   /**
-				  * 获取用户注册数目
-				  * @param userId
-				  * @return
-				  */
-			   public int getRegCount(){
-				   		
-				   return userDao.getAllUserCount();
-				   
-			   }		
-			   
-			   /**
-				  * 更新主页的访问量
-				  * @param userId
-				  * @return
-				  */
-			   public void upPersonVist(String userId){
-				   		
-				   userDao.addPersonVisit(userId);
-				   
-			   }   
-	   
-	   
 	   
 	   /**
 	    * 获取用户关联的所有的图片
