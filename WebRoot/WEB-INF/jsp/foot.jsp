@@ -6,7 +6,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="advert">招商广告位</div>
 <div class="doc-ft">
     <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
-    <span class="visit">访问量：<i></i></span>
+    <%-- <span class="visit">访问量：<i></i></span> --%>
 </div>
 <footer class="m-foot">
     <ul class="first">

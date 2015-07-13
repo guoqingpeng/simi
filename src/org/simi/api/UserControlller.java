@@ -29,181 +29,181 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("/user")
 public class UserControlller {
-	
-	@Autowired
-	private UserService userService;
-	
-	/**
-	 *初始化注册页面 
-	 * @return
-	 */
-	@RequestMapping(value = "/regInit", method = RequestMethod.GET)
-	public ModelAndView loginInit(){
-	
-	   // userService.getUserVoice("1025");
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/register");
-		return modelAndView;
 
-	}
-	
-	/**
-	 * 用户注册
-	 * @param userInfo
-	 * @return 返回注册信息
-	 */
+    @Autowired
+    private UserService userService;
+
+    /**
+     *初始化注册页面
+     * @return
+     */
+    @RequestMapping(value = "/regInit", method = RequestMethod.GET)
+    public ModelAndView loginInit(){
+
+       // userService.getUserVoice("1025");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/register");
+        return modelAndView;
+
+    }
+
+    /**
+     * 用户注册
+     * @param userInfo
+     * @return 返回注册信息
+     */
    @RequestMapping(value = "/reg", method = RequestMethod.POST)
    @ResponseBody
    public JSONObject userRegister(@RequestBody JSONObject userInfo){
-	   
-	    JSONObject ret = new JSONObject();
-	    ret=  userService.userRegister(userInfo);
-		return ret;
+
+        JSONObject ret = new JSONObject();
+        ret=  userService.userRegister(userInfo);
+        return ret;
 
    }
-	
-	/**
-	 * 个人主页初始化页面
-	 * @return
-	 */
+
+    /**
+     * 个人主页初始化页面
+     * @return
+     */
     @RequestMapping(value = "/personalInit", method = RequestMethod.GET)
     public ModelAndView personalInit(){
-    	
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
-        
+
         modelAndView.setViewName("/personal");
         return modelAndView;
-        
+
     }
-    
-	/**
-	 * 首页跳转初始化
-	 * @return
-	 */
+
+    /**
+     * 首页跳转初始化
+     * @return
+     */
     @RequestMapping(value = "/mainInit", method = RequestMethod.GET)
     public ModelAndView mainInit(){
-    	
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
-        
+
         //更新访问总次数
         userService.upMainVist();
-        
+
         //获取最新的访问总次数
         int visitCount = userService.getMainVist();
         modelAndView.addObject("visitCount", visitCount);
-        
+
         //获取用户注册数
         int regCount = userService.getRegCount();
         modelAndView.addObject("regCount", regCount);
-        
+
         System.out.println("访问总数"+ visitCount);
         System.out.println("注册数"+regCount);
         modelAndView.setViewName("/index");
         return modelAndView;
-        
+
     }
-    
+
     /**
-	 * 初始化图片和音频上传的页面
-	 * @return
-	 */
+     * 初始化图片和音频上传的页面
+     * @return
+     */
     @RequestMapping(value = "/uploadInit", method = RequestMethod.GET)
     public ModelAndView uploadInit(){
-    	
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("config",PastUtil.getWxConfig());
         modelAndView.setViewName("/upLoad");
         return modelAndView;
-        
+
     }
-    
-	/**
-	 * 图片，文档上传
-	 * @param userInfo
-	 * @return 返回注册信息
-	 */
+
+    /**
+     * 图片，文档上传
+     * @param userInfo
+     * @return 返回注册信息
+     */
    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
    @ResponseBody
    public JSONObject uploadFile(@RequestBody JSONObject files){
-	   
-	    JSONObject ret = new JSONObject();
-	    ret = userService.saveFiles(files);
-	    return ret;
-		
+
+        JSONObject ret = new JSONObject();
+        ret = userService.saveFiles(files);
+        return ret;
+
    }
-   
+
    /**
-	 * 个人首页数据检索，根据用户id检索一下信息 基本信息 图片列表 音频信息
-	 */
+     * 个人首页数据检索，根据用户id检索一下信息 基本信息 图片列表 音频信息
+     */
    @RequestMapping(value = "/userInfo", method = RequestMethod.POST)
    @ResponseBody
    public JSONObject searchUserAllInfo(@RequestBody JSONObject userid){
-	   
-	    String userId = userid.getString("id");
+
+        String userId = userid.getString("id");
         Map<String, Object> allinfoMap = new HashMap<String, Object>();
-        
+
         //更新个人主页的访问总次数
         userService.upPersonVist(userId);
-	    // 基本信息
-	    Map<String, String> baseInfo = userService.getUserBaseInfo(userId);
-	    System.out.println("个人页面访问总次数"+baseInfo.get("visitCount"));
-	    System.out.println("个人点赞数"+baseInfo.get("zanCount"));
-	    
-	    allinfoMap.put("baseInfo", baseInfo);
-	    
-	    // 图片列表
-	    List<Object> imgList = new ArrayList<Object>();
-	    imgList = userService.getUserImgs(userId);
-	    allinfoMap.put("images", imgList);
-	    
-	    // 音频信息
-	    Map<String, String> voice = new HashMap<String, String>();
-	    
-	    voice = userService.getUserVoice(userId);
-	    //如果用户没有上传音频信息，则返回空数据
-		if ( voice ==null) {
-			
-			allinfoMap.put("voice", new HashMap<String, String>());
-			
-		}else {
-			
-			allinfoMap.put("voice", voice);
-		} 
-	    
-	    JSONObject ret = new JSONObject();
-	    ret.put("ret", true);
-	    ret.put("errmsg", "");
-	    ret.put("data", allinfoMap);
-	    return ret;
-   
+        // 基本信息
+        Map<String, String> baseInfo = userService.getUserBaseInfo(userId);
+        System.out.println("个人页面访问总次数"+baseInfo.get("visitCount"));
+        System.out.println("个人点赞数"+baseInfo.get("zanCount"));
+
+        allinfoMap.put("baseInfo", baseInfo);
+
+        // 图片列表
+        List<Object> imgList = new ArrayList<Object>();
+        imgList = userService.getUserImgs(userId);
+        allinfoMap.put("images", imgList);
+
+        // 音频信息
+        Map<String, String> voice = new HashMap<String, String>();
+
+        voice = userService.getUserVoice(userId);
+        //如果用户没有上传音频信息，则返回空数据
+        if ( voice ==null) {
+
+            allinfoMap.put("voice", new HashMap<String, String>());
+
+        }else {
+
+            allinfoMap.put("voice", voice);
+        }
+
+        JSONObject ret = new JSONObject();
+        ret.put("ret", true);
+        ret.put("errmsg", "");
+        ret.put("data", allinfoMap);
+        return ret;
+
    }
-   
+
    /**
-	 * 以流的方式展示图片
-	 * @param request
-	 * @param response
-	 * @param file
-	 * @param userId
-	 * @throws IOException
-	 */
+     * 以流的方式展示图片
+     * @param request
+     * @param response
+     * @param file
+     * @param userId
+     * @throws IOException
+     */
    @RequestMapping(value = "file",method= RequestMethod.GET)
    public void viewFile(HttpServletRequest request,
-		                HttpServletResponse response,
-		                String file,
-		                String userId) throws IOException{
-	 
-	   System.out.println("请求图片");
-	   //禁止缓存
-	  // response.setHeader("Pragma", "No-cache");
-	   response.setHeader("Cache-Control", "PUBLIC, max-age=" + 60*60*24*30 + ", must-revalidate");  
-	   response.setDateHeader("Expires", System.currentTimeMillis()+3600*24*30*1000);
-	   //指定生成的响应是图片
-	   response.setContentType("image/jpeg");
-	   FileInputStream fis = null; 
-       OutputStream os = null; 
+                        HttpServletResponse response,
+                        String file,
+                        String userId) throws IOException{
+
+       System.out.println("请求图片");
+       //禁止缓存
+      // response.setHeader("Pragma", "No-cache");
+       response.setHeader("Cache-Control", "PUBLIC, max-age=" + 60*60*24*30 + ", must-revalidate");
+       response.setDateHeader("Expires", System.currentTimeMillis()+3600*24*30*1000);
+       //指定生成的响应是图片
+       response.setContentType("image/jpeg");
+       FileInputStream fis = null;
+       OutputStream os = null;
        try {
         fis = new FileInputStream(FileUtil.FILE_SAVE_PATH+userId+"/"+file);
         os = response.getOutputStream();
@@ -217,18 +217,18 @@ public class UserControlller {
         e.printStackTrace();
        }finally {
            try {
-        	   if (fis !=null) {
-        		   fis.close();
-			    }
-        	   if (os !=null) {
-        		    os.close();
-			    }
-				} catch (IOException e) {
-				e.printStackTrace();
-				}  
+               if (fis !=null) {
+                   fis.close();
+                }
+               if (os !=null) {
+                    os.close();
+                }
+                } catch (IOException e) {
+                e.printStackTrace();
+                }
        }
    }
-   
+
    /**
     * 保存评论
     * @param comment
@@ -237,13 +237,13 @@ public class UserControlller {
    @RequestMapping(value = "/commnet",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject saveComment(@RequestBody JSONObject comment){
-	   
-	   JSONObject ret = new JSONObject();
-	   ret = userService.saveComment(comment);
-	   return ret;
-	   
+
+       JSONObject ret = new JSONObject();
+       ret = userService.saveComment(comment);
+       return ret;
+
    }
-   
+
    /**
     * 获取用户的评论列表
     * @param comment
@@ -252,20 +252,20 @@ public class UserControlller {
    @RequestMapping(value = "/comList",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject commentlist(@RequestBody JSONObject comment){
-	   
-	    String userId = comment.getString("id");
-	    JSONObject ret = new JSONObject();
-	    List<Object> comList = userService.getUserCommnets(userId);
-	    ret.put("ret", true);
-		ret.put("errmsg", "");
-		Map<String, Object> dataMap = new HashMap<String, Object>();
-		dataMap.put("comments", comList);
-		ret.put("data", dataMap);
-	    return ret;
-	   
+
+        String userId = comment.getString("id");
+        JSONObject ret = new JSONObject();
+        List<Object> comList = userService.getUserCommnets(userId);
+        ret.put("ret", true);
+        ret.put("errmsg", "");
+        Map<String, Object> dataMap = new HashMap<String, Object>();
+        dataMap.put("comments", comList);
+        ret.put("data", dataMap);
+        return ret;
+
    }
-   
-   
+
+
    /**
     * 如果没有重复赞，则返回赞的总数
     * 如果重复赞了，则返回错误信息
@@ -276,27 +276,27 @@ public class UserControlller {
    @ResponseBody
    public JSONObject saveZan(@RequestBody JSONObject zan){
 
-	   JSONObject ret = new JSONObject();
-	   ret = userService.saveZan(zan);
-	   return ret;
-	   
+       JSONObject ret = new JSONObject();
+       ret = userService.saveZan(zan);
+       return ret;
+
    }
-   
-	/**
-	 * 用户列表乘务/非乘务页面初始化
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/userListInit", method = RequestMethod.GET)
-	public ModelAndView userListInit(){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/crewList");
-		return modelAndView;
-	
-	}
-   
+
+    /**
+     * 用户列表乘务/非乘务页面初始化
+     *
+     * @return
+     */
+    @RequestMapping(value = "/userListInit", method = RequestMethod.GET)
+    public ModelAndView userListInit(){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/crewList");
+        return modelAndView;
+
+    }
+
    /**
     * 根据用户类型，返回乘务/非乘务列表数据
     * @param type
@@ -305,22 +305,22 @@ public class UserControlller {
    @RequestMapping(value = "/uList",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject searchUserListByType(@RequestBody JSONObject obj){
-	   
-	   //获取用户的列表
-	   JSONObject ret = new JSONObject();
-	   String type = obj.getString("type");
-	   int page = obj.getInt("page");
-	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
-	   users = userService.getUserList(type, page);
-	   Map<String, Object> datas= new HashMap<String, Object>();
-	   datas.put("uList",users);
-	   ret.put("ret", true);
-	   ret.put("data", datas);
-	   System.out.println(ret);
-	   return ret;
-   
+
+       //获取用户的列表
+       JSONObject ret = new JSONObject();
+       String type = obj.getString("type");
+       int page = obj.getInt("page");
+       List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
+       users = userService.getUserList(type, page);
+       Map<String, Object> datas= new HashMap<String, Object>();
+       datas.put("uList",users);
+       ret.put("ret", true);
+       ret.put("data", datas);
+       System.out.println(ret);
+       return ret;
+
    }
-   
+
    /**
     * 返回人气之星数据
     * 前三名数据
@@ -330,63 +330,63 @@ public class UserControlller {
    @RequestMapping(value = "/popularity",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject searchRenqiZX(@RequestBody JSONObject obj){
-	   
-	   //获取用户的列表
-	   JSONObject ret = new JSONObject();
-	   //int page = obj.getInt("page");
-	   List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
-	   users = userService.getTopRenqiUserList();
-	   //人气之星前三名
-	   Map<String, Object> datas= new HashMap<String, Object>();
-	   datas.put("uList",users);
-	   ret.put("ret", true);
-	   ret.put("data", datas);
-	   System.out.println(ret);
-	   return ret;
-   
+
+       //获取用户的列表
+       JSONObject ret = new JSONObject();
+       //int page = obj.getInt("page");
+       List<Map<String, Object>> users = new ArrayList<Map<String,Object>>();
+       users = userService.getTopRenqiUserList();
+       //人气之星前三名
+       Map<String, Object> datas= new HashMap<String, Object>();
+       datas.put("uList",users);
+       ret.put("ret", true);
+       ret.put("data", datas);
+       System.out.println(ret);
+       return ret;
+
    }
-   
-	/**
-	 *初始化搜索页面 
-	 * @return
-	 */
-	@RequestMapping(value = "/searchInit", method = RequestMethod.GET)
-	public ModelAndView searchInit(){
-	
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/search");
-		return modelAndView;
-	
-	}
-   
+
+    /**
+     *初始化搜索页面
+     * @return
+     */
+    @RequestMapping(value = "/searchInit", method = RequestMethod.GET)
+    public ModelAndView searchInit(){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/search");
+        return modelAndView;
+
+    }
+
    /**
     * 模糊搜素用户
     * @param comment
     * @return
-    * @throws UnsupportedEncodingException 
+    * @throws UnsupportedEncodingException
     */
    @RequestMapping(value = "/searchUsers",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject getMokeUsers(@RequestBody JSONObject key) throws UnsupportedEncodingException{
-	   
-	    String searchKey = key.getString("searchKey");
-	    System.out.println(searchKey);
-	    //中文解码
-	    searchKey = URLDecoder.decode(searchKey,"utf-8");
-	    System.out.println(searchKey);
-	    int page = key.getInt("page");
-	    JSONObject ret = new JSONObject();
-	    List<Map<String, Object>> users = userService.getMokeUserList(searchKey, page);
-	    Map<String, Object> datas= new HashMap<String, Object>();
-		datas.put("uList",users);
-	    ret.put("ret", true);
-		ret.put("errmsg", "");
-		ret.put("data", datas);
-	    return ret;
-   
+
+        String searchKey = key.getString("searchKey");
+        System.out.println(searchKey);
+        //中文解码
+        searchKey = URLDecoder.decode(searchKey,"utf-8");
+        System.out.println(searchKey);
+        int page = key.getInt("page");
+        JSONObject ret = new JSONObject();
+        List<Map<String, Object>> users = userService.getMokeUserList(searchKey, page);
+        Map<String, Object> datas= new HashMap<String, Object>();
+        datas.put("uList",users);
+        ret.put("ret", true);
+        ret.put("errmsg", "");
+        ret.put("data", datas);
+        return ret;
+
    }
-   
+
    /**
     * 提供接口，统一添加身价
     * @param addPrice
@@ -395,17 +395,17 @@ public class UserControlller {
    @RequestMapping(value = "/addPrice",method = RequestMethod.POST)
    @ResponseBody
    public JSONObject addPrice(@RequestBody JSONObject price){
-	   
-	   String userId = price.getString("userId");
-	   int score = price.getInt("price");
-	   JSONObject ret = new JSONObject();
-	   userService.addPrice(userId, score);
-	   ret.put("ret", true);
-	   ret.put("errmsg", "");
-	   return ret;
-	   
+
+       String userId = price.getString("userId");
+       int score = price.getInt("price");
+       JSONObject ret = new JSONObject();
+       userService.addPrice(userId, score);
+       ret.put("ret", true);
+       ret.put("errmsg", "");
+       return ret;
+
    }
-   
+
    /**
     * 主动请求，将过期的音频重新上传到微信服务器，跟新本地服务地址
     * @param voice
@@ -413,38 +413,38 @@ public class UserControlller {
    @RequestMapping(value = "/reUploadVoice",method = RequestMethod.POST)
    @ResponseBody
    public void reUploadVoice(@RequestBody JSONObject voice){
-	   
-	   //TODO
-	   
+
+       //TODO
+
        }
    */
-   
-   
-	/**
-	 *一站到底页面
-	 * @return
-	 */
-	@RequestMapping(value = "/quizInit", method = RequestMethod.GET)
-	public ModelAndView quizInit(){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/quiz");
-		return modelAndView;
 
-	}
-	
-	/**
-	 *页面
-	 * @return
-	 */
-	@RequestMapping(value = "/actInit", method = RequestMethod.GET)
-	public ModelAndView actInit(){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.addObject("config",PastUtil.getWxConfig());
-		modelAndView.setViewName("/actRule");
-		return modelAndView;
 
-	}
+    /**
+     *一站到底页面
+     * @return
+     */
+    @RequestMapping(value = "/quizInit", method = RequestMethod.GET)
+    public ModelAndView quizInit(){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/quiz");
+        return modelAndView;
+
+    }
+
+    /**
+     *页面
+     * @return
+     */
+    @RequestMapping(value = "/actInit", method = RequestMethod.GET)
+    public ModelAndView actInit(){
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("config",PastUtil.getWxConfig());
+        modelAndView.setViewName("/actRule");
+        return modelAndView;
+
+    }
 }

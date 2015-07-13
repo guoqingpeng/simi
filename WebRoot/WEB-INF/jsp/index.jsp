@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="picbox">
                 <ul>
                     <li><a href="javascript:;"><img src="../img/img10.png" alt=""/></a></li>
-					<li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
+                    <li><a href="javascript:;"><img src="../img/img1.jpg" alt=""/></a></li>
                 </ul>
             </div>
             <div class="state">
@@ -62,11 +62,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /top20 -->
         <jsp:include page="searchCommon.jsp"/>
     </div>
-      <jsp:include page="foot.jsp"/>
+    <div class="advert">招商广告位</div>
+    <div class="doc-ft">
+        <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
+        <span class="visit">访问量：<i>${visitCount}</i></span>
+    </div>
+    <footer class="m-foot">
+        <ul class="first">
+            <li><a href="/simi/user/mainInit.do" title="首页">首页</a></li>
+            <li><a href="/simi/user/actInit.do" title="活动规则">活动规则</a></li>
+            <li>
+                <a href="javascript:;" title="线上活动">线上活动</a>
+                <ul class="next">
+                    <li><a href="/simi/user/quizInit.do">一战到底</a></li>
+                    <li><a href="/simi/question/askInit.do">无节操问答</a></li>
+                </ul>
+            </li>
+            <li><a href="/simi/user/regInit.do" title="首页">我要报名</a></li>
+        </ul>
+    </footer>
     </div>
     <script src="/simi/scripts/jquery-1.9.1.min.js"></script>
     <script src="/simi/scripts/utils.js" charset="utf-8"></script>
     <script src="/simi/scripts/index.js" charset="utf-8"></script>
     <script type="text/javascript" src="/simi/scripts/slider/TouchSlide.1.1.js"></script>
+    <script>
+        $(function(){
+            $('')
+        })
+    </script>
 </body>
 </html>
