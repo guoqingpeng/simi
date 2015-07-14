@@ -63,9 +63,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="info w1" data-holder="xinzuo">
 
                         </div>
-                        <span class="title">点赞数: </span>
-                        <div class="info w1">
-                            
+                        <span class="title">访问量: </span>
+                        <div class="info w1" data-holder="visitCount">
                         </div>
                     </div>
                     <div class="rows">

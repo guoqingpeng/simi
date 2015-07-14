@@ -66,6 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="doc-ft">
         <a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">京ICP备15034347号</a>
         <span class="visit">访问量：<i>${visitCount}</i></span>
+        <span style="display:none">${regCount}</span>
     </div>
     <footer class="m-foot">
         <ul class="first">
@@ -86,10 +87,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="/simi/scripts/utils.js" charset="utf-8"></script>
     <script src="/simi/scripts/index.js" charset="utf-8"></script>
     <script type="text/javascript" src="/simi/scripts/slider/TouchSlide.1.1.js"></script>
-    <script>
-        $(function(){
-            $('')
-        })
-    </script>
 </body>
 </html>
