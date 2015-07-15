@@ -161,6 +161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                    <span  class="textarea">
                    <textarea name="anouncement" placeholder="拉票宣言"></textarea>
                    </span>
+                   <span class="tips">宣言只能包含普通文本和符号</span>
                 </div>
             </div>
             <div class="rows">
